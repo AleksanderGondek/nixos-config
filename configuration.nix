@@ -6,6 +6,7 @@
     ./boot-configuration.nix
     ./networking-configuration.nix
     ./x-server-configuration.nix
+    ./system-configuration.nix
   ];
 
   options.nixosConfig = with lib; {
