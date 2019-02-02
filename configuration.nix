@@ -1,13 +1,31 @@
 { config, pkgs, ... }:
 
-let
-  configurationSecrets = import ./configuration.secret.nix;
-in {
+{
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./boot-configuration.nix
     ./networking-configuration.nix
+    ./x-server-configuration.nix
   ];
 
-  system.nixos.stateVersion = "18.09";
+  options.nixosConfig = with lib; {
+    userName = mkOption {
+      type = types.string;
+    };
+    hostName = mkOption {
+      type = types.string;
+    };
+    hostId = mkOption {
+      type = types.string;
+    };
+  };
+
+  config = let
+    nixosConfig = (import ./configuration.secret.nix);
+    cfg = config.nixosConfig;
+  in {
+    nixosConfig = nixosConfig;
+
+    system.nixos.stateVersion = "18.09";
+  };
 }
