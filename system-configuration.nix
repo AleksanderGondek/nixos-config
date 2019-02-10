@@ -9,6 +9,7 @@
       symlinks = stringAfter [ "users" ]
       ''
         ln -s ${pkgs.bash}/bin/bash /bin/bash || true
+        ln -s ${pkgs.bash}/bin/zsh /bin/zsh || true
       '';
     };
     interactiveShellInit = ''
@@ -19,10 +20,26 @@
       export VISUAL=vim
    '';
    systemPackages = with pkgs; [
-     git
+     curl
+     git-lfs
+     gitAndTools.gitFull
+     openssl
+     stdenv
+     strace
+     sudo
+     sysstat
      wget
      vim
    ];
+  };
+
+  hardware = {
+    pulseaudio.enable = true;
+
+    # Enable 3D acceleration for 32bit applications (e.g. wine)
+    opengl.driSupport32Bit = true;
+    opengl.driSupport = true;
+    opengl.enable = true;
   };
 
   i18n = {
@@ -32,8 +49,39 @@
   };
 
   programs = {
+    bash = {
+      enableCompletion = true;
+    }
     qt5ct.enable = true;
-    zsh.enable = true;
+    zsh = {
+      enable = true;
+      autosuggestions.enable = true;
+      promptInit = "";
+    };
+  };
+
+  services = {
+    locate = {
+      enable = true;
+      locate.interval = "00 20 * * *";
+    }
+
+    # Infamous systemd screen/tmux killer W/A
+    logind.extraConfig = ''
+      KillUserProcesses=no
+    '';
+
+    nixosManual.showManual = false;
+    ntp.enable = true;
+
+    zfs.autoSnapshot = {
+      enable = true;
+      flags = "-k -p --utc";
+    };
+  };
+
+  sound = {
+    enable = true;
   };
 
   system = {

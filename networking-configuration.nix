@@ -1,8 +1,15 @@
 { lib, config, pkgs, ... }:
 
 {
-  networking.hostName = config.nixosConfig.hostName;
-  networking.hostId = config.nixosConfig.hostId;
-  
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostId = config.nixosConfig.hostId;
+    hostName = config.nixosConfig.hostName;
+     
+    firewall.enable = true;
+    firewall.trustedInterfaces = [ "lo" ];
+
+    networkmanager.enable = true;
+
+    wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  };
 }

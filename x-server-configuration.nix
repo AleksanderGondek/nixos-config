@@ -4,6 +4,7 @@
   # Install required packages
   environment.systemPackages = with pkgs; [
     rxvt_unicode
+    screenfetch
   ];
 
   # xfce + i3-gaps + rxvt
