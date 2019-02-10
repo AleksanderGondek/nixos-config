@@ -27,6 +27,7 @@
       file # Show file type
       git-lfs
       gitAndTools.gitFull
+      gnupg
       home-manager
       htop
       iftop # Display bandwidth usage on a network interface
