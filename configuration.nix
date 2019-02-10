@@ -9,7 +9,7 @@
     ./system-configuration.nix
   ];
 
-  options.nixosConfig = with lib; {
+  options.nixosConfig = with pkgs.lib; {
     userName = mkOption {
       type = types.string;
     };
@@ -22,7 +22,7 @@
   };
 
   config = let
-    nixosConfig = (import ./configuration.secret.nix);
+    nixosConfig = (import ./configuration.secret.nix){};
     cfg = config.nixosConfig;
   in {
     nixosConfig = nixosConfig;

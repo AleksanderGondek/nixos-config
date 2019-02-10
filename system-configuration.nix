@@ -1,35 +1,27 @@
-{ lib, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   documentation.man.enable = true;
 
   environment = {
-    activationScripts = {
-      # Configure various dotfiles.
-      symlinks = stringAfter [ "users" ]
-      ''
-        ln -s ${pkgs.bash}/bin/bash /bin/bash || true
-        ln -s ${pkgs.bash}/bin/zsh /bin/zsh || true
-      '';
-    };
     interactiveShellInit = ''
       export XDG_CONFIG_HOME="$HOME/.config"
       export QT_QPA_CONFIG_HOME="qt5ct"
       BASE16_SHELL="$HOME/.config/base16-shell/"
       export EDITOR=vim
       export VISUAL=vim
-   '';
-   systemPackages = with pkgs; [
-     curl
-     git-lfs
-     gitAndTools.gitFull
-     openssl
-     stdenv
-     strace
-     sudo
-     sysstat
-     wget
-     vim
+    '';
+    systemPackages = with pkgs; [
+      curl
+      git-lfs
+      gitAndTools.gitFull
+      openssl
+      stdenv
+      strace
+      sudo
+      sysstat
+      wget
+      vim
    ];
   };
 

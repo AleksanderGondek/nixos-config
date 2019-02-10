@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   # Install required packages
@@ -21,11 +21,8 @@
 
     enable = true;
     
-    # Touchpad
+    # Touchpad (libinput == new synaptics)
     libinput.enable = true;
-
-    # Trackpad
-    synaptics.enable = true;
 
     windowManager = {
       i3 = {

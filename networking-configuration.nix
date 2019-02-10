@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   networking = {
@@ -8,8 +8,8 @@
     firewall.enable = true;
     firewall.trustedInterfaces = [ "lo" ];
 
-    networkmanager.enable = true;
-
+    # To replace wiress.enable
+    # networkmanager.enable = true;
     wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   };
 }
