@@ -3,10 +3,10 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    ./boot-configuration.nix
-    ./networking-configuration.nix
-    ./x-server-configuration.nix
-    ./system-configuration.nix
+    ./nixos/boot-configuration.nix
+    ./nixos/networking-configuration.nix
+    ./nixos/x-server-configuration.nix
+    ./nixos/system-configuration.nix
   ];
 
   options.nixosConfig = with pkgs.lib; {

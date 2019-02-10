@@ -43,7 +43,7 @@
   programs = {
     bash = {
       enableCompletion = true;
-    }
+    };
     qt5ct.enable = true;
     zsh = {
       enable = true;
@@ -56,7 +56,7 @@
     locate = {
       enable = true;
       locate.interval = "00 20 * * *";
-    }
+    };
 
     # Infamous systemd screen/tmux killer W/A
     logind.extraConfig = ''
