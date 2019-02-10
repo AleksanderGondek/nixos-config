@@ -1,6 +1,14 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ''${builtins.fetchGit {
+      name = "home-manager";
+      rev = "a334a941c40bf1618da86bb12517fd47c4836800";
+      url = https://github.com/rycee/home-manager;
+    }}/nixos''
+  ];
+
   documentation.man.enable = true;
 
   environment = {
@@ -12,14 +20,27 @@
       export VISUAL=vim
     '';
     systemPackages = with pkgs; [
+      bind  # nslookup, dig
+      coreutils
       curl
+      dos2unix
+      file # Show file type
       git-lfs
       gitAndTools.gitFull
+      home-manager
+      htop
+      iftop # Display bandwidth usage on a network interface
+      iotop # Find out the processes doing the most IO
+      ncurses
+      nix-prefetch-scripts
       openssl
+      p7zip
+      psmisc # small useful utilities that use the proc filesystem
       stdenv
       strace
       sudo
       sysstat
+      usbutils
       wget
       vim
    ];
@@ -53,9 +74,12 @@
   };
 
   services = {
+    # dunst requirement
+    dbus.socketActivated = true;
+
     locate = {
       enable = true;
-      locate.interval = "00 20 * * *";
+      interval = "00 20 * * *";
     };
 
     # Infamous systemd screen/tmux killer W/A
