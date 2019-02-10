@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, machineName ? "ravenrock-nixos", ... }:
 
 {
   imports = [
@@ -22,7 +22,7 @@
   };
 
   config = let
-    nixosConfig = (import ./configuration.secret.nix){};
+    nixosConfig = (import "./machine-profiles/${machineName}.secret.nix"){};
     cfg = config.nixosConfig;
   in {
     nixosConfig = nixosConfig;
