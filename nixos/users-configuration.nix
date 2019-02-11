@@ -16,6 +16,8 @@
     home.packages = config.nixosConfig.home.packages;
     home.sessionVariables = config.nixosConfig.home.sessionVariables;
 
+    xresources.extraConfig = config.nixosConfig.xresources.extraConfig;
+
     programs.firefox = {
       enable = config.nixosConfig.programs.firefox.enable;
       enableAdobeFlash = config.nixosConfig.programs.firefox.enableAdobeFlash;

@@ -35,8 +35,9 @@
       ncurses
       nix-prefetch-scripts
       openssl
+      ranger
       p7zip
-      psmisc # small useful utilities that use the proc filesystem
+      psmisc # Small useful utilities that use the proc filesystem
       stdenv
       strace
       sudo
@@ -49,6 +50,7 @@
 
   hardware = {
     pulseaudio.enable = true;
+    pulseaudio.support32Bit = true;
 
     # Enable 3D acceleration for 32bit applications (e.g. wine)
     opengl.driSupport32Bit = true;
