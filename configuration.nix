@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  configParams = import ./configuration-params.nix
+  configParams = import ./configuration-params.nix;
   nixosConfig = (import ./. + "./machine-profiles/${configParams.machineProfileName}.secret.nix"){};
 in
 {
