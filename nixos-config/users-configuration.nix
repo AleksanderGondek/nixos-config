@@ -4,7 +4,7 @@
   # TODO: Change to 'false'
   users.mutableUsers = true;
 
-  users.extraUsers.nix = {
+  users.users.nix = {
     uid = 1001;
     description = "Nix 'admin' user";
 
@@ -22,7 +22,7 @@
     home = "/home/nix";
   };
 
-  users.extraUsers."${config.nixosConfig.user.name}" = {
+  users.users."${config.nixosConfig.user.name}" = {
     uid = config.nixosConfig.user.uid;
     description = config.nixosConfig.user.description;
     
