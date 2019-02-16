@@ -15,7 +15,6 @@
     interactiveShellInit = ''
       export XDG_CONFIG_HOME="$HOME/.config"
       export QT_QPA_CONFIG_HOME="qt5ct"
-      BASE16_SHELL="$HOME/.config/base16-shell/"
       export EDITOR=vim
       export VISUAL=vim
     '';

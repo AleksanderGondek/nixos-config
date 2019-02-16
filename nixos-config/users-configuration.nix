@@ -1,6 +1,27 @@
 { config, pkgs, ... }:
 
 {
+  # TODO: Change to 'false'
+  users.mutableUsers = true;
+
+  users.extraUsers.nix = {
+    uid = 1001;
+    description = "Nix 'admin' user";
+
+    group = "nix";
+    extraGroups = [
+      "audio"
+      "disk"
+      "networkmanager"
+      "systemd-journal"
+      "video"
+      "wheel"
+    ];
+
+    createHome = true;
+    home = "/home/nix";
+  };
+
   users.extraUsers."${config.nixosConfig.user.name}" = {
     uid = config.nixosConfig.user.uid;
     description = config.nixosConfig.user.description;
@@ -9,7 +30,8 @@
     extraGroups = config.nixosConfig.user.extraGroups;
 
     createHome = true;
-    home = "${config.nixosConfig.user.name}";
+    isNormalUser = true;
+    home = "/home/${config.nixosConfig.user.name}";
   };
 
   home-manager.users."${config.nixosConfig.user.name}" = {
@@ -72,5 +94,5 @@
     };
   };
 
-  nix.trustedUsers = [ "root" "${config.nixosConfig.user.name}" ];
+  nix.trustedUsers = [ "nix" "root" "${config.nixosConfig.user.name}" ];
 }
