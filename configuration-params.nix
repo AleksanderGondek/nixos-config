@@ -1,0 +1,3 @@
+{
+    machineProfileName = "ravenrock-nixos";
+}

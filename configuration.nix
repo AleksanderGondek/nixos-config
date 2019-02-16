@@ -1,32 +1,18 @@
-{ config, pkgs, machineName ? "ravenrock-nixos", ... }:
+{ config, pkgs, ... }:
 
+let
+  configParams = import ./configuration-params.nix
+  nixosConfig = (import ./. + "./machine-profiles/${configParams.machineProfileName}.secret.nix"){};
+in
 {
   imports = [
+    # Hardware configuration, pre-generated
     /etc/nixos/hardware-configuration.nix
-    ./nixos/boot-configuration.nix
-    ./nixos/networking-configuration.nix
-    ./nixos/x-server-configuration.nix
-    ./nixos/system-configuration.nix
+    # NixosConfig
+    ./nixos-config/nixosConfig.nix
   ];
 
-  options.nixosConfig = with pkgs.lib; {
-    userName = mkOption {
-      type = types.string;
-    };
-    hostName = mkOption {
-      type = types.string;
-    };
-    hostId = mkOption {
-      type = types.string;
-    };
-  };
+  nixosConfig = nixosConfig;
 
-  config = let
-    nixosConfig = (import "./machine-profiles/${machineName}.secret.nix"){};
-    cfg = config.nixosConfig;
-  in {
-    nixosConfig = nixosConfig;
-
-    system.stateVersion = "18.09";
-  };
+  system.stateVersion = "18.09";
 }
