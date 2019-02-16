@@ -2,7 +2,7 @@
 
 let
   configParams = import ./configuration-params.nix;
-  nixosConfig = (import ./. + "./machine-profiles/${configParams.machineProfileName}.secret.nix"){};
+  nixosConfig = (import ./. + "/machine-profiles/${configParams.machineProfileName}.secret.nix"){};
 in
 {
   imports = [
