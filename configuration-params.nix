@@ -1,3 +1,0 @@
-{
-    machineProfileName = "ravenrock-nixos";
-}
