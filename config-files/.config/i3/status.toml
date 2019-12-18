@@ -1,0 +1,42 @@
+icons = "awesome"
+
+[theme]
+name = "solarized-dark"
+[theme.overrides]
+idle_bg = "#272822"
+idle_fg = "#f8f8f2"
+good_bg = "#a6e22e"
+info_bg = "#ae81ff"
+warning_bg = "#fd971f"
+critical_bg = "#f92672"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%F %T %Z"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mup}%"
+format_swap = "{SUp}%"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m}"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "battery"
+device = "BAT1"
+driver = "upower"
+interval = 10
+format = "{percentage}% {time}"
+

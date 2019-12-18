@@ -42,6 +42,12 @@ in {
   home-manager.users.agondek = {
     home.file = {
       ".Xresources".source = ./config-files/.Xresources;
+      ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
+      ".config/htop/htoprc".source = ./config-files/.config/htop/htoprc;
+      ".config/i3/config".source = ./config-files/.config/i3/config;
+      ".config/i3/status.toml".source = ./config-files/.config/i3/status.toml;
+      ".config/rofi/config".source = ./config-files/.config/rofi/config;
+      ".config/rofi/Monokai.rasi".source = ./config-files/.config/rofi/Monokai.rasi;
     };
     home.sessionVariables = {
       NIXOS_CONFIG = /home/agondek/Projects/nixos-config;
