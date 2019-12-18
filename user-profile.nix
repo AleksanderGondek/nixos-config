@@ -1,0 +1,76 @@
+{ config, pkgs, ... }:
+
+let
+  userSecrets = import ./user-secrets.nix {};
+  preConfiguredVscode = pkgs.vscode-with-extensions.override {
+    vscodeExtensions = with pkgs.vscode-extensions; [
+      bbenoist.Nix
+    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "python";
+        publisher = "ms-python";
+        version = "2019.11.50794";
+        sha256 = "1imc4gc3aq5x6prb8fxz70v4l838h22hfq2f8an4mldyragdz7ka";
+      }
+    ];
+  };
+in {
+  environment.systemPackages = with pkgs; [
+    firefox
+    git-crypt
+    kubectl
+    preConfiguredVscode
+  ];
+
+  users.users.agondek = {
+    description = "Aleksander Gondek";
+    uid = 6666;
+    isNormalUser = true;
+    group = "nogroup";
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "docker"
+    ];
+    home = "/home/agondek";
+    shell = pkgs.zsh;
+    createHome = true;
+    useDefaultShell = false;
+    hashedPassword = userSecrets.hashedPassword;
+  };
+
+  home-manager.users.agondek = {
+    home.file = {
+      ".Xresources".source = ./config-files/.Xresources;
+    };
+    home.sessionVariables = {
+      NIXOS_CONFIG = /home/agondek/Projects/nixos-config;
+    };
+    programs.git = {
+      enable = true;
+      userEmail = "gondekaleksander@protonmail.com";
+      userName = "Aleksander Gondek";
+      extraConfig = {
+        core = {
+          editor = "vim";
+        };
+      };
+      signing = {
+        key = userSecrets.gitGpgSigningKey;
+        signByDefault = true;
+      };
+    };
+    programs.zsh = {
+      enable = true;
+      enableAutosuggestions = true;
+
+      oh-my-zsh = {
+        enable = true;
+        plugins = [];
+        theme = "agnoster";
+      };
+    };
+  };
+
+  nix.trustedUsers = [ "root" "agondek" ];
+}
