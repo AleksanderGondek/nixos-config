@@ -48,6 +48,7 @@ in
     htop
     less
     ranger
+    unzip
     vim
     wget
     xterm

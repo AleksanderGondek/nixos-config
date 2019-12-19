@@ -12,14 +12,24 @@ let
         version = "2019.11.50794";
         sha256 = "1imc4gc3aq5x6prb8fxz70v4l838h22hfq2f8an4mldyragdz7ka";
       }
+      {
+        name = "metals";
+        publisher = "scalameta";
+        version = "1.6.3";
+        sha256 = "1mc3awybzd2ql1b86inirhsw3j2c7cs0b0nvbjp38jjpq674bmj7";
+      }
     ];
   };
 in {
   environment.systemPackages = with pkgs; [
+    evince # pdf reader
     firefox
     git-crypt
     kubectl
     preConfiguredVscode
+    # Developing Scala
+    jdk
+    sbt
   ];
 
   users.users.agondek = {
