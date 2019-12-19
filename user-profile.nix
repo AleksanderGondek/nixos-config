@@ -2,23 +2,8 @@
 
 let
   userSecrets = import ./user-secrets.nix {};
-  preConfiguredVscode = pkgs.vscode-with-extensions.override {
-    vscodeExtensions = with pkgs.vscode-extensions; [
-      bbenoist.Nix
-    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "python";
-        publisher = "ms-python";
-        version = "2019.11.50794";
-        sha256 = "1imc4gc3aq5x6prb8fxz70v4l838h22hfq2f8an4mldyragdz7ka";
-      }
-      {
-        name = "metals";
-        publisher = "scalameta";
-        version = "1.6.3";
-        sha256 = "1mc3awybzd2ql1b86inirhsw3j2c7cs0b0nvbjp38jjpq674bmj7";
-      }
-    ];
+  preConfiguredVscode = import ./programs/vscode.nix { 
+    inherit config pkgs userSecrets;
   };
 in {
   environment.systemPackages = with pkgs; [
@@ -60,6 +45,7 @@ in {
       ".config/i3/status.toml".source = ./config-files/.config/i3/status.toml;
       ".config/rofi/config".source = ./config-files/.config/rofi/config;
       ".config/rofi/Monokai.rasi".source = ./config-files/.config/rofi/Monokai.rasi;
+      ".config/Code/User/settings.json".source = ./config-files/.config/Code/User/settings.json;
     };
     home.sessionVariables = {
       NIXOS_CONFIG = /home/agondek/Projects/nixos-config;
