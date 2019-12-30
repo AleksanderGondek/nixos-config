@@ -6,7 +6,6 @@ in
 {
   imports =
     [
-      ./hardware/ravenrock-laptop.nix
       ''${homeManager}/nixos''
       ./ravenrock-laptop.nix
     ];

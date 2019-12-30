@@ -30,6 +30,12 @@ let
         sha256 = "1qp1vldfz5hjpz2ws30705rdp7jspg9qhs17hh0lvs4p5fdr1f4g";
       }
       {
+        name = "markdown-all-in-one";
+        publisher = "yzhang";
+        version = "2.6.1";
+        sha256 = "1sj1giihmha5x7hh70xqy7anwy3gxbmd3fdx91q1vdcsilzlf3zk";
+      }
+      {
         name = "latex-support";
         publisher = "torn4dom4n";
         version = "3.1.0";

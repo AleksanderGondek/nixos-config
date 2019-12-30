@@ -2,8 +2,9 @@
 
 {
   imports = [
+    ./hardware/ravenrock-laptop.nix
     ./base.nix
-    ./default-desktop.nix
+    ./desktops/default-desktop.nix
     ./user-profile.nix
   ];
   # Use the systemd-boot EFI boot loader.
