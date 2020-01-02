@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  homeManager = fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz;
+  homeManager = fetchTarball https://github.com/rycee/home-manager/archive/release-19.09.tar.gz;
 in
 {
   imports =
