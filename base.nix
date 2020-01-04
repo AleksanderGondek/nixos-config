@@ -1,9 +1,13 @@
 { config, pkgs, ... }:
 
 let
+  homeManager = fetchTarball https://github.com/rycee/home-manager/archive/release-19.09.tar.gz;
   userSecrets = import ./user-secrets.nix {};
 in
-{ 
+{
+  # Home Manager Enablement
+  imports = [ ''${homeManager}/nixos'' ];
+
   # Use ZFS filesytem
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.requestEncryptionCredentials = true;
@@ -64,4 +68,10 @@ in
   users.users.root = {
     hashedPassword = userSecrets.hashedPassword;
   };
+
+  # This value determines the NixOS release with which your system is to be
+  # compatible, in order to avoid breaking some software such as database
+  # servers. You should change this only after NixOS release notes say you
+  # should.
+  system.stateVersion = "19.09"; # Did you read the comment?
 }

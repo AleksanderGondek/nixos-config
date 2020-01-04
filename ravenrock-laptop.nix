@@ -5,6 +5,7 @@
     ./hardware/ravenrock-laptop.nix
     ./base.nix
     ./desktops/default-desktop.nix
+    ./virtualisation/docker.nix
     ./user-profile.nix
   ];
   # Use the systemd-boot EFI boot loader.
