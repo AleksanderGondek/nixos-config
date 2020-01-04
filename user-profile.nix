@@ -9,12 +9,6 @@ in {
   environment.systemPackages = with pkgs; [
     evince # pdf reader
     firefox
-    git-crypt
-    kubectl
-    preConfiguredVscode
-    # Developing Scala
-    jdk
-    sbt
   ];
 
   users.users.agondek = {
@@ -47,6 +41,14 @@ in {
       ".config/rofi/Monokai.rasi".source = ./config-files/.config/rofi/Monokai.rasi;
       ".config/Code/User/settings.json".source = ./config-files/.config/Code/User/settings.json;
     };
+    home.packages = with pkgs; [
+      git-crypt
+      kubectl
+      preConfiguredVscode
+      # Developing Scala
+      jdk
+      sbt
+    ];
     home.sessionVariables = {
       NIXOS_CONFIG = /home/agondek/Projects/nixos-config;
     };
