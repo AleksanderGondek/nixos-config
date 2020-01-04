@@ -48,6 +48,17 @@ in {
       # Developing Scala
       jdk
       sbt
+      # Developing Python
+      pypi2nix
+      (python37.withPackages(ps : with ps; [ 
+          ipython
+          flake8
+          pycodestyle
+          pylint
+          setuptools
+          virtualenv
+        ]
+      ))
     ];
     home.sessionVariables = {
       NIXOS_CONFIG = /home/agondek/Projects/nixos-config;
