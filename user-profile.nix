@@ -9,6 +9,7 @@ in {
   environment.systemPackages = with pkgs; [
     evince # pdf reader
     firefox
+    ripgrep # Grep written in rust
   ];
 
   users.users.agondek = {
@@ -45,10 +46,10 @@ in {
       git-crypt
       kubectl
       preConfiguredVscode
-      # Developing Scala
+      # Developing in Scala
       jdk
       sbt
-      # Developing Python
+      # Developing in Python
       pypi2nix
       (python37.withPackages(ps : with ps; [ 
           ipython
@@ -59,6 +60,14 @@ in {
           virtualenv
         ]
       ))
+      # Developiong in Rust
+      binutils
+      gcc
+      gnumake
+      openssl
+      pkgconfig
+      rustc
+      cargo
     ];
     home.sessionVariables = {
       NIXOS_CONFIG = /home/agondek/Projects/nixos-config;
