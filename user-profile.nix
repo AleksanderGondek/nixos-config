@@ -8,6 +8,7 @@ let
 in {
   environment.systemPackages = with pkgs; [
     evince # pdf reader
+    fd
     firefox
     ripgrep # Grep written in rust
   ];
@@ -71,6 +72,7 @@ in {
     ];
     home.sessionVariables = {
       NIXOS_CONFIG = /home/agondek/Projects/nixos-config;
+      EDITOR = "vim";
     };
     programs.git = {
       enable = true;
