@@ -8,6 +8,7 @@ let
 in {
   environment.systemPackages = with pkgs; [
     evince # pdf reader
+    exa
     fd
     firefox
     ripgrep # Grep written in rust
