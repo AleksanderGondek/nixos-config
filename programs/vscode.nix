@@ -8,32 +8,32 @@ let
       {
         name = "python";
         publisher = "ms-python";
-        version = "2019.11.50794";
-        sha256 = "1imc4gc3aq5x6prb8fxz70v4l838h22hfq2f8an4mldyragdz7ka";
+        version = "2020.2.63072";
+        sha256 = "12v79256h3vl8a4dfv29x7m8w2g3jh4k5rhpxvll8z5hzbv3lypf";
       }
       {
         name = "metals";
         publisher = "scalameta";
-        version = "1.6.3";
-        sha256 = "1mc3awybzd2ql1b86inirhsw3j2c7cs0b0nvbjp38jjpq674bmj7";
+        version = "1.7.8";
+        sha256 = "0bl0j1inzrg9ylil5lb79q26j34gfy023xcv04ycrjsjkhlslpqc";
       }
       {
         name = "scala";
         publisher = "scala-lang";
-        version = "0.3.8";
-        sha256 = "17dl10m3ayf57sqgil4mr9fjdm7i8gb5clrs227b768pp2d39ll9";
+        version = "0.3.9";
+        sha256 = "0l6zrpp2klqdym977zygmbzf0478lbqmivcxa2xmqyi34c9vwli7";
       }
       {
         name = "theme-monokai-pro-vscode";
         publisher = "monokai";
-        version = "1.1.14";
-        sha256 = "1qp1vldfz5hjpz2ws30705rdp7jspg9qhs17hh0lvs4p5fdr1f4g";
+        version = "1.1.15";
+        sha256 = "0b5785m2zbvyhs7s4y4cqvi6rsvg4xq9qpci7hh6w671hdhgwlfk";
       }
       {
         name = "markdown-all-in-one";
         publisher = "yzhang";
-        version = "2.6.1";
-        sha256 = "1sj1giihmha5x7hh70xqy7anwy3gxbmd3fdx91q1vdcsilzlf3zk";
+        version = "2.7.0";
+        sha256 = "1hrxw4ilm2r48kd442j2i7ar43w463612bx569pdhz80mapr1z9k";
       }
       {
         name = "latex-support";
@@ -44,7 +44,7 @@ let
       {
         name = "code-spell-checker";
         publisher = "streetsidesoftware";
-        version = "1.7.20";
+        version = "1.7.24";
         sha256 = "1mmkp0f0nchxnsjyvhl6q0iq1i7jf0id72x5kvlqybbnl80qlbgf";
       }
     ];
