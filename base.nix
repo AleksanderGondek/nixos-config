@@ -23,6 +23,13 @@ in
     monthly = 1;
   };
 
+  # Clean up nix gc
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+
   # Select internationalisation properties.
   i18n = {
     consoleFont = "Lat2-Terminus16";
@@ -74,4 +81,11 @@ in
   # servers. You should change this only after NixOS release notes say you
   # should.
   system.stateVersion = "19.09"; # Did you read the comment?
+  
+  # Auto upgrade stable channel
+  system.autoUpgrade = {
+    enable = true;
+    channel = "https://nixos.org/channels/nixos-19.09";
+    dates = "daily";
+  };
 }
