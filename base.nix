@@ -40,6 +40,22 @@ in
   # Network (Wireless and cord)
   networking.networkmanager.enable = true;
 
+  # DNS Resolution
+  networking.nameservers = [
+    "1.1.1.1"
+    "9.9.9.9"
+  ];
+  # Enforce only nameservers from configuration
+  # To be removed after: https://github.com/NixOS/nixpkgs/issues/61230 is resolved
+  networking.networkmanager.dns = pkgs.lib.mkForce "none"; # networkmaneger not to overwrite /etc/resolv.conf
+  services.resolved.enable = pkgs.lib.mkForce false; # just to be sure
+  environment.etc."resolv.conf" = {
+    text = pkgs.lib.optionalString (config.networking.nameservers != []) (
+            pkgs.lib.concatMapStrings (ns: "nameserver ${ns}\n") config.networking.nameservers
+          );
+    mode = "0444";
+  };
+
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
@@ -52,6 +68,8 @@ in
 
   # Base packages
   environment.systemPackages = with pkgs; [
+    bind
+    busybox
     curl
     gitAndTools.gitFull
     gnupg
