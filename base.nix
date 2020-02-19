@@ -89,6 +89,8 @@ in
   };
 
   users.defaultUserShell = pkgs.bash;
+  # Disallow user management sheneningans
+  users.mutableUsers = false;
   # Root config
   users.users.root = {
     hashedPassword = userSecrets.hashedPassword;
