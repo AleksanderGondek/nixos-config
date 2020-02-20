@@ -4,7 +4,7 @@
   imports = [ 
     ./hardware/blackwood-desktop.nix
     ./base.nix
-    ./desktops/default-desktop.nix
+    ./desktops/nvidia-desktop.nix
     ./virtualisation/docker.nix
     ./user-profile.nix
   ];
@@ -21,9 +21,4 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.eno1.useDHCP = true;
-
-  # Enable propriatary drivers
-  services.xserver.videoDrivers = [
-    "intel" "nvidia"
-  ];
 }

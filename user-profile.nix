@@ -44,6 +44,7 @@ in {
       ".config/rofi/config".source = ./config-files/.config/rofi/config;
       ".config/rofi/Monokai.rasi".source = ./config-files/.config/rofi/Monokai.rasi;
       ".config/Code/User/settings.json".source = ./config-files/.config/Code/User/settings.json;
+      ".config/wallpapers/01.jpg".source = ./config-files/.config/wallpapers/01.jpg;
     };
     home.packages = with pkgs; [
       git-crypt
