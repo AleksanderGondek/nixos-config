@@ -34,6 +34,7 @@ in {
   home-manager.users.agondek = {
     home.file = {
       ".Xresources".source = ./config-files/.Xresources;
+      ".fehbg".source = ./config-files/.fehbg;
       ".gtkrc-2.0".source = ./config-files/.gtkrc-2.0;
       ".config/gtk-3.0/settings.ini".source = ./config-files/.config/gtk-3.0/settings.ini;
       ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
