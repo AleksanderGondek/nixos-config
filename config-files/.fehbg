@@ -1,2 +1,2 @@
 #!/bin/sh
-/run/current-system/sw/bin/feh --no-fehbg --bg-scale '/home/agondek/.config/wallpapers/01.jpg' 
+/run/current-system/sw/bin/feh --no-fehbg --bg-fill '/home/agondek/.config/wallpapers/01.jpg' --bg-fill '/home/agondek/.config/wallpapers/01.jpg'

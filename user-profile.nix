@@ -41,6 +41,8 @@ in {
       ".config/htop/htoprc".source = ./config-files/.config/htop/htoprc;
       ".config/i3/config".source = ./config-files/.config/i3/config;
       ".config/i3/status.toml".source = ./config-files/.config/i3/status.toml;
+      ".config/polybar/config".source = ./config-files/.config/polybar/config;
+      ".config/polybar/run-polybar.sh".source = ./config-files/.config/polybar/run-polybar.sh;
       ".config/rofi/config".source = ./config-files/.config/rofi/config;
       ".config/rofi/Monokai.rasi".source = ./config-files/.config/rofi/Monokai.rasi;
       ".config/Code/User/settings.json".source = ./config-files/.config/Code/User/settings.json;

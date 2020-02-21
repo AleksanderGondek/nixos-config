@@ -16,7 +16,7 @@
         dmenu
         feh
         i3lock
-        i3status-rust
+        polybarFull
         rofi
       ];
     };  
