@@ -5,6 +5,7 @@
     ./hardware/blackwood-desktop.nix
     ./base.nix
     ./desktops/nvidia-desktop.nix
+    #programs/k8s.nix
     ./virtualisation/docker.nix
     ./user-profile.nix
   ];
