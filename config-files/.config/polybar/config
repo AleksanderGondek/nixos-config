@@ -7,7 +7,7 @@ fg-colour = #F8F8F2
 module-margin = 2
 padding = 5
 
-[bar/desktop_mainbar]
+[bar/desktop-mainbar]
 monitor = ${env:MONITOR:DP-0}
 font-0 = ${monokai.font-one}
 font-1 = ${monokai.font-two}
@@ -19,9 +19,9 @@ module-margin = ${monokai.module-margin}
 padding = ${monokai.padding}
 modules-center = date
 modules-left = powermenu i3 title
-modules-right = cpu memory filesystem pulseaudio
+modules-right = cpu memory filesystem pulseaudio battery
 
-[bar/desktop_secondarybar]
+[bar/desktop-secondarybar]
 monitor = ${env:MONITOR:DP-1}
 font-0 = ${monokai.font-one}
 font-1 = ${monokai.font-two}
@@ -32,7 +32,7 @@ module-margin = ${monokai.module-margin}
 padding = ${monokai.padding}
 modules-center = date
 modules-left = powermenu i3 title
-modules-right = cpu memory filesystem pulseaudio
+modules-right = cpu memory filesystem pulseaudio battery
 
 [module/date]
 type = internal/date
@@ -171,3 +171,13 @@ label-close = 
 type = internal/xwindow
 label =  %title%
 label-empty =  Empty
+
+[module/battery]
+type = internal/battery
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = ADP1

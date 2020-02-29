@@ -35,5 +35,6 @@
     networkmanagerapplet # NetworkManager in Gnome
     alacritty # Cool rust terminal
     pavucontrol # PulseAudio Volume Control
+    arandr # Front End for xrandr
   ];
 }
