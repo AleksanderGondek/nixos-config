@@ -1,28 +1,37 @@
-[bar/desktop_mainbar]
-monitor = ${env:MONITOR:DP-0}
-font-0 = "Hack Regular:style=Regular:size=10"
-font-1 = "Hack Regular:style=Regular:size=10"
-font-2 = "FontAwesome:style=Regular:size=10"
-background = #272822
-foreground = #F8F8F2
-tray-position = right
+[monokai]
+font-one = "Hack Regular:style=Regular:size=10;2"
+font-two = "Hack Regular:style=Regular:size=10;2"
+font-three = "FontAwesome:style=Regular:size=10;2"
+bg-colour = #272822
+fg-colour = #F8F8F2
 module-margin = 2
 padding = 5
+
+[bar/desktop_mainbar]
+monitor = ${env:MONITOR:DP-0}
+font-0 = ${monokai.font-one}
+font-1 = ${monokai.font-two}
+font-2 = ${monokai.font-three}
+background = ${monokai.bg-colour}
+foreground = ${monokai.fg-colour}
+tray-position = right
+module-margin = ${monokai.module-margin}
+padding = ${monokai.padding}
 modules-center = date
-modules-left = powermenu i3
+modules-left = powermenu i3 title
 modules-right = cpu memory filesystem pulseaudio
 
 [bar/desktop_secondarybar]
 monitor = ${env:MONITOR:DP-1}
-font-0 = "Hack Regular:style=Regular:size=10"
-font-1 = "Hack Regular:style=Regular:size=10"
-font-2 = "FontAwesome:style=Regular:size=10"
-background = #272822
-foreground = #F8F8F2
-module-margin = 2
-padding = 5
+font-0 = ${monokai.font-one}
+font-1 = ${monokai.font-two}
+font-2 = ${monokai.font-three}
+background = ${monokai.bg-colour}
+foreground = ${monokai.fg-colour}
+module-margin = ${monokai.module-margin}
+padding = ${monokai.padding}
 modules-center = date
-modules-left = powermenu i3
+modules-left = powermenu i3 title
 modules-right = cpu memory filesystem pulseaudio
 
 [module/date]
@@ -113,7 +122,7 @@ type = internal/pulseaudio
 use-ui-max = true
 label-volume =   %percentage%%
 label-muted = Sound muted
-
+click-right = "/run/current-system/sw/bin/pavucontrol &"
 
 [module/powermenu]
 type = custom/menu
@@ -157,3 +166,8 @@ format-spacing = 1
 label-separator = |
 label-open = 
 label-close = 
+
+[module/title]
+type = internal/xwindow
+label =  %title%
+label-empty =  Empty

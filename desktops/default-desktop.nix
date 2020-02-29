@@ -34,5 +34,6 @@
   environment.systemPackages = with pkgs; [
     networkmanagerapplet # NetworkManager in Gnome
     alacritty # Cool rust terminal
+    pavucontrol # PulseAudio Volume Control
   ];
 }
