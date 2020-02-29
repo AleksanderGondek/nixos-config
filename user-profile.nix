@@ -79,6 +79,28 @@ in {
       NIXOS_CONFIG = /home/agondek/Projects/nixos-config;
       EDITOR = "vim";
     };
+    services.dunst = {
+      enable = true;
+      settings = {
+        global = {
+          startup_notification = true;
+          follow = "mouse";
+          geometry = "300x6-10+30";
+          transparency = 0;
+          font = "Hack Regular 8";
+          markup = "full";
+          format = "<b>%s</b>\n%b";
+          padding = 8;
+          horizontal_padding = 8;
+          frame_width = 2;
+          frame_color = "#788388";
+          sort = "yes";
+          browser = "firefox";
+          icon_position = "left";
+          max_icon_size=32;
+        };
+      };
+    };
     programs.git = {
       enable = true;
       userEmail = "gondekaleksander@protonmail.com";
