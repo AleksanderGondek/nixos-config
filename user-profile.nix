@@ -5,12 +5,13 @@ let
   preConfiguredVscode = import ./programs/vscode.nix { 
     inherit config pkgs userSecrets;
   };
+  ffAddons = import ./programs/firefox-addons.nix {
+    inherit config pkgs;
+  };
 in {
   environment.systemPackages = with pkgs; [
-    evince # pdf reader
     exa
     fd
-    firefox
     ripgrep # Grep written in rust
   ];
 
@@ -49,6 +50,7 @@ in {
       ".config/wallpapers/01.jpg".source = ./config-files/.config/wallpapers/01.jpg;
     };
     home.packages = with pkgs; [
+      evince # pdf reader
       git-crypt
       kubectl
       preConfiguredVscode
@@ -100,6 +102,17 @@ in {
           max_icon_size=32;
         };
       };
+    };
+    programs.firefox = {
+      enable = true;
+      extensions = with ffAddons; [
+        dark-night-mode
+        facebook-container
+        ghostery
+        multi-account-containers
+        octotree
+        ublock-origin        
+      ];
     };
     programs.git = {
       enable = true;
