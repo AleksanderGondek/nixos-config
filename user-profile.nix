@@ -53,6 +53,7 @@ in {
       evince # pdf reader
       git-crypt
       kubectl
+      thunderbird
       preConfiguredVscode
       # Developing in Scala
       jdk
