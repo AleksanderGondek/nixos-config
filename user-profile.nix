@@ -53,8 +53,15 @@ in {
       evince # pdf reader
       git-crypt
       kubectl
+      # Passwords
+      keepassxc
+      # Emails
       thunderbird
+      # IDEs
       preConfiguredVscode
+      # Taking notes
+      zim
+      cherrytree
       # Developing in Scala
       jdk
       sbt
