@@ -8,6 +8,12 @@ in
   # Home Manager Enablement
   imports = [ ''${homeManager}/nixos'' ];
 
+  # Ensure default inotify watches for files is high
+  boot.kernel.sysctl = {
+    "fs.file-max" = 9223372036854775807;  
+    "fs.inotify.max_user_watches" = 524288; 
+  };
+
   # Use ZFS filesytem
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.requestEncryptionCredentials = true;
