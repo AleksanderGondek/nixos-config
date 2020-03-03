@@ -4,6 +4,7 @@
   imports = [ 
     ./hardware/blackwood-desktop.nix
     ./base.nix
+    ./network/dns-carbon.nix
     ./desktops/nvidia-desktop.nix
     #programs/k8s.nix
     ./virtualisation/docker.nix
