@@ -124,7 +124,7 @@ in {
     };
     programs.git = {
       enable = true;
-      userEmail = "gondekaleksander@protonmail.com";
+      userEmail = userSecrets.gitUserEmail;
       userName = "Aleksander Gondek";
       extraConfig = {
         core = {
