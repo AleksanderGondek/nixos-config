@@ -1,4 +1,4 @@
-globalprotect{ config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
