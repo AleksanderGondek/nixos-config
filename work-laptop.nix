@@ -4,7 +4,7 @@
   imports = [
     ./hardware/work-laptop.nix
     ./base.nix
-    #./network/ntp-from-secret.nix
+    ./network/ntp-from-secret.nix
     ./desktops/default-desktop.nix
     ./virtualisation/docker.nix
     ./user-profile.nix
