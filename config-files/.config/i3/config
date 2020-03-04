@@ -15,8 +15,9 @@ set $mod Mod1
 # is used in the bar {} block below.
 font pango:Hack Regular 10
 
-# Wallpaper
-exec --no-startup-id sh ~/.fehbg
+# Workaround for very uncool behaviour of Dell Precision 5540
+# This should set resultion right, set wallpaper and run polybar
+exec --no-startup-id sh ~/.screenlayout/setup-monitor.layout.sh
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -24,9 +25,6 @@ exec --no-startup-id sh ~/.fehbg
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-
-# polybar
-exec --no-startup-id sh ~/.config/polybar/run-polybar.sh
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%

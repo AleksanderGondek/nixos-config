@@ -3,6 +3,7 @@
 # Should fix in future
 killall -q polybar || true
 killall -q polybar || true
+pkill polybar || true
 
 main_bar_set=0
 
