@@ -13,6 +13,7 @@ in {
     exa
     fd
     ripgrep # Grep written in rust
+    openconnect_pa # Work VPN client
   ];
 
   users.users.agondek = {
@@ -141,6 +142,11 @@ in {
     programs.zsh = {
       enable = true;
       enableAutosuggestions = true;
+
+      shellAliases = {
+        vpn-on = "sudo ${userSecrets.workVpnCommand}";
+        vpn-off = "pkill openconnect";
+      };
 
       oh-my-zsh = {
         enable = true;

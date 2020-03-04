@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+globalprotect{ config, pkgs, ... }:
 
 {
   imports = [
@@ -32,12 +32,26 @@
       }
   ];
 
+  # Dell Precision 5540 - Disable nvidia, 
+  # ensure WiFi & thunderbolt will work
+  hardware.enableRedistributableFirmware = true;
+  boot.kernelModules = [ "kvm-intel" "iwlwifi"];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  ##### disable nvidia, very nice battery life.
+  hardware.nvidiaOptimus.disable = true;
+  boot.blacklistedKernelModules = [ "nouveau" "nvidia" ];
+  services.xserver.videoDrivers = [ "intel" ];
+
+  # Counteract high-temperatures
+  services.thermald.enable = true;
+
   networking.hostId = "d3b1c241";
   networking.hostName = "TAG009443491811";
   networking.useDHCP = false;
   networking.interfaces.ens1u2u4.useDHCP = true;
+  networking.interfaces.wlp59s0.useDHCP = true;
 
   # Enable touchpad support.
   services.xserver.libinput.enable = true;
 }
-

@@ -5,4 +5,5 @@
   gitGpgSigningKey = "00000000000000000000000000000000";
   gitUserEmail = "john.doe@someemailprovider.com";
   ntpServers = ["aaa.bbb.ccc"];
+  workVpnCommand = "openconnect --protocol=gp vpn.alladin.eu --user=john.doe@doe.john";
 }
