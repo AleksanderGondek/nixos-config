@@ -62,6 +62,8 @@ in {
       # Taking notes
       zim
       cherrytree
+      # Staying in touch
+      slack-dark
       # Developing in Scala
       jdk
       sbt
