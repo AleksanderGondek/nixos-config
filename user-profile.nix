@@ -66,6 +66,7 @@ in {
       # Taking notes
       zim
       cherrytree
+      notepadqq
       # Staying in touch
       slack-dark
       # Developing in Scala
