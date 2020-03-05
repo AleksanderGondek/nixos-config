@@ -35,7 +35,13 @@
   # Dell Precision 5540 - Disable nvidia, 
   # ensure WiFi & thunderbolt will work
   hardware.enableRedistributableFirmware = true;
-  boot.kernelModules = [ "kvm-intel" "iwlwifi"];
+  boot.kernelModules = [ "kvm-intel" "iwlwifi" "dell-smm-hwmon"];
+  boot.kernelParams = [
+    "acpi_osi=Linux"
+    "acpi_rev_override=1"
+    "i915.disable_power_well=0"
+    "dell-smm-hwmon.ignore_dmi=1"
+  ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   ##### disable nvidia, very nice battery life.
@@ -44,7 +50,20 @@
   services.xserver.videoDrivers = [ "intel" ];
 
   # Counteract high-temperatures
-  services.thermald.enable = true;
+  powerManagement.powertop.enable = true;
+  services.tlp = {
+    enable = true;
+    extraConfig = ''
+      CPU_SCALING_GOVERNOR_ON_AC=powersave
+      CPU_SCALING_GOVERNOR_ON_BAT=powersave
+      ENERGY_PERF_POLICY_ON_AC=default
+      ENERGY_PERF_POLICY_ON_BAT=power
+      CPU_HWP_ON_AC=balance_performance
+      CPU_HWP_ON_BAT=balance_power
+      RUNTIME_PM_BLACKLIST="01:00.0"
+      USB_BLACKLIST="413c:2113"
+    '';
+  };
 
   networking.hostId = "d3b1c241";
   networking.hostName = "TAG009443491811";
