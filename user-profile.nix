@@ -13,7 +13,7 @@ in {
     exa
     fd
     ripgrep # Grep written in rust
-    openconnect_pa # Work VPN client
+    openconnect
   ];
 
   users.users.agondek = {
@@ -52,6 +52,30 @@ in {
       ".config/rofi/Monokai.rasi".source = ./config-files/.config/rofi/Monokai.rasi;
       ".config/Code/User/settings.json".source = ./config-files/.config/Code/User/settings.json;
       ".config/wallpapers/01.jpg".source = ./config-files/.config/wallpapers/01.jpg;
+      ".gpvpn/fix" = {
+        executable = true;
+        text = ''
+          #!/run/current-system/sw/bin/sh
+
+          echo -n "Fixing invalid resolv.conf ..."
+          sed -i 's/domain/search/g' /etc/resolv.conf
+          sed -i '/nameserver 192.168.2.1/d' /etc/resolv.conf
+          sed -i '/nameserver 9.9.9.9/d' /etc/resolv.conf
+          echo "done"
+
+          echo -n "Removing default route over tun0... "
+          ip route del default dev tun0
+          echo "done"
+ 
+          echo -n "Setting routes for internal networks... "
+          ip route add 192.168.87.0/24 scope link dev tun0
+          ip route add 10.0.0.0/8 scope link dev tun0
+          ip route add 34.198.80.33 scope link dev tun0
+          ip route add 52.20.83.100 scope link dev tun0
+          ip route add 54.164.6.77 scope link dev tun0
+          echo "done"
+        '';
+      };
     };
     home.packages = with pkgs; [
       evince # pdf reader
@@ -148,8 +172,17 @@ in {
       enableAutosuggestions = true;
 
       shellAliases = {
-        vpn-on = "sudo ${userSecrets.workVpnCommand}";
-        vpn-off = "pkill openconnect";
+        vpn-on = ''sudo openconnect \
+          --protocol=gp \
+          --usergroup=portal \
+          --authgroup=Gdansk \
+          --user=${userSecrets.gitUserEmail} \
+          --pid-file=/tmp/openconnect.pid \
+          --csd-wrapper=${pkgs.openconnect}/libexec/openconnect/hipreport.sh \
+          ${userSecrets.workVpnIngress}
+        '';
+        vpn-fix = "sudo /home/agondek/.gpvpn/fix";
+        vpn-off = "sudo kill $(cat /tmp/openconnect.pid)";
       };
 
       oh-my-zsh = {
