@@ -79,6 +79,7 @@ in {
     };
     home.packages = with pkgs; [
       evince # pdf reader
+      vivaldi # Preferred Browser
       git-crypt
       kubectl
       # Passwords
