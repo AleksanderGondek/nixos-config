@@ -41,5 +41,6 @@
     alacritty # Cool rust terminal
     pavucontrol # PulseAudio Volume Control
     arandr # Front End for xrandr
+    brightnessctl # Control screen brightness
   ];
 }
