@@ -80,6 +80,7 @@ in {
     home.packages = with pkgs; [
       evince # pdf reader
       vivaldi # Preferred Browser
+      spotify # music
       git-crypt
       kubectl
       # Passwords
