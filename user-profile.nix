@@ -91,10 +91,10 @@ in {
       preConfiguredVscode
       # Taking notes
       zim
-      cherrytree
       notepadqq
       # Staying in touch
       slack-dark
+      zoom-us
       # Developing in Scala
       jdk
       sbt
