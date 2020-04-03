@@ -69,7 +69,13 @@ in {
  
           echo -n "Setting routes for internal networks... "
           ip route add 192.168.87.0/24 scope link dev tun0
+          ip route add 172.18.128.0/24 scope link dev tun0
+          ip route add 192.168.116.0/24 scope link dev tun0
           ip route add 10.0.0.0/8 scope link dev tun0
+
+          ip route add 172.18.128.234 scope link dev tun0
+          ip route add 192.168.116.3 scope link dev tun0
+
           ip route add 34.198.80.33 scope link dev tun0
           ip route add 52.20.83.100 scope link dev tun0
           ip route add 54.164.6.77 scope link dev tun0
@@ -95,6 +101,8 @@ in {
       # Staying in touch
       slack-dark
       zoom-us
+      # Json 'fun'
+      jq
       # Developing in Scala
       jdk
       sbt
