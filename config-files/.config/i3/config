@@ -23,9 +23,6 @@ exec --no-startup-id sh ~/.screenlayout/setup-monitor.layout.sh
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Dunst
-exec --no-startup-id dunst
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
