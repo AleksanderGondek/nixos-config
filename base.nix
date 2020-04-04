@@ -74,6 +74,7 @@ in
     gparted
     htop
     less
+    lm_sensors
     ranger
     unzip
     vim
