@@ -12,8 +12,10 @@ in {
   environment.systemPackages = with pkgs; [
     exa
     fd
-    ripgrep # Grep written in rust
+    ripgrep                # Grep written in rust
     openconnect
+    openvpn                # For home VPN setup
+    networkmanager-openvpn # For home VPN setup
   ];
 
   users.users.agondek = {
