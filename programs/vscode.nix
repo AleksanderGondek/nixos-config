@@ -8,8 +8,8 @@ let
       {
         name = "python";
         publisher = "ms-python";
-        version = "2020.2.63072";
-        sha256 = "12v79256h3vl8a4dfv29x7m8w2g3jh4k5rhpxvll8z5hzbv3lypf";
+        version = "2020.2.64397";
+        sha256 = "1kwyc5ycz1276i2zbw93mpq59y2py6kj71gvhzya8xvm184jk07a";
       }
       {
         name = "metals";
