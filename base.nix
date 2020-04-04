@@ -29,6 +29,8 @@ in
     monthly = 1;
   };
 
+  services.thermald.enable = true;
+
   # Clean up nix gc
   nix.gc = {
     automatic = true;
