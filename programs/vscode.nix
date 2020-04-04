@@ -44,8 +44,8 @@ let
       {
         name = "code-spell-checker";
         publisher = "streetsidesoftware";
-        version = "1.7.24";
-        sha256 = "09iv72k045w88ycqbmgirxn27a4fbd28skp7gyz9a6aing6rm3kj";
+        version = "1.7.23";
+        sha256 = "1sc9mr6d11jkysv8m4iai9nk4whljx4r4d2naz82arl7dd7aqh4c";
       }
     ];
   };
