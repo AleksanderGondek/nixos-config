@@ -47,6 +47,12 @@ let
         version = "1.7.23";
         sha256 = "1sc9mr6d11jkysv8m4iai9nk4whljx4r4d2naz82arl7dd7aqh4c";
       }
+      {
+        name = "vscode-bazel";
+        publisher = "BazelBuild";
+        version = "0.3.0";
+        sha256 = "0rlja1hn2n6fyq673qskz2a69rz8b0i5g5flyxm5sfi8bcz8ms05";
+      }
     ];
   };
 in 
