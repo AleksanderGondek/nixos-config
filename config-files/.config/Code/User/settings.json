@@ -1,12 +1,13 @@
 {
-    "editor.fontFamily": "'Hack Regular', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontSize": 12,
-    "editor.tabSize": 2,
-    "terminal.integrated.fontSize": 12,
-    "terminal.external.linuxExec": "/run/current-system/sw/bin/alacritty",
-    "terminal.explorerKind": "external",
-    "update.mode": "none",
-    "update.showReleaseNotes": false,
-    "workbench.colorTheme": "Monokai Pro",
-    "workbench.iconTheme": "Monokai Pro Icons"
+  "editor.fontFamily": "'Hack Regular', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontSize": 12,
+  "editor.tabSize": 2,
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.detectLocale": "on",
+  "terminal.integrated.fontFamily": "Hack",
+  "terminal.explorerKind": "integrated",
+  "update.mode": "none",
+  "update.showReleaseNotes": false,
+  "workbench.colorTheme": "Monokai Pro",
+  "workbench.iconTheme": "Monokai Pro Icons"
 }
