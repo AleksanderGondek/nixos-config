@@ -86,9 +86,10 @@ in {
       };
     };
     home.packages = with pkgs; [
-      evince # pdf reader
+      evince #  Pdf reader
       vivaldi # Preferred Browser
-      spotify # music
+      spotify # Music
+      gnome3.gnome-screenshot # Screenshot
       git-crypt
       kubectl
       # Passwords

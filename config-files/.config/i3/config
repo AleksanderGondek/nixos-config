@@ -38,6 +38,9 @@ bindsym $mod+d exec "rofi -combi-modi window,drun,ssh -show combi -modi combi"
 # Lock screen
 bindsym Mod4+l exec "i3lock -c '#272822'"
 
+# Screenshot
+bindsym Mod4+s exec "gnome-screenshot -i"
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
