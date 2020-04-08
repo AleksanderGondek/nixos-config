@@ -73,7 +73,7 @@ in {
           ip route add 192.168.87.0/24 scope link dev tun0
           ip route add 172.18.128.0/24 scope link dev tun0
           ip route add 192.168.116.0/24 scope link dev tun0
-          ip route add 10.0.0.0/8 scope link dev tun0
+          #ip route add 10.0.0.0/8 scope link dev tun0
 
           ip route add 172.18.128.234 scope link dev tun0
           ip route add 192.168.116.3 scope link dev tun0
@@ -130,7 +130,7 @@ in {
       cargo
     ];
     home.sessionVariables = {
-      NIXOS_CONFIG = /home/agondek/Projects/nixos-config;
+      NIXOS_CONFIG = /home/agondek/projects/nixos-config;
       EDITOR = "vim";
     };
     services.dunst = {
