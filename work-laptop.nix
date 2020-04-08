@@ -7,6 +7,7 @@
     ./network/ntp-from-secret.nix
     ./desktops/default-desktop.nix
     ./virtualisation/docker.nix
+    ./cluster/dev-k8s.nix
     ./user-profile.nix
   ];
 
@@ -70,7 +71,7 @@
   };
 
   networking.hostId = "d3b1c241";
-  networking.hostName = "TAG009443491811";
+  networking.hostName = "tag009443491811";
   networking.useDHCP = false;
   networking.interfaces.ens1u2u4.useDHCP = true;
   networking.interfaces.wlp59s0.useDHCP = true;
