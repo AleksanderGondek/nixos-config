@@ -7,7 +7,7 @@
     ./network/ntp-from-secret.nix
     ./desktops/default-desktop.nix
     ./virtualisation/docker.nix
-    ./cluster/dev-k8s.nix
+    ./cluster/k8s-dev-single-node.nix
     ./user-profile.nix
   ];
 
