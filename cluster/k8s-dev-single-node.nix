@@ -48,4 +48,32 @@ in
   home-manager.users.agondek.home.sessionVariables = {
     KUBECONFIG="${devClusterAdminKubeConfig}:$HOME/.kube/config";
   };
+
+  # Bind created admin user to admin role
+  services.kubernetes.addonManager.addons.admin-crb = {
+    apiVersion="rbac.authorization.k8s.io/v1";
+    kind = "ClusterRoleBinding";
+    metadata = {
+      labels = {
+        "addonmanager.kubernetes.io/mode" = "Reconcile";
+      };
+      name = "cluster-admin-binding";
+    };
+    roleRef = {
+      apiGroup = "rbac.authorization.k8s.io";
+      kind = "ClusterRole";
+      name = "cluster-admin";
+    };
+    subjects = [
+        {
+          apiGroup = "rbac.authorization.k8s.io";
+          kind = "User";
+          name = "admin";
+        }
+      ];
+  };
+
+  imports = [
+    ./addons/hostpath-provisioner.nix
+  ];
 }
