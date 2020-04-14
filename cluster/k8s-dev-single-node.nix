@@ -22,10 +22,7 @@ in
     masterAddress = config.networking.hostName;
     kubelet.extraOpts = "--fail-swap-on=false";
 
-    apiserver.authorizationMode = [ "AlwaysAllow" "RBAC" "Node" ];
-    apiserver.basicAuthFile = pkgs.writeText "users" ''
-       kubernetes,admin,0,"cluster-admin"
-    '';
+    apiserver.authorizationMode = [ "RBAC" "Node" ];
 
     pki.certs = { 
       devClusterAdmin = devClusterAdminCert; 
@@ -33,7 +30,6 @@ in
 
     addons.dns.replicas = 1;
     addons.dashboard = {
-      extraArgs = ["--enable-skip-login"];
       enable = true;
       rbac = { 
         clusterAdmin = true;
@@ -49,31 +45,8 @@ in
     KUBECONFIG="${devClusterAdminKubeConfig}:$HOME/.kube/config";
   };
 
-  # Bind created admin user to admin role
-  services.kubernetes.addonManager.addons.admin-crb = {
-    apiVersion="rbac.authorization.k8s.io/v1";
-    kind = "ClusterRoleBinding";
-    metadata = {
-      labels = {
-        "addonmanager.kubernetes.io/mode" = "Reconcile";
-      };
-      name = "cluster-admin-binding";
-    };
-    roleRef = {
-      apiGroup = "rbac.authorization.k8s.io";
-      kind = "ClusterRole";
-      name = "cluster-admin";
-    };
-    subjects = [
-        {
-          apiGroup = "rbac.authorization.k8s.io";
-          kind = "User";
-          name = "admin";
-        }
-      ];
-  };
-
   imports = [
+    ./addons/admin.nix
     ./addons/hostpath-provisioner.nix
     ./addons/ingress-nginx.nix
   ];
