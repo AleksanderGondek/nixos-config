@@ -75,5 +75,6 @@ in
 
   imports = [
     ./addons/hostpath-provisioner.nix
+    ./addons/ingress-nginx.nix
   ];
 }
