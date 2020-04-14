@@ -100,15 +100,4 @@ in
   # servers. You should change this only after NixOS release notes say you
   # should.
   system.stateVersion = "19.09"; # Did you read the comment?
-  
-  # Auto upgrade stable channel
-  system.autoUpgrade = {
-    enable = true;
-    channel = "https://nixos.org/channels/nixos-19.09";
-    dates = "weekly";
-    # Without explicit nixos config location, you are in for a bad times
-    flags = [
-      "-I nixos-config=/home/agondek/projects/nixos-config/work-laptop.nix"
-    ];
-  };
 }

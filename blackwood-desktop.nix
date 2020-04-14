@@ -24,4 +24,15 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.eno1.useDHCP = true;
+
+  # Auto upgrade stable channel
+  system.autoUpgrade = {
+    enable = true;
+    channel = "https://nixos.org/channels/nixos-19.09";
+    dates = "weekly";
+    # Without explicit nixos config location, you are in for a bad times
+    flags = [
+      "-I nixos-config=/home/agondek/projects/nixos-config/blackwood-desktop.nix"
+    ];
+  };
 }
