@@ -10,30 +10,21 @@ let
   };
 in
 {
+  imports = [
+    ./user-profile-slim.nix
+  ];
+
   environment.systemPackages = with pkgs; [
-    exa
-    fd
-    ripgrep                # Grep written in rust
     openconnect
     openvpn                # For home VPN setup
     networkmanager-openvpn # For home VPN setup
   ];
 
   users.users.agondek = {
-    description = "Aleksander Gondek";
-    uid = 6666;
-    isNormalUser = true;
-    group = "nogroup";
     extraGroups = [
-      "wheel"
       "networkmanager"
-      "docker"
     ];
-    home = "/home/agondek";
-    shell = pkgs.zsh;
-    createHome = true;
-    useDefaultShell = false;
-    hashedPassword = secrets.users.agondek.hashedPassword;
+    shell = pkgs.lib.mkForce pkgs.zsh;
   };
 
   home-manager.users.agondek = {
@@ -93,8 +84,6 @@ in
       vivaldi # Preferred Browser
       spotify # Music
       gnome3.gnome-screenshot # Screenshot
-      git-crypt
-      kubectl
       # Passwords
       keepassxc
       # Emails
@@ -107,8 +96,6 @@ in
       # Staying in touch
       slack-dark
       zoom-us
-      # Json 'fun'
-      jq
       # Developing in Scala
       jdk
       sbt
@@ -132,10 +119,6 @@ in
       rustc
       cargo
     ];
-    home.sessionVariables = {
-      NIXOS_CONFIG = /home/agondek/projects/nixos-config;
-      EDITOR = "vim";
-    };
     services.dunst = {
       enable = true;
       settings = {
@@ -169,20 +152,6 @@ in
         ublock-origin        
       ];
     };
-    programs.git = {
-      enable = true;
-      userEmail = secrets.users.agondek.git.email;
-      userName = "Aleksander Gondek";
-      extraConfig = {
-        core = {
-          editor = "vim";
-        };
-      };
-      signing = {
-        key = secrets.users.agondek.git.gpgSigningKey;
-        signByDefault = true;
-      };
-    };
     programs.zsh = {
       enable = true;
       enableAutosuggestions = true;
@@ -208,6 +177,4 @@ in
       };
     };
   };
-
-  nix.trustedUsers = [ "root" "agondek" ];
 }

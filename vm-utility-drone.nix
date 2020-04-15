@@ -5,6 +5,7 @@
     ./hardware/vm-utility-drone.nix
     ./base/main.nix
     ./network/work-ntp.nix
+    ./virtualisation/docker.nix
   ];
 
   boot.loader.grub.enable = true;
@@ -28,7 +29,7 @@
 
   # Disable sound.
   sound.enable = pkgs.lib.mkForce false;
-  hardware.pulseaudio.enable = tpkgs.lib.mkForce false;
+  hardware.pulseaudio.enable = pkgs.lib.mkForce false;
 
   services.thermald.enable = pkgs.lib.mkForce false;
 
