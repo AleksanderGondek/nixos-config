@@ -4,7 +4,7 @@
   imports = [
       ./hardware/vm-utility-drone.nix
       ./base/main.nix
-      ./network/ntp-from-secret.nix
+      ./network/work-ntp.nix
   ];
 
   boot.loader.grub.enable = true;
@@ -29,6 +29,8 @@
   # Disable sound.
   sound.enable = pkgs.lib.mkForce false;
   hardware.pulseaudio.enable = tpkgs.lib.mkForce false;
+
+  services.thermald.enable = pkgs.lib.mkForce false;
 
   # Auto upgrade stable channel
   system.autoUpgrade = {

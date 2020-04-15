@@ -4,7 +4,7 @@
   imports = [
     ./hardware/work-laptop.nix
     ./base/zfs.nix
-    ./network/ntp-from-secret.nix
+    ./network/work-ntp.nix
     ./desktops/default-desktop.nix
     ./virtualisation/docker.nix
     ./cluster/k8s-dev-single-node.nix

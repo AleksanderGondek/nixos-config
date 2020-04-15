@@ -2,7 +2,7 @@
 
 let
   homeManager = fetchTarball https://github.com/rycee/home-manager/archive/release-19.09.tar.gz;
-  userSecrets = import ../user-secrets.nix {};
+  secrets = import ../secrets.nix {};
 in
 {
   # Home Manager Enablement
@@ -80,7 +80,7 @@ in
   users.mutableUsers = false;
   # Root config
   users.users.root = {
-    hashedPassword = userSecrets.hashedPassword;
+    hashedPassword = secrets.users.agondek.hashedPassword;
   };
 
   # This value determines the NixOS release with which your system is to be

@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 
 let
-  userSecrets = import ./user-secrets.nix {};
+  secrets = import ./secrets.nix {};
   preConfiguredVscode = import ./programs/vscode.nix { 
-    inherit config pkgs userSecrets;
+    inherit config pkgs secrets;
   };
   ffAddons = import ./programs/firefox-addons.nix {
     inherit config pkgs;
@@ -32,7 +32,7 @@ in {
     shell = pkgs.zsh;
     createHome = true;
     useDefaultShell = false;
-    hashedPassword = userSecrets.hashedPassword;
+    hashedPassword = secrets.users.agondek.hashedPassword;
   };
 
   home-manager.users.agondek = {
@@ -170,7 +170,7 @@ in {
     };
     programs.git = {
       enable = true;
-      userEmail = userSecrets.gitUserEmail;
+      userEmail = secrets.users.agondek.git.email;
       userName = "Aleksander Gondek";
       extraConfig = {
         core = {
@@ -178,7 +178,7 @@ in {
         };
       };
       signing = {
-        key = userSecrets.gitGpgSigningKey;
+        key = secrets.users.agondek.git.gpgSigningKey;
         signByDefault = true;
       };
     };
@@ -191,10 +191,10 @@ in {
           --protocol=gp \
           --usergroup=portal \
           --authgroup=Gdansk \
-          --user=${userSecrets.gitUserEmail} \
+          --user=${secrets.users.agondek.git.email} \
           --pid-file=/tmp/openconnect.pid \
           --csd-wrapper=${pkgs.openconnect}/libexec/openconnect/hipreport.sh \
-          ${userSecrets.workVpnIngress}
+          ${secrets.work.vpnIngress}
         '';
         vpn-fix = "sudo /home/agondek/.gpvpn/fix";
         vpn-off = "sudo kill $(cat /tmp/openconnect.pid)";
