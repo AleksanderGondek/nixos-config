@@ -6,6 +6,7 @@
     ./base/main.nix
     ./network/work-ntp.nix
     ./virtualisation/docker.nix
+    ./users/drone/user-profile.nix
   ];
 
   boot.loader.grub.enable = true;
@@ -32,6 +33,15 @@
   hardware.pulseaudio.enable = pkgs.lib.mkForce false;
 
   services.thermald.enable = pkgs.lib.mkForce false;
+
+  users.users.root = {
+    hashedPassword = pkgs.lib.mkForce secrets.users.drone.hashedPassword;
+  };
+
+  services.openssh = {
+    enable = true;
+    permitRootLogin = "no";
+  };
 
   # Auto upgrade stable channel
   system.autoUpgrade = {

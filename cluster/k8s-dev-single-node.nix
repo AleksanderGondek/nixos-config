@@ -35,12 +35,12 @@ in
         clusterAdmin = true;
         };
     };
-
   };
 
   systemd.services.docker.after = pkgs.lib.mkForce [ "flannel.service" ];
   networking.firewall.trustedInterfaces = [" flannel.1" ];
 
+  # TODO: Find more elegant solution
   home-manager.users.agondek.home.sessionVariables = {
     KUBECONFIG="${devClusterAdminKubeConfig}:$HOME/.kube/config";
   };
