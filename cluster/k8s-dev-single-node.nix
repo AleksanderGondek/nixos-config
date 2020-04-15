@@ -41,6 +41,9 @@ in
   networking.firewall.trustedInterfaces = [" flannel.1" ];
 
   # TODO: Find more elegant solution
+  environment.variables = {
+    KUBECONFIG="${devClusterAdminKubeConfig}:$HOME/.kube/config";
+  };
   home-manager.users.agondek.home.sessionVariables = {
     KUBECONFIG="${devClusterAdminKubeConfig}:$HOME/.kube/config";
   };
