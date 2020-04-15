@@ -1,12 +1,15 @@
 { config, pkgs, ... }:
 
-{
+let 
+  secrets = import ./secrets.nix {};
+in {
   imports = [
     ./hardware/vm-utility-drone.nix
     ./base/main.nix
     ./network/work-ntp.nix
     ./virtualisation/docker.nix
     ./users/drone/user-profile.nix
+    ./users/agondek/user-profile-slim.nix
   ];
 
   boot.loader.grub.enable = true;
