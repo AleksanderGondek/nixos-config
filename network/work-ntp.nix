@@ -1,10 +1,9 @@
 # Ensure NTP servers used are those provided by company
-{ config, pkgs, ... }:
+{ config, pkgs, secrets, ... }:
 
 let
   secrets = import ../secrets.nix {};
-in
-{
+in {
   # Enforce only provided ntp servers
   networking.timeServers = secrets.work.ntpServers;
 }

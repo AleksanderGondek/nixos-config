@@ -2,9 +2,9 @@
 
 {
   imports = [
-      ./hardware/vm-utility-drone.nix
-      ./base/main.nix
-      ./network/work-ntp.nix
+    ./hardware/vm-utility-drone.nix
+    ./base/main.nix
+    ./network/work-ntp.nix
   ];
 
   boot.loader.grub.enable = true;

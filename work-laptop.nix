@@ -8,7 +8,7 @@
     ./desktops/default-desktop.nix
     ./virtualisation/docker.nix
     ./cluster/k8s-dev-single-node.nix
-    ./user-profile.nix
+    ./users/agondek/user-profile.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

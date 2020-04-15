@@ -1,14 +1,15 @@
 { config, pkgs, ... }:
 
 let
-  secrets = import ./secrets.nix {};
-  preConfiguredVscode = import ./programs/vscode.nix { 
+  secrets = import ../../secrets.nix {};
+  preConfiguredVscode = import ../../programs/vscode.nix { 
     inherit config pkgs secrets;
   };
-  ffAddons = import ./programs/firefox-addons.nix {
+  ffAddons = import ../../programs/firefox-addons.nix {
     inherit config pkgs;
   };
-in {
+in
+{
   environment.systemPackages = with pkgs; [
     exa
     fd
