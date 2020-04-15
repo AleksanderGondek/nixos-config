@@ -10,6 +10,7 @@ in {
     ./virtualisation/docker.nix
     ./users/drone/user-profile.nix
     ./users/agondek/user-profile-slim.nix
+    ./cluster/k8s-dev-single-node.nix
   ];
 
   boot.loader.grub.enable = true;
