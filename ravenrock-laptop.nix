@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware/ravenrock-laptop.nix
-    ./base.nix
+    ./base/zfs.nix
     ./network/dns-carbon.nix
     ./desktops/default-desktop.nix
     ./virtualisation/docker.nix

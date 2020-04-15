@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware/work-laptop.nix
-    ./base.nix
+    ./base/zfs.nix
     ./network/ntp-from-secret.nix
     ./desktops/default-desktop.nix
     ./virtualisation/docker.nix

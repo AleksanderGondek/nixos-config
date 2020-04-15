@@ -3,7 +3,7 @@
 {
   imports = [ 
     ./hardware/blackwood-desktop.nix
-    ./base.nix
+    ./base/zfs.nix
     # Carbon dns breaks VPN
     #./network/dns-carbon.nix
     ./desktops/nvidia-desktop.nix

@@ -74,6 +74,7 @@ in {
           ip route add 192.168.87.0/24 scope link dev tun0
           ip route add 192.168.116.0/24 scope link dev tun0
           ip route add 172.18.128.0/24 scope link dev tun0
+          ip route add 172.18.148.0/24 scope link dev tun0
           ip route add 10.102.0.0/16 scope link dev tun0
 
           ip route add 172.18.128.234 scope link dev tun0

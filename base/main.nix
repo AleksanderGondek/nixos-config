@@ -2,7 +2,7 @@
 
 let
   homeManager = fetchTarball https://github.com/rycee/home-manager/archive/release-19.09.tar.gz;
-  userSecrets = import ./user-secrets.nix {};
+  userSecrets = import ../user-secrets.nix {};
 in
 {
   # Home Manager Enablement
@@ -12,21 +12,6 @@ in
   boot.kernel.sysctl = {
     "fs.file-max" = 9223372036854775807;  
     "fs.inotify.max_user_watches" = 524288; 
-  };
-
-  # Use ZFS filesytem
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.zfs.requestEncryptionCredentials = true;
-  # ZFS requirement: networking.hostId = "f0f00fca";
-  services.zfs.trim.enable = true;
-  services.zfs.autoSnapshot = {
-    enable = true;
-    flags = "-k -p --utc";
-    frequent = 4;
-    hourly = 6;
-    daily = 3;
-    weekly = 1;
-    monthly = 1;
   };
 
   services.thermald.enable = true;
@@ -44,7 +29,10 @@ in
     consoleKeyMap = "pl";
     defaultLocale = "en_US.UTF-8";
   };
-  
+
+  # Enable firewall explicitly  
+  networking.firewall.enable = true;
+
   # Network (Wireless and cord)
   networking.networkmanager.enable = true;
 
