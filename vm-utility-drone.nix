@@ -36,15 +36,24 @@ in {
   sound.enable = pkgs.lib.mkForce false;
   hardware.pulseaudio.enable = pkgs.lib.mkForce false;
 
+  # Thermal control not needed on VM
   services.thermald.enable = pkgs.lib.mkForce false;
 
-  users.users.root = {
-    hashedPassword = pkgs.lib.mkForce secrets.users.drone.hashedPassword;
-  };
+  # Ensure work-env will assign proper dns name
+  virtualisation.vmware.guest.enable = true;
+  virtualisation.vmware.guest.headless = true;
 
+  # Expose Nginx ingress & k8s api to world
+  networking.firewall.allowedTCPPorts = [ 80 443 6443 ];
+
+  # Enable sshd
   services.openssh = {
     enable = true;
     permitRootLogin = "no";
+  };
+
+  users.users.root = {
+    hashedPassword = pkgs.lib.mkForce secrets.users.drone.hashedPassword;
   };
 
   # Auto upgrade stable channel
@@ -54,7 +63,7 @@ in {
     dates = "weekly";
     # Without explicit nixos config location, you are in for a bad times
     flags = [
-      "-I nixos-config=/home/agondek/projects/nixos-config/vm-utility-drone.nix"
+      "-I nixos-config=/home/root/nixos-config/vm-utility-drone.nix"
     ];
   };
 }
