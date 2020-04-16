@@ -3,20 +3,6 @@
 # Source: https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.30.0/deploy/static/mandatory.yaml
 
 {
-  services.kubernetes.addonManager.addons.ingress-namespace = {
-    kind = "Namespace";
-    apiVersion = "v1";
-    metadata = {
-      name = "ingress-nginx";
-      labels = {
-        # Custom modification, needed to make it work
-        "addonmanager.kubernetes.io/mode" = "Reconcile";
-        "app.kubernetes.io/name" = "ingress-nginx";
-        "app.kubernetes.io/part-of" = "ingress-nginx";
-      };
-    };
-  };
-
   services.kubernetes.addonManager.addons.ingress-configMap-nginx = {
     kind = "ConfigMap";
     apiVersion = "v1";
@@ -270,6 +256,7 @@
                 "--udp-services-configmap=$(POD_NAMESPACE)/udp-services"
                 "--publish-service=$(POD_NAMESPACE)/ingress-nginx"
                 "--report-node-internal-ip-address"
+                "--enable-ssl-passthrough"
                 "--update-status"
                 "--annotations-prefix=nginx.ingress.kubernetes.io"
               ];
@@ -367,7 +354,7 @@
         {
           min = {
             memory = "90Mi";
-            cpi = "100m";
+            cpu = "100m";
           };
           type = "Container";
         }

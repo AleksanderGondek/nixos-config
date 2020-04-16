@@ -30,9 +30,9 @@
     };
     subjects = [
         {
-          apiGroup = "rbac.authorization.k8s.io";
-          kind = "User";
+          kind = "ServiceAccount";
           name = "sa-cluster-admin";
+          namespace = "kube-system";
         }
       ];
   };
