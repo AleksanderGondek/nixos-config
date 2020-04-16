@@ -94,6 +94,7 @@ in
       zim
       notepadqq
       # Staying in touch
+      discord
       slack-dark
       zoom-us
       # Developing in Scala
