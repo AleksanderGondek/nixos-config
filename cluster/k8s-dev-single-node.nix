@@ -31,6 +31,7 @@ in
     kubelet.extraOpts = "--fail-swap-on=false";
 
     apiserver.authorizationMode = [ "RBAC" "Node" ];
+    apiserver.allowPrivileged = true;
 
     pki.certs = { 
       devClusterAdmin = devClusterAdminCert; 
