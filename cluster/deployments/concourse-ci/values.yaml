@@ -1,4 +1,4 @@
 concourse:
   web:
-    clusterName: "{HOST}"
+    clusterName: "{HOST}-ci"
     externalUrl: "http://{HOST}"
