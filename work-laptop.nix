@@ -61,7 +61,7 @@
       CPU_SCALING_GOVERNOR_ON_BAT=powersave
       ENERGY_PERF_POLICY_ON_AC=default
       ENERGY_PERF_POLICY_ON_BAT=power
-      CPU_HWP_ON_AC=power
+      CPU_HWP_ON_AC=balance_power
       CPU_HWP_ON_BAT=balance_power
       RUNTIME_PM_BLACKLIST="01:00.0"
       WIFI_PWR_ON_AC=off
