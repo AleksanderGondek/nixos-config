@@ -1,8 +1,11 @@
 { config, pkgs, ... }:
 
 let
-  homeManager = fetchTarball https://github.com/rycee/home-manager/archive/release-19.09.tar.gz;
+  homeManager = fetchTarball https://github.com/rycee/home-manager/archive/release-20.03.tar.gz;
   secrets = import ../secrets.nix {};
+  unstable = import (
+    fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz
+    ){ config = { allowUnfree = true; }; };
 in
 {
   # Home Manager Enablement
@@ -23,12 +26,20 @@ in
     options = "--delete-older-than 14d";
   };
 
+  # Add unstable packages under path pkgs.unstable.<pkg_name>
+  nixpkgs = {
+    config = {
+      packageOverrides = pkgs: { inherit unstable; };
+    };
+  };
+
   # Select internationalisation properties.
   i18n = {
-    consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "pl";
     defaultLocale = "en_US.UTF-8";
   };
+
+  console.font = "Lat2-Terminus16";
+  console.keyMap = "pl";
 
   # Enable firewall explicitly  
   networking.firewall.enable = true;
@@ -87,5 +98,5 @@ in
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "19.09"; # Did you read the comment?
+  system.stateVersion = "20.03"; # Did you read the comment?
 }

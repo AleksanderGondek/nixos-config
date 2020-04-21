@@ -81,13 +81,12 @@ in
     };
     home.packages = with pkgs; [
       evince #  Pdf reader
-      vivaldi # Preferred Browser
+      (vivaldi.override {proprietaryCodecs = true; enableWidevine = true;})
       spotify # Music
       gnome3.gnome-screenshot # Screenshot
       # Passwords
       keepassxc
       # Emails
-      thunderbird
       # IDEs
       preConfiguredVscode
       # Taking notes
