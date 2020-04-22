@@ -59,11 +59,11 @@ in {
   # Auto upgrade stable channel
   system.autoUpgrade = {
     enable = true;
-    channel = "https://nixos.org/channels/nixos-19.09";
+    channel = "https://nixos.org/channels/nixos-20.03";
     dates = "weekly";
     # Without explicit nixos config location, you are in for a bad times
     flags = [
-      "-I nixos-config=/home/root/nixos-config/vm-utility-drone.nix"
+      "-I nixos-config=/root/nixos-config/vm-utility-drone.nix"
     ];
   };
 }
