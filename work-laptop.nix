@@ -23,15 +23,15 @@
     enableCryptodisk = true;
     extraInitrd = "/boot/initrd.keys.gz";
   };
-  boot.initrd.luks.devices = [
-      {
-        name = "root";
-        device = "/dev/disk/by-uuid/b76f891e-e1ce-401a-ab04-2605a7190e36";
-        preLVM = true;
-        keyFile = "/keyfile0.bin";
-        allowDiscards = true;
-      }
-  ];
+  boot.initrd.luks.devices = {
+    root = {
+      name = "root";
+      device = "/dev/disk/by-uuid/b76f891e-e1ce-401a-ab04-2605a7190e36";
+      preLVM = true;
+      keyFile = "/keyfile0.bin";
+      allowDiscards = true;
+    };
+  };
 
   # Dell Precision 5540 - Disable nvidia, 
   # ensure WiFi & thunderbolt will work
@@ -82,7 +82,7 @@
   # Auto upgrade stable channel
   system.autoUpgrade = {
     enable = true;
-    channel = "https://nixos.org/channels/nixos-19.09";
+    channel = "https://nixos.org/channels/nixos-20.03";
     dates = "weekly";
     # Without explicit nixos config location, you are in for a bad times
     flags = [
