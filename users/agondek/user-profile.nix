@@ -118,6 +118,8 @@ in
       pkgconfig
       rustc
       cargo
+      # Just kill me
+      rapidsvn
     ];
     services.dunst = {
       enable = true;
