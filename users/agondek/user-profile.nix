@@ -119,7 +119,7 @@ in
       rustc
       cargo
       # Just kill me
-      rapidsvn
+      subversion
     ];
     services.dunst = {
       enable = true;
