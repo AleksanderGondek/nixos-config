@@ -51,12 +51,6 @@ in
         text = ''
           #!/run/current-system/sw/bin/sh
 
-          echo -n "Fixing invalid resolv.conf ..."
-          sed -i 's/domain/search/g' /etc/resolv.conf
-          sed -i '/nameserver 192.168.2.1/d' /etc/resolv.conf
-          sed -i '/nameserver 9.9.9.9/d' /etc/resolv.conf
-          echo "done"
-
           echo -n "Removing default route over tun0... "
           ip route del default dev tun0
           echo "done"
@@ -69,6 +63,7 @@ in
           ip route add 172.18.148.0/24 scope link dev tun0
           ip route add 10.102.0.0/16 scope link dev tun0
 
+          ip route add 172.18.131.132 scope link dev tun0
           ip route add 172.18.128.234 scope link dev tun0
           ip route add 192.168.116.3 scope link dev tun0
 
