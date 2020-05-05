@@ -17,6 +17,15 @@ in
     "fs.inotify.max_user_watches" = 524288; 
   };
 
+  # Set limits for esync.
+  systemd.extraConfig = "DefaultLimitNOFILE=1048576";
+  security.pam.loginLimits = [{
+    domain = "*";
+    type = "hard";
+    item = "nofile";
+    value = "1048576";
+  }];
+
   services.thermald.enable = true;
 
   # Clean up nix gc
