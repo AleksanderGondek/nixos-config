@@ -90,7 +90,7 @@ in
       # Staying in touch
       discord
       slack-dark
-      zoom-us
+      unstable.zoom-us
       # Developing in Scala
       jdk
       sbt
@@ -113,8 +113,6 @@ in
       pkgconfig
       rustc
       cargo
-      # Just kill me
-      subversion
     ];
     services.dunst = {
       enable = true;
