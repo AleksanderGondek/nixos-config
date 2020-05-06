@@ -15,6 +15,10 @@
     { device = "/dev/disk/by-uuid/1db72b99-df4c-4e7b-be7e-6d17912c9923";
       fsType = "btrfs";
     };
+  fileSystems."/var/lib/docker" =
+    { device = "/dev/disk/by-uuid/50479407-99f8-4655-929c-12229c458bfd";
+      fsType = "ext4";
+    };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/b1a3985e-74c2-422e-bfc5-950f3d63119f"; }
