@@ -111,8 +111,9 @@ in
       gnumake
       openssl
       pkgconfig
-      rustc
-      cargo
+      # Factory of factory of factory..
+      # Only for IDE integration (sight)
+      rustup
     ];
     services.dunst = {
       enable = true;
