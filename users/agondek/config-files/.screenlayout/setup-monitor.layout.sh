@@ -3,7 +3,7 @@
 set -o nounset
 set -o errexit
 
-if [ $(hostname) == "TAG009443491811" ]
+if [ $(hostname) == "tag009443491811" ]
 then
   # Basically DELL 5540
   # Only this machine is naughty in terms of resolution shenaningans
