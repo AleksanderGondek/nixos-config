@@ -95,7 +95,6 @@ in
       jdk
       sbt
       # Developing in Python
-      pypi2nix
       (python37.withPackages(ps : with ps; [ 
           ipython
           flake8
@@ -112,7 +111,7 @@ in
       openssl
       pkgconfig
       # Factory of factory of factory..
-      # Only for IDE integration (sight)
+      # Only for IDE integration (sigh)
       rustup
     ];
     services.dunst = {
