@@ -43,7 +43,6 @@
     "i915.disable_power_well=0"
     "dell-smm-hwmon.ignore_dmi=1"
   ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   ##### disable nvidia, very nice battery life.
   hardware.nvidiaOptimus.disable = true;
