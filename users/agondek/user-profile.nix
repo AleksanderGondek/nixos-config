@@ -113,13 +113,6 @@ in
       # Only for IDE integration (sigh)
       rustup
     ];
-    home.sessionVariables = {
-      # Required for bloody cargo openssl bs
-      # Needed cause I am using global VSCode instance
-      # with rust ls bindings..
-      OPENSSL_LIB_DIR="${pkgs.openssl.out}/lib";
-      OPENSSL_INCLUDE_DIR="${pkgs.openssl.dev}/include";
-    };
     services.dunst = {
       enable = true;
       settings = {
