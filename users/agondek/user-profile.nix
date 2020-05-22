@@ -44,6 +44,18 @@ in
       ".config/rofi/config".source = ./config-files/.config/rofi/config;
       ".config/rofi/Monokai.rasi".source = ./config-files/.config/rofi/Monokai.rasi;
       ".config/Code/User/settings.json".source = ./config-files/.config/Code/User/settings.json;
+      ".config/Code/User/rlsWrapper.sh" = {
+        executable = true;
+        text = ''
+          #!/usr/bin/env bash
+          RLS=rls
+          export LD_LIBRARY_PATH=''$(rustc --print sysroot)/lib
+          export RUST_BACKTRACE=full
+          export OPENSSL_LIB_DIR="${pkgs.openssl.out}/lib";
+          export OPENSSL_INCLUDE_DIR="${pkgs.openssl.dev}/include";
+          ''$RLS "''$@"
+        '';
+      };
       ".config/wallpapers/01.jpg".source = ./config-files/.config/wallpapers/01.jpg;
       ".gpvpn/fix" = {
         executable = true;

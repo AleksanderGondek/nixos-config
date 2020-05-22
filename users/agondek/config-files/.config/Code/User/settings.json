@@ -9,5 +9,6 @@
   "update.mode": "none",
   "update.showReleaseNotes": false,
   "workbench.colorTheme": "Monokai Pro",
-  "workbench.iconTheme": "Monokai Pro Icons"
+  "workbench.iconTheme": "Monokai Pro Icons",
+  "rust-client.rlsPath": "/home/agondek/.config/Code/User/rlsWrapper.sh"
 }
