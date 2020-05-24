@@ -90,6 +90,7 @@ in
       (vivaldi.override {proprietaryCodecs = true; enableWidevine = true;})
       spotify # Music
       gnome3.gnome-screenshot # Screenshot
+      remmina
       # Passwords
       keepassxc
       # Emails
