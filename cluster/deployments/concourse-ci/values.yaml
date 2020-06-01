@@ -1,4 +1,0 @@
-concourse:
-  web:
-    clusterName: "{HOST}-ci"
-    externalUrl: "http://{HOST}"
