@@ -83,21 +83,21 @@ in
           ip route add 54.164.6.77 scope link dev tun0
           echo "done"
         '';
-        ".libvirtd/createStoragePool" = {
-          executable = true;
-          text = ''
-            #!/run/current-system/sw/bin/sh
+      };
+      ".libvirtd/createStoragePool" = {
+        executable = true;
+        text = ''
+          #!/run/current-system/sw/bin/sh
 
-            images=/var/lib/libvirt/images
-            sudo mkdir $images
-            sudo chgrp libvirtd $images
-            sudo chmod g+w $images
-            
-            sudo virsh pool-define-as default dir --target $images
-            sudo virsh pool-autostart default
-            sudo virsh pool-start default
-          '';
-        };
+          images=/var/lib/libvirt/images
+          sudo mkdir $images
+          sudo chgrp libvirtd $images
+          sudo chmod g+w $images
+          
+          sudo virsh pool-define-as default dir --target $images
+          sudo virsh pool-autostart default
+          sudo virsh pool-start default
+        '';
       };
     };
     home.packages = with pkgs; [
