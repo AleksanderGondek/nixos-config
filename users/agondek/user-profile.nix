@@ -86,6 +86,7 @@ in
       };
     };
     home.packages = with pkgs; [
+      nixops
       evince #  Pdf reader
       (vivaldi.override {proprietaryCodecs = true; enableWidevine = true;})
       spotify # Music
