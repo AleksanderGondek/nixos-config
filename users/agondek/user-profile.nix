@@ -117,6 +117,7 @@ in
       notepadqq
       # Staying in touch
       discord
+      riot-desktop
       slack-dark
       unstable.zoom-us
       # Developing in Scala
