@@ -12,17 +12,18 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/1db72b99-df4c-4e7b-be7e-6d17912c9923";
-      fsType = "btrfs";
+    { device = "rpool/root/nixos";
+      fsType = "zfs";
     };
-  fileSystems."/var/lib/docker" =
-    { device = "/dev/disk/by-uuid/50479407-99f8-4655-929c-12229c458bfd";
-      fsType = "ext4";
+
+  fileSystems."/home" =
+    { device = "rpool/home";
+      fsType = "zfs";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/b1a3985e-74c2-422e-bfc5-950f3d63119f"; }
+    [ { device = "/dev/disk/by-uuid/b0e15608-f02f-4c6a-94db-568663b0226c"; }
     ];
 
-  nix.maxJobs = lib.mkDefault 4;
+  nix.maxJobs = lib.mkDefault 16;
 }

@@ -5,7 +5,7 @@ let
 in {
   imports = [
     ./hardware/vm-utility-drone.nix
-    ./base/main.nix
+    ./base/zfs.nix
     ./network/work-ntp.nix
     ./virtualisation/docker.nix
     ./users/drone/user-profile.nix
