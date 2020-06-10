@@ -62,7 +62,7 @@
 
   #https://github.com/MaZderMind/hostpath-provisioner/blob/master/manifests/deployment.yaml
   services.kubernetes.addonManager.addons.provisioner-deployment = {
-    apiVersion="extensions/v1beta1";
+    apiVersion="apps/v1";
     kind="Deployment";
     metadata = {
       name="hostpath-provisioner";
