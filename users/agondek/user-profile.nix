@@ -5,9 +5,6 @@ let
   preConfiguredVscode = import ../../programs/vscode.nix { 
     inherit config pkgs secrets;
   };
-  ffAddons = import ../../programs/firefox-addons.nix {
-    inherit config pkgs;
-  };
 in
 {
   imports = [
@@ -164,17 +161,6 @@ in
           max_icon_size=32;
         };
       };
-    };
-    programs.firefox = {
-      enable = true;
-      extensions = with ffAddons; [
-        dark-night-mode
-        facebook-container
-        ghostery
-        multi-account-containers
-        octotree
-        ublock-origin        
-      ];
     };
     programs.zsh = {
       enable = true;
