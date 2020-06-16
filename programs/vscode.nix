@@ -8,14 +8,16 @@ let
       {
         name = "python";
         publisher = "ms-python";
-        version = "2020.2.64397";
-        sha256 = "1kwyc5ycz1276i2zbw93mpq59y2py6kj71gvhzya8xvm184jk07a";
+        version = "2020.5.86806";
+        sha256 = "0j3333gppvnn2igw77cbzpsgw6lbkb44l4w7rnpzn9z0q3piy6d4";
+        #version = "2020.2.64397";
+        #sha256 = "1kwyc5ycz1276i2zbw93mpq59y2py6kj71gvhzya8xvm184jk07a";
       }
       {
         name = "metals";
         publisher = "scalameta";
-        version = "1.7.8";
-        sha256 = "0bl0j1inzrg9ylil5lb79q26j34gfy023xcv04ycrjsjkhlslpqc";
+        version = "1.9.0";
+        sha256 = "0p2wbnw98zmjbfiz4mi1mh131s78r01kjnja339lwdigqxg88gi6";
       }
       {
         name = "scala";
@@ -26,26 +28,26 @@ let
       {
         name = "theme-monokai-pro-vscode";
         publisher = "monokai";
-        version = "1.1.15";
-        sha256 = "0b5785m2zbvyhs7s4y4cqvi6rsvg4xq9qpci7hh6w671hdhgwlfk";
+        version = "1.1.17";
+        sha256 = "0ys8bv74pi8ss5izyjsl0ipvi95qljw67fs26zg2dn90izcph8d8";
       }
       {
         name = "markdown-all-in-one";
         publisher = "yzhang";
-        version = "2.7.0";
-        sha256 = "1hrxw4ilm2r48kd442j2i7ar43w463612bx569pdhz80mapr1z9k";
+        version = "3.0.0";
+        sha256 = "0n2j2wf25az8f1psss8p9wkkbk3s630pw24qv54fv97sgxisn5r3";
       }
       {
         name = "latex-support";
         publisher = "torn4dom4n";
-        version = "3.1.0";
-        sha256 = "1h7jk3bwqrzmjssr4m9spwjy3gh5m6miglllh33h818qx590k9s6";
+        version = "3.2.0";
+        sha256 = "02kr7acvl8cv9746a3kbhbc85jl6zbk7daw45k6zppls8lklglhc";
       }
       {
         name = "code-spell-checker";
         publisher = "streetsidesoftware";
-        version = "1.7.23";
-        sha256 = "1sc9mr6d11jkysv8m4iai9nk4whljx4r4d2naz82arl7dd7aqh4c";
+        version = "1.9.0";
+        sha256 = "0ic0zbv4pja5k4hlixmi6mikk8nzwr8l5w2jigdwx9hc4zhkf713";
       }
       {
         name = "vscode-bazel";
@@ -56,8 +58,8 @@ let
       {
         name = "rust";
         publisher = "rust-lang";
-        version = "0.7.4";
-        sha256 = "0y7q5h1jgxx3zac1wc2rn9ziqhkr3fhwkvkgq7h73z4n3bb7fgz4";
+        version = "0.7.8";
+        sha256 = "039ns854v1k4jb9xqknrjkj8lf62nfcpfn0716ancmjc4f0xlzb3";
       }
     ];
   };
