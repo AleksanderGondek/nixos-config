@@ -156,7 +156,7 @@ in
           frame_width = 2;
           frame_color = "#788388";
           sort = "yes";
-          browser = "firefox";
+          browser = "Vivaldi";
           icon_position = "left";
           max_icon_size=32;
         };
