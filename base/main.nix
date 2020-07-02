@@ -85,7 +85,7 @@ in
     lm_sensors
     ranger
     unzip
-    vim
+    (pkgs.callPackage ../programs/my_vim.nix {})
     wget
     xterm
   ];

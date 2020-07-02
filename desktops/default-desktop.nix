@@ -26,6 +26,7 @@
     font-awesome_4
     terminus_font
     powerline-fonts
+    (nerdfonts.override { withFont = "Hack"; })
   ];
   
   # For checking power status

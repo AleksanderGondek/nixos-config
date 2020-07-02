@@ -8,6 +8,8 @@ in pkgs.vim_configurable.customize {
   name = "vim";
 
   vimrcConfig.customRC = ''
+  set encoding=utf-8  " The encoding displayed.
+  set fileencoding=utf-8  " The encoding written to file.
  '';
 
   vimrcConfig.vam.knownPlugins = pkgs.vimPlugins // customPlugins;
