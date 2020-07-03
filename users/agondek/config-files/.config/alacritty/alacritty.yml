@@ -81,17 +81,17 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    family: Hack
+    family: "Hack Nerd Font Mono"
     style: Regular
 
   # Bold font face
   bold:
-    family: Hack
+    family: "Hack Nerd Font Mono"
     style: Bold
 
   # Italic font face
   #italic:
-    family: Hack
+    family: "Hack Nerd Font Mono"
     style: Italic
 
   # Point size
