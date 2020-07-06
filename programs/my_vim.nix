@@ -37,6 +37,7 @@ in pkgs.vim_configurable.customize {
       "vim-airline-themes"
       "vim-devicons"
       "nerdtree"
+      "fzf-vim"
     ];
   }];
 }
