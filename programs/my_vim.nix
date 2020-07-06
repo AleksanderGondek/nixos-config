@@ -26,6 +26,12 @@ in pkgs.vim_configurable.customize {
   let g:molokai_original = 1
   let g:airline_theme='molokai'
   colorscheme molokai
+
+  " Map tabs to double space
+  set expandtab
+  set tabstop=2
+  set shiftwidth=2
+  map <F2> :retab <CR>
  '';
 
   vimrcConfig.vam.knownPlugins = pkgs.vimPlugins // customPlugins;
@@ -38,6 +44,7 @@ in pkgs.vim_configurable.customize {
       "vim-devicons"
       "nerdtree"
       "fzf-vim"
+      "vim-surround"
     ];
   }];
 }
