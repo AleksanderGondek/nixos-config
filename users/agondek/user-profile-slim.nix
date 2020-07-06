@@ -7,6 +7,7 @@ in
   environment.systemPackages = with pkgs; [
     exa
     fd
+    fzf
     ripgrep
   ];
 
@@ -39,6 +40,7 @@ in
     home.sessionVariables = {
       NIXOS_CONFIG = /home/agondek/projects/nixos-config;
       EDITOR = "vim";
+      FZF_DEFAULT_COMMAND="fd --type f --hidden";
     };
     programs.git = {
       enable = true;

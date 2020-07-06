@@ -182,7 +182,13 @@ in
 
       oh-my-zsh = {
         enable = true;
-        plugins = [];
+        plugins = [
+          "docker"
+          "fd"
+          "git"
+          "kubectl"
+          "ripgrep"
+        ];
         theme = "agnoster";
       };
     };
