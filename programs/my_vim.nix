@@ -32,6 +32,23 @@ in pkgs.vim_configurable.customize {
   set tabstop=2
   set shiftwidth=2
   map <F2> :retab <CR>
+
+  " <!-- Python -->
+  augroup pythony
+    au!
+    au BufNewFile,BufRead *.py set tabstop=2
+    au BufNewFile,BufRead *.py set softtabstop=2
+    au BufNewFile,BufRead *.py set shiftwidth=2
+    au BufNewFile,BufRead *.py set textwidth=79
+    au BufNewFile,BufRead *.py set expandtab
+    au BufNewFile,BufRead *.py set autoindent
+    au BufNewFile,BufRead *.py set fileformat=unix
+    au BufNewFile,BufRead *.py syntax enable
+    au BufNewFile,BufRead *.py set number
+    au BufNewFile,BufRead *.py set cursorline
+    au BufNewFile,BufRead *.py set showmatch
+    au BufNewFile,BufRead *.py let python_highlight_all = 1
+  augroup end
  '';
 
   vimrcConfig.vam.knownPlugins = pkgs.vimPlugins // customPlugins;
@@ -45,6 +62,7 @@ in pkgs.vim_configurable.customize {
       "nerdtree"
       "fzf-vim"
       "vim-surround"
+      "YouCompleteMe"
     ];
   }];
 }
