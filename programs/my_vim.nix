@@ -15,6 +15,18 @@ let
         maintainers = [ pkgs.stdenv.lib.maintainers.jagajaga ];
       };
     };
+    cue = pkgs.vimUtils.buildVimPlugin {
+      name = "cue-git-2020-05-20";
+      src = pkgs.fetchgit {
+        url = "https://github.com/jjo/vim-cue.git";
+        rev = "9b26fb250d473f949fc90cabe70efff316a90248";
+        sha256 = "0aybj1xxi860cn7wzg13z50f16kdsyhba0z7qwchps4fr24xkjms";
+      };
+      meta = {
+        homepage = https://github.com/jjo/vim-cue;
+        maintainers = [ pkgs.stdenv.lib.maintainers.jagajaga ];
+      };
+    };
   };
 in pkgs.vim_configurable.customize {
   name = "vim";
@@ -62,6 +74,7 @@ in pkgs.vim_configurable.customize {
       "nerdtree"
       "fzf-vim"
       "vim-surround"
+      "cue"
       "YouCompleteMe"
     ];
   }];
