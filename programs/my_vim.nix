@@ -45,6 +45,8 @@ in pkgs.vim_configurable.customize {
   set shiftwidth=2
   map <F2> :retab <CR>
 
+  let NERDTreeShowHidden=1
+
   " <!-- Python -->
   augroup pythony
     au!
