@@ -4,6 +4,7 @@
   imports = [
     ./hardware/ravenrock-laptop.nix
     ./base/zfs.nix
+    ./audio/pulseaudio.nix
     ./network/dns-carbon.nix
     ./desktops/default-desktop.nix
     ./virtualisation/docker.nix

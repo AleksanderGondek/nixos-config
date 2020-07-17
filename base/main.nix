@@ -62,10 +62,6 @@ in
     "9.9.9.9"
   ];
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 

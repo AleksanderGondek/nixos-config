@@ -4,6 +4,7 @@
   imports = [
     ./hardware/work-laptop.nix
     ./base/zfs.nix
+    ./audio/pulseaudio.nix
     ./network/work-ntp.nix
     ./desktops/default-desktop.nix
     ./virtualisation/docker.nix
