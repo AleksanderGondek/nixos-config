@@ -83,6 +83,7 @@ in
     unzip
     (pkgs.callPackage ../programs/my_vim.nix {})
     wget
+    xorg.xhost
     xterm
   ];
 

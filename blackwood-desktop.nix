@@ -8,6 +8,7 @@
     # Carbon dns breaks VPN
     #./network/dns-carbon.nix
     ./desktops/nvidia-desktop.nix
+    ./programs/steam.nix
     ./virtualisation/docker.nix
     ./virtualisation/libvirtd.nix
     ./cluster/k8s-dev-single-node.nix
