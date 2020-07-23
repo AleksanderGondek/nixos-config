@@ -5,8 +5,6 @@
     ./hardware/blackwood-desktop.nix
     ./base/zfs.nix
     ./audio/pulseaudio.nix
-    # Carbon dns breaks VPN
-    #./network/dns-carbon.nix
     ./desktops/nvidia-desktop.nix
     ./programs/steam.nix
     ./virtualisation/docker.nix
