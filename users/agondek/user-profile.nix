@@ -139,6 +139,8 @@ in
       # Factory of factory of factory..
       # Only for IDE integration (sigh)
       rustup
+      # Bazel 
+      bazel-buildtools
     ];
     services.dunst = {
       enable = true;
