@@ -3,7 +3,7 @@
 {
   hardware.pulseaudio = {
     enable = true;
-    package = pkgs.pulseaudioFull.override;
+    package = pkgs.pulseaudioFull;
   };
   sound.enable = true;
 }
