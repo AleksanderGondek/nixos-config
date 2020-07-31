@@ -47,6 +47,10 @@ in pkgs.vim_configurable.customize {
 
   let NERDTreeShowHidden=1
 
+  " Grepper
+  let g:grepper = {}
+  let g:grepper.tools = ['git', 'rg']
+
   " <!-- Python -->
   augroup pythony
     au!
@@ -75,6 +79,7 @@ in pkgs.vim_configurable.customize {
       "vim-devicons"
       "nerdtree"
       "fzf-vim"
+      "vim-grepper"
       "vim-surround"
       "cue"
       "YouCompleteMe"
