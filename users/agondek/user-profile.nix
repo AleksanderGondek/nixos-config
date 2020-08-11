@@ -121,7 +121,7 @@ in
       jdk
       sbt
       # Developing in Python
-      (python37.withPackages(ps : with ps; [ 
+      (python38.withPackages(ps : with ps; [ 
           ipython
           flake8
           pycodestyle
