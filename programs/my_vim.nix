@@ -2,6 +2,9 @@
 # Config inspired by https://github.com/wagnerf42/nixos-config/blob/master/config/my_vim.nix
 
 let
+  my_configurable_vim = pkgs.vim_configurable.override {
+    python = pkgs.python37Full;
+  };
   customPlugins = {
     semantic-highlight = pkgs.vimUtils.buildVimPlugin {
       name = "semantic-highlight-git-2019-09-01";
@@ -28,7 +31,7 @@ let
       };
     };
   };
-in pkgs.vim_configurable.customize {
+in my_configurable_vim.customize {
   name = "vim";
 
   vimrcConfig.customRC = ''
@@ -51,6 +54,9 @@ in pkgs.vim_configurable.customize {
   let g:grepper = {}
   let g:grepper.tools = ['git', 'rg']
 
+  " YouCompleteMe
+  let g:ycm_confirm_extra_conf=0
+
   " <!-- Python -->
   augroup pythony
     au!
@@ -67,13 +73,14 @@ in pkgs.vim_configurable.customize {
     au BufNewFile,BufRead *.py set showmatch
     au BufNewFile,BufRead *.py let python_highlight_all = 1
   augroup end
+
+  set backspace=indent,eol,start
  '';
 
   vimrcConfig.vam.knownPlugins = pkgs.vimPlugins // customPlugins;
   vimrcConfig.vam.pluginDictionaries = [{
     names = [
       "molokai"
-      "semantic-highlight"
       "vim-airline"
       "vim-airline-themes"
       "vim-devicons"
@@ -81,6 +88,7 @@ in pkgs.vim_configurable.customize {
       "fzf-vim"
       "vim-grepper"
       "vim-surround"
+      "vim-nix"
       "cue"
       "YouCompleteMe"
     ];
