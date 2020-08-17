@@ -10,8 +10,6 @@ let
         publisher = "ms-python";
         version = "2020.5.86806";
         sha256 = "0j3333gppvnn2igw77cbzpsgw6lbkb44l4w7rnpzn9z0q3piy6d4";
-        #version = "2020.2.64397";
-        #sha256 = "1kwyc5ycz1276i2zbw93mpq59y2py6kj71gvhzya8xvm184jk07a";
       }
       {
         name = "metals";
