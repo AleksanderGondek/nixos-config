@@ -15,6 +15,8 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.device = "/dev/disk/by-id/wwn-0x5002538e9053af22";
+  boot.loader.grub.efiSupport = true;
 
   # ZFS requirement
   networking.hostId = "4746a27b";

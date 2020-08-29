@@ -8,7 +8,7 @@
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -23,15 +23,27 @@
       fsType = "zfs";
     };
 
+  fileSystems."/tmp" =
+    { device = "rpool/root/tmp";
+      fsType = "zfs";
+    };
+
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/EEA7-B8A2";
+    { device = "/dev/disk/by-uuid/F757-9489";
       fsType = "vfat";
     };
 
+  fileSystems."/var/lib/docker" =
+    { device = "/dev/disk/by-uuid/76828411-2ef5-47e9-9fd0-d6c271a942b5";
+      fsType = "ext4";
+    };
+
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/eef52d2c-4b0d-42e2-95a3-138c39c329ba"; }
+    [ { device = "/dev/disk/by-uuid/1b91a10e-d8e8-48aa-be81-54059594648c"; }
     ];
 
   nix.maxJobs = lib.mkDefault 8;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  # High-DPI console
+  console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
 }
