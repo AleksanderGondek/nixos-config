@@ -141,6 +141,9 @@ in
       rustup
       # Bazel 
       bazel-buildtools
+      # Work?
+      vagrant
+      jetbrains.pycharm-community
     ];
     services.dunst = {
       enable = true;
