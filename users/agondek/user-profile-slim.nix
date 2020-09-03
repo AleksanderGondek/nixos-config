@@ -41,7 +41,7 @@ in
       NIXOS_CONFIG = /home/agondek/projects/nixos-config;
       EDITOR = "vim";
       FZF_DEFAULT_COMMAND="fd --type f --hidden";
-      TERM="vt100";
+      TERM="xterm-256color";
     };
     programs.git = {
       enable = true;
