@@ -113,7 +113,7 @@ in
       zim
       notepadqq
       # Staying in touch
-      discord
+      unstable.discord-canary
       signal-desktop
       slack-dark
       unstable.zoom-us
