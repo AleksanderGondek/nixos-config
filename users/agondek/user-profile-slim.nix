@@ -19,6 +19,10 @@ in
     extraGroups = [
       "wheel"
       "docker"
+      "sound"
+      "pulse"
+      "audio"
+      "lp"
     ];
     home = "/home/agondek";
     shell = pkgs.bash;

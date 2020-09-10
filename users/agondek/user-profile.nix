@@ -117,6 +117,8 @@ in
       signal-desktop
       slack-dark
       unstable.zoom-us
+      # Bluetooth
+      blueman
       # Developing in Scala
       jdk
       sbt
