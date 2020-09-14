@@ -10,6 +10,7 @@
     ./desktops/default-desktop.nix
     ./virtualisation/docker.nix
     ./virtualisation/vbox.nix
+    ./virtualisation/libvirtd.nix
     ./cluster/k8s-dev-single-node.nix
     ./users/agondek/user-profile.nix
   ];
