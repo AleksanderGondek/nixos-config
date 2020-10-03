@@ -56,6 +56,15 @@ in my_configurable_vim.customize {
 
   " YouCompleteMe
   let g:ycm_confirm_extra_conf=0
+  let g:ycm_language_server=
+\ [
+\   {
+\     'name': 'rust',
+\     'cmdline': ['rust-analyzer'],
+\     'filetypes': ['rust'],
+\     'project_root_files': ['Cargo.toml']
+\   }
+\ ]
 
   " <!-- Python -->
   augroup pythony

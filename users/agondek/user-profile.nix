@@ -141,6 +141,7 @@ in
       # Factory of factory of factory..
       # Only for IDE integration (sigh)
       rustup
+      rust-analyzer
       # Bazel 
       bazel-buildtools
       # Work?
