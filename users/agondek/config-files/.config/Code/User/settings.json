@@ -10,5 +10,7 @@
   "update.showReleaseNotes": false,
   "workbench.colorTheme": "Monokai Pro",
   "workbench.iconTheme": "Monokai Pro Icons",
-  "rust-client.rlsPath": "/home/agondek/.config/Code/User/rlsWrapper.sh"
+  "rust-client.rlsPath": "/home/agondek/.config/Code/User/rlsWrapper.sh",
+  "rust-client.engine": "rust-analyzer",
+  "rust.rust-analyzer.path": "/home/agondek/.nix-profile/bin/rust-analyzer"
 }

@@ -45,6 +45,7 @@ in
         executable = true;
         text = ''
           #!/usr/bin/env bash
+          # This helps in wierd OPENSSL issues while compiling rust
           RLS=rls
           export LD_LIBRARY_PATH=''$(rustc --print sysroot)/lib
           export RUST_BACKTRACE=full
