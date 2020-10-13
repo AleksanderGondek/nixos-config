@@ -59,6 +59,12 @@ let
         version = "0.7.8";
         sha256 = "039ns854v1k4jb9xqknrjkj8lf62nfcpfn0716ancmjc4f0xlzb3";
       }
+      {
+        name = "cuelang";
+        publisher = "nickgo";
+        version = "0.0.1";
+        sha256 = "1wk953s7vgjzvgs3s5vkziiccl67pz7bmf9pkyvfljhl4kaia0vl";
+      }
     ];
   };
 in 
