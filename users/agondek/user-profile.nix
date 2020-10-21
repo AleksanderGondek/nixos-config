@@ -145,8 +145,6 @@ in
       rust-analyzer
       # Bazel 
       bazel-buildtools
-      # k8s
-      sonobuoy
       # Work?
       vagrant
       jetbrains.pycharm-community
