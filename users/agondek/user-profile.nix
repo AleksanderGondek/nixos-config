@@ -113,6 +113,8 @@ in
       # Taking notes
       zim
       notepadqq
+      # Memes
+      krita
       # Staying in touch
       unstable.discord
       signal-desktop
