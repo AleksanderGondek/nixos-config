@@ -105,6 +105,9 @@ in
       spotify # Music
       gnome3.gnome-screenshot # Screenshot
       remmina
+      # Video ops
+      kazam
+      vlc
       # Passwords
       keepassxc
       # Emails
