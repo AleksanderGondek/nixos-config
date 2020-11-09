@@ -157,23 +157,56 @@ in
     ];
     services.dunst = {
       enable = true;
+      iconTheme = {
+        package = pkgs.gnome3.adwaita-icon-theme;
+        name = "Adwaita";
+        size = "32x32";
+      };
       settings = {
         global = {
-          startup_notification = true;
+          # Display
           follow = "mouse";
           geometry = "300x6-10+30";
-          transparency = 0;
-          font = "Hack Regular 8";
-          markup = "full";
-          format = "<b>%s</b>\n%b";
+          indicate_hidden = "yes";
+          transparency = 40;
           padding = 8;
           horizontal_padding = 8;
           frame_width = 2;
-          frame_color = "#788388";
+          frame_color = "#f9f8f5";
+          separator_color = "frame";
           sort = "yes";
-          browser = "Vivaldi";
+          idle_threshold = 360;
+          # Text
+          font = "Hack Regular 8";
+          markup = "full";
+          format = "<b>%s</b>\\n%b";
+          alignment = "left";
+          vertical_alignment = "center";
+          word_wrap = "yes";
+          ignore_newline = "no";      
+          stack_duplicates = true;
+          # Icons
           icon_position = "left";
           max_icon_size=32;
+          # Misc/Advanced
+          browser = "Vivaldi";
+          startup_notification = true;
+          corner_radius = 0;
+        };
+        urgency_low = {
+          background = "#272822";
+          foreground = "#f8f8f2";
+          frame_color = "#66d9ef";
+        };
+        urgency_normal = {
+          background = "#272822";
+          foreground = "#f8f8f2";
+          frame_color = "#f4bf75";
+        };
+        urgency_critical = {
+          background = "#272822";
+          foreground = "#f8f8f2";
+          frame_color = "#f92672";
         };
       };
     };
