@@ -54,7 +54,7 @@ in
           ''$RLS "''$@"
         '';
       };
-      ".config/wallpapers/01.jpg".source = ./config-files/.config/wallpapers/01.jpg;
+      ".config/wallpapers/klontalersee-glarus-switzerland.jpg".source = ./config-files/.config/wallpapers/klontalersee-glarus-switzerland.jpg;
       ".gpvpn/fix" = {
         executable = true;
         text = ''
