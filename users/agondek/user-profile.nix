@@ -105,6 +105,7 @@ in
       spotify # Music
       gnome3.gnome-screenshot # Screenshot
       remmina
+      neofetch
       # Video ops
       kazam
       vlc
