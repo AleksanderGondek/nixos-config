@@ -4,6 +4,8 @@ font-two = "Hack Regular:style=Regular:size=10;2"
 font-three = "FontAwesome:style=Regular:size=10;2"
 bg-colour = #272822
 fg-colour = #F8F8F2
+border-bottom-size = 2
+border-bottom-color = "#212526"
 module-margin = 2
 padding = 5
 
@@ -20,6 +22,8 @@ padding = ${monokai.padding}
 modules-center = date
 modules-left = powermenu i3 title
 modules-right = cpu memory filesystem pulseaudio battery
+border-bottom-size = ${monokai.border-bottom-size}
+border-bottom-color = ${monokai.border-bottom-color}
 
 [bar/desktop-secondarybar]
 monitor = ${env:MONITOR:DP-1}
@@ -33,6 +37,8 @@ padding = ${monokai.padding}
 modules-center = date
 modules-left = powermenu i3 title
 modules-right = cpu memory filesystem pulseaudio battery
+border-bottom-size = ${monokai.border-bottom-size}
+border-bottom-color = ${monokai.border-bottom-color}
 
 [module/date]
 type = internal/date
