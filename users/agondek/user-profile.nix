@@ -152,6 +152,7 @@ in
       # Bazel 
       bazel-buildtools
       # Work?
+      azure-cli
       vagrant
       jetbrains.pycharm-community
     ];
