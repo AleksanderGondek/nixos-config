@@ -8,50 +8,50 @@ let
       {
         name = "python";
         publisher = "ms-python";
-        version = "2020.5.86806";
-        sha256 = "0j3333gppvnn2igw77cbzpsgw6lbkb44l4w7rnpzn9z0q3piy6d4";
+        version = "2020.12.424452561";
+        sha256 = "0zd0wdaip4nd9awr0h0m5afarzwhkfd8n9hzdahwf43sh15lqblf";
       }
       {
         name = "metals";
         publisher = "scalameta";
-        version = "1.9.0";
-        sha256 = "0p2wbnw98zmjbfiz4mi1mh131s78r01kjnja339lwdigqxg88gi6";
+        version = "1.9.10";
+        sha256 = "1afmqzlw3bl9bv59l9b2jrljhbq8djb7vl8rjv58c5wi7nvm2qab";
       }
       {
         name = "scala";
         publisher = "scala-lang";
-        version = "0.3.9";
-        sha256 = "0l6zrpp2klqdym977zygmbzf0478lbqmivcxa2xmqyi34c9vwli7";
+        version = "0.5.0";
+        sha256 = "0rhdnj8vfpcvy771l6nhh4zxyqspyh84n9p1xp45kq6msw22d7rx";
       }
       {
         name = "theme-monokai-pro-vscode";
         publisher = "monokai";
-        version = "1.1.17";
-        sha256 = "0ys8bv74pi8ss5izyjsl0ipvi95qljw67fs26zg2dn90izcph8d8";
+        version = "1.1.18";
+        sha256 = "0dg68z9h84rpwg82wvk74fw7hyjbsylqkvrd0r94ma9bmqzdvi4x";
       }
       {
         name = "markdown-all-in-one";
         publisher = "yzhang";
-        version = "3.0.0";
-        sha256 = "0n2j2wf25az8f1psss8p9wkkbk3s630pw24qv54fv97sgxisn5r3";
+        version = "3.4.0";
+        sha256 = "0ihfrsg2sc8d441a2lkc453zbw1jcpadmmkbkaf42x9b9cipd5qb";
       }
       {
         name = "latex-support";
         publisher = "torn4dom4n";
-        version = "3.2.0";
-        sha256 = "02kr7acvl8cv9746a3kbhbc85jl6zbk7daw45k6zppls8lklglhc";
+        version = "3.5.0";
+        sha256 = "1sq8z7p1s92cmn7ka03n5nrx2l9y81rzr011qmm5qdrf1vc9whaz";
       }
       {
         name = "code-spell-checker";
         publisher = "streetsidesoftware";
-        version = "1.9.0";
-        sha256 = "0ic0zbv4pja5k4hlixmi6mikk8nzwr8l5w2jigdwx9hc4zhkf713";
+        version = "1.10.2";
+        sha256 = "1ll046rf5dyc7294nbxqk5ya56g2bzqnmxyciqpz2w5x7j75rjib";
       }
       {
         name = "vscode-bazel";
         publisher = "BazelBuild";
-        version = "0.3.0";
-        sha256 = "0rlja1hn2n6fyq673qskz2a69rz8b0i5g5flyxm5sfi8bcz8ms05";
+        version = "0.4.0";
+        sha256 = "0p018878pxr7vxr6375fywchzq1xwvxnjrb4zvp444s6p3sknxxg";
       }
       {
         name = "rust";
