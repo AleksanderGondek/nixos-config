@@ -20,11 +20,13 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.grub = {
     enable = true;
+    copyKernels = true;
     device = "nodev";
     version = 2;
     efiSupport = true;
     enableCryptodisk = true;
   };
+  # zcat /boot/initrd.keys.gz | cpio -idvmD /etc/secrets/initrd
   boot.initrd.secrets = {
     "/keyfile0.bin" = "/etc/secrets/initrd/keyfile0.bin";
   };
