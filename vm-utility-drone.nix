@@ -13,10 +13,12 @@ in {
     ./cluster/k8s-dev-single-node.nix
   ];
 
+  boot.supportedFilesystems = [ "ext4" "zfs" ];
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.copyKernels = true;
+  boot.zfs.devNodes = "/dev/disk/by-path";
 
   networking.hostId = "c90a5ed9";
   networking.hostName = "agondek-utility-drone";
