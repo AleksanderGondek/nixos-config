@@ -17,8 +17,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "/dev/disk/by-id/wwn-0x5002538e9053af22";
   boot.loader.grub.efiSupport = true;
+  boot.loader.grub.copyKernels = true;
 
-  # ZFS requirement
+  # ZFS requirements
   networking.hostId = "4746a27b";
   # Network (Wireless and cord)
   networking.hostName = "blackwood";
