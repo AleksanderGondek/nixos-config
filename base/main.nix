@@ -40,6 +40,12 @@ in
     options = "--delete-older-than 14d";
   };
 
+  # Enable experimental support for flakes
+  nix.package = pkgs.nixFlakes;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
   # Add unstable packages under path pkgs.unstable.<pkg_name>
   nixpkgs = {
     config = {
