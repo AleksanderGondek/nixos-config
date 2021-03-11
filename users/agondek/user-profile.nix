@@ -109,6 +109,7 @@ in
       # Video ops
       kazam
       vlc
+      obs-studio
       # Passwords
       keepassxc
       # Emails
