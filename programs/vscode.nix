@@ -65,6 +65,18 @@ let
         version = "0.0.1";
         sha256 = "1wk953s7vgjzvgs3s5vkziiccl67pz7bmf9pkyvfljhl4kaia0vl";
       }
+      {
+        name = "dhall-lang";
+        publisher = "dhall";
+        version = "0.0.4";
+        sha256 = "7vYQ3To2hIismo9IQWRWwKsu4lXZUh0Or89WDLMmQGk=";
+      }
+      {
+        name = "vscode-dhall-lsp-server";
+        publisher = "dhall";
+        version = "0.0.4";
+        sha256 = "WopWzMCtiiLrx3pHNiDMZYFdjS359vu3T+6uI5A+Nv4=";
+      }
     ];
   };
 in 
