@@ -10,7 +10,7 @@
     ./virtualisation/docker.nix
     ./virtualisation/libvirtd.nix
     ./cluster/k8s-dev-single-node.nix
-    ./ci/hydra.nix
+    #./ci/hydra.nix
     ./users/agondek/user-profile.nix
   ];
   # Use the systemd-boot EFI boot loader.
