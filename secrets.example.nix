@@ -8,6 +8,9 @@
         gpgSigningKey = "00000000000000000000000000000000";
         email = "john.doe@someemailprovider.com";
       };
+      hydra = {
+        hashedPassword = ""; #mkpasswd -m sha-1
+      };
     };
     drone = {
       hashedPassword = "00000000000000000000000000000000"; #mkpasswd -m sha-512
