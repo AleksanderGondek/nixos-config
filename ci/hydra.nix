@@ -3,8 +3,6 @@
 
 let 
   secrets = import ../secrets.nix {};
-  hydraHome = config.users.users.hydra.home;
-  hydraQueueRunnerHome = config.users.users.hydra-queue-runner.home;
 in
 {
   services.hydra = {
@@ -22,14 +20,15 @@ in
   };
 
   services.nginx = {
-    enable = true;
+    # To be enabled
+    enable = false;
 
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
 
-    virtualHosts."example.com" =  {
+    virtualHosts."${config.networking.hostName}" =  {
       enableACME = false;
       forceSSL = false;
 
@@ -69,22 +68,11 @@ in
     };
     environment = config.systemd.services.hydra-init.environment;
     script = ''
+      # https://nix-dev.science.uu.narkive.com/fhPel9FQ/cannot-run-hydra-create-user-no-such-table-users
       ${config.services.hydra.package}/bin/hydra-create-user agondek --full-name 'Aleksander Gondek' \
         --email-address '${secrets.users.agondek.git.email}' \
         --password-hash ${secrets.users.agondek.hydra.hashedPassword} \
         --role admin
-
-      # https://nix-dev.science.uu.narkive.com/fhPel9FQ/cannot-run-hydra-create-user-no-such-table-users
-      # mkdir -p "${hydraHome}/.ssh"
-      # chmod 700 "${hydraHome}/.ssh"
-      # cp "*xxxx*" "${hydraHome}/.ssh/id_rsa"
-      # chown -R hydra:hydra "${hydraHome}/.ssh"
-      # chmod 600 "${hydraHome}/.ssh/id_rsa"
-      # mkdir -p "${hydraQueueRunnerHome}/.ssh"
-      # chmod 700 "${hydraQueueRunnerHome}/.ssh"
-      # cp "*xxxx*" "${hydraQueueRunnerHome}/.ssh/id_rsa"
-      # chown -R hydra-queue-runner:hydra "${hydraQueueRunnerHome}/.ssh"
-      # chmod 600 "${hydraQueueRunnerHome}/.ssh/id_rsa"
     '';
   };
 }

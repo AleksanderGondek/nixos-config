@@ -10,7 +10,12 @@ in
   imports = [ 
     # Home Manager Enablement
     ''${homeManager}/nixos''
+    # Temporary fix for 'gc-check-reachability no longer exists' error in hydra-send-stats
+    # Additionally until https://github.com/NixOS/hydra/pull/895 is merged, sends stats does not work
+    ''${unstableTarball}/nixos/modules/services/continuous-integration/hydra/default.nix''
   ];
+
+  disabledModules = [ ''services/continuous-integration/hydra/default.nix'' ];
 
   # Ensure default inotify watches for files is high
   boot.kernel.sysctl = {
