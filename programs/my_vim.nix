@@ -3,21 +3,9 @@
 
 let
   my_configurable_vim = pkgs.vim_configurable.override {
-    python = pkgs.python37Full;
+    python = pkgs.python39Full;
   };
   customPlugins = {
-    semantic-highlight = pkgs.vimUtils.buildVimPlugin {
-      name = "semantic-highlight-git-2019-09-01";
-      src = pkgs.fetchgit {
-        url = "https://github.com/jaxbot/semantic-highlight.vim.git";
-        rev = "7cf0aabbd0f9cb531b0045ac2148dff1131616de";
-        sha256 = "16dnqrdpxf6322az1rn67ay2a4clqz410xn6zqzr1w2y6x4yly1a";
-      };
-      meta = {
-        homepage = https://github.com/jaxbot/semantic-highlight.vim;
-        maintainers = [ pkgs.stdenv.lib.maintainers.jagajaga ];
-      };
-    };
     cue = pkgs.vimUtils.buildVimPlugin {
       name = "cue-git-2020-05-20";
       src = pkgs.fetchgit {
