@@ -1,78 +1,216 @@
-# Skeleton setup for Hydra
-{ config, pkgs, ... }:
+ 
+{ lib, pkgs, config, ... }:
 
-let 
+# https://github.com/nix-community/infra/blob/master/services/hydra/default.nix
+with lib;
+let
+  cfg = config;
+
+  hydraPort = 3000;
+  hydraAdmin = "admin";
+  hydraAdminPasswordFile = "/run/keys/hydra-admin-password";
+  hydraUsersFile = "/run/keys/hydra-users";
+
+  createDeclarativeProjectScript = pkgs.stdenv.mkDerivation {
+    name = "create-declarative-project";
+    unpackPhase = ":";
+    buildInputs = [ pkgs.makeWrapper ];
+    installPhase = "install -m755 -D ${./create-declarative-project.sh} $out/bin/create-declarative-project";
+    postFixup = ''
+      wrapProgram "$out/bin/create-declarative-project" \
+        --prefix PATH ":" ${pkgs.stdenv.lib.makeBinPath [ pkgs.curl ]}
+    '';
+  };
+
   secrets = import ../secrets.nix {};
 in
 {
-  services.hydra = {
-    enable = true;
-    # To be improved.
-    hydraURL = "https://${config.networking.hostName}";
-    notificationSender = "hydra@localhost";
-    # Please use nix cache, otherwise build takes hours
-    useSubstitutes = true;
-    # A standalone hydra will require you to unset 
-    # the buildMachinesFiles list to avoid using 
-    # a nonexistant /etc/nix/machines
-    buildMachinesFiles = [
-    ];
+  imports = [ ./declarative-projects.nix ];
+
+  options.services.hydra = {
+    adminPasswordFile = mkOption {
+      type = types.str;
+      description = "The initial password for the Hydra admin account";
+    };
+
+    usersFile = mkOption {
+      type = types.str;
+      description = ''
+        declarative user accounts for hydra.
+        format: user;role;password-hash;email-address;full-name
+        Password hash is computed by applying sha1 to the password.
+      '';
+    };
+
+    declarativeProjects = mkOption {
+      description = "Declarative projects";
+      default = { };
+      type = with types; attrsOf (submodule {
+        options = {
+          inputValue = mkOption {
+            type = types.str;
+            description = "The input value";
+            example = "https://github.com/shlevy/declarative-hydra-example";
+          };
+          inputType = mkOption {
+            type = types.str;
+            default = "git";
+            description = "The type of the input value";
+          };
+          specFile = mkOption {
+            type = types.str;
+            default = "spec.json";
+            description = "The declarative spec file name";
+          };
+          displayName = mkOption {
+            type = types.str;
+            description = "The diplay name of the declarative project";
+          };
+          description = mkOption {
+            type = types.str;
+            default = "";
+            description = "The description of the declarative project";
+          };
+          homepage = mkOption {
+            type = types.str;
+            default = "";
+            description = "The homepage of the declarative project";
+          };
+        };
+      });
+    };
   };
 
-  services.nginx = {
-    # To be enabled
-    enable = false;
+  config = {
+    nixpkgs.config = {
+      whitelistedLicenses = with lib.licenses; [
+        unfreeRedistributable
+        issl
+      ];
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "cudnn_cudatoolkit"
+        "cudatoolkit"
+      ];
+    };
 
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-
-    virtualHosts."${config.networking.hostName}" =  {
-      enableACME = false;
-      forceSSL = false;
-
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:3000";
-        proxyWebsockets = true; # needed if you need to use WebSocket
-
-        extraConfig =
-          # required when the target is also TLS server with multiple hosts
-          "proxy_ssl_server_name on;" +
-          # required when the server wants to use HTTP Authentication
-          "proxy_pass_header Authorization;"
-          ;
+    services.nginx.virtualHosts = {
+      "hydra.nix-community.org" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/".proxyPass = "http://localhost:${toString (hydraPort)}";
       };
     };
 
-  };
+    services.hydra = {
+      enable = true;
+      hydraURL = "<TBD>";
+      notificationSender = "hydra@<TBD>";
+      port = hydraPort;
+      useSubstitutes = true;
+      adminPasswordFile = hydraAdminPasswordFile;
 
-  nix.autoOptimiseStore = true;
-  nix.trustedUsers = [
-    "hydra"
-    "hydra-evaluator"
-    "hydra-queue-runner"
-  ];
-
-  systemd.services.hydra-prepare-admin-user = {
-    after = [ 
-      "hydra-init.service"
-      "postgresql.service"
-      "hydra.service" 
-    ];
-    wantedBy = [ "multi-user.target" ];
-    description = "Prepare hydra admin user";
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = "yes";
+      usersFile = hydraUsersFile;
+      extraConfig = ''
+        max_output_size = ${builtins.toString (8 * 1024 * 1024 * 1024)}
+      '';
     };
-    environment = config.systemd.services.hydra-init.environment;
-    script = ''
-      # https://nix-dev.science.uu.narkive.com/fhPel9FQ/cannot-run-hydra-create-user-no-such-table-users
-      ${config.services.hydra.package}/bin/hydra-create-user agondek --full-name 'Aleksander Gondek' \
-        --email-address '${secrets.users.agondek.git.email}' \
-        --password-hash ${secrets.users.agondek.hydra.hashedPassword} \
-        --role admin
-    '';
+
+    services.postgresql = {
+      enable = true;
+      settings = {
+        effective_cache_size = "4GB";
+        shared_buffers = "4GB";
+      };
+    };
+
+    nix = {
+      distributedBuilds = true;
+      extraOptions = ''
+        allowed-uris = https://github.com/nix-community/ https://github.com/NixOS/
+      '';
+      buildMachines = [
+        {
+          hostName = "localhost";
+          systems = [ "x86_64-linux" "builtin" ];
+          maxJobs = 8;
+          supportedFeatures = [ "nixos-test" "big-parallel" "kvm" ];
+        }
+      ];
+    };
+
+    nix.trustedUsers = [
+      "hydra"
+      "hydra-evaluator"
+      "hydra-queue-runner"
+    ];
+
+    # Create a admin user and configure a declarative project
+    systemd.services.hydra-post-init = {
+      serviceConfig = {
+        Type = "oneshot";
+        TimeoutStartSec = "60";
+      };
+      wantedBy = [ "multi-user.target" ];
+      after = [ "hydra-server.service" ];
+      requires = [ "hydra-server.service" ];
+      environment = {
+        inherit (cfg.systemd.services.hydra-init.environment) HYDRA_DBI;
+      };
+      path = with pkgs; [ hydra-unstable netcat ];
+      script = ''
+        set -e
+        while IFS=';' read -r user role passwordhash email fullname; do
+          opts=("$user" "--role" "$role" "--password-hash" "$passwordhash")
+          if [[ -n "$email" ]]; then
+            opts+=("--email-address" "$email")
+          fi
+          if [[ -n "$fullname" ]]; then
+            opts+=("--full-name" "$fullname")
+          fi
+          hydra-create-user "''${opts[@]}"
+        done < ${cfg.services.hydra.usersFile}
+        while ! nc -z localhost ${toString hydraPort}; do
+          sleep 1
+        done
+        export HYDRA_ADMIN_PASSWORD=$(cat ${cfg.services.hydra.adminPasswordFile})
+        export URL=http://localhost:${toString hydraPort}
+      '' +
+      (concatStringsSep "\n" (mapAttrsToList
+        (n: v: ''
+          export DECL_PROJECT_NAME="${n}"
+          export DECL_DISPLAY_NAME="${v.displayName}"
+          export DECL_VALUE="${v.inputValue}"
+          export DECL_TYPE="${v.inputType}"
+          export DECL_FILE="${v.specFile}"
+          export DECL_DESCRIPTION="${v.description}"
+          export DECL_HOMEPAGE="${v.homepage}"
+          ${createDeclarativeProjectScript}/bin/create-declarative-project
+        '')
+        cfg.services.hydra.declarativeProjects));
+    };
+
+  # Old setup
+  # systemd.services.hydra-prepare-admin-user = {
+  #   after = [ 
+  #     "hydra-init.service"
+  #     "postgresql.service"
+  #     "hydra.service" 
+  #   ];
+  #   wantedBy = [ "multi-user.target" ];
+  #   description = "Prepare hydra admin user";
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     RemainAfterExit = "yes";
+  #   };
+  #   environment = config.systemd.services.hydra-init.environment;
+  #   script = ''
+  #     # https://nix-dev.science.uu.narkive.com/fhPel9FQ/cannot-run-hydra-create-user-no-such-table-users
+  #     ${config.services.hydra.package}/bin/hydra-create-user agondek --full-name 'Aleksander Gondek' \
+  #       --email-address '${secrets.users.agondek.git.email}' \
+  #       --password-hash ${secrets.users.agondek.hydra.hashedPassword} \
+  #       --role admin
+  #   '';
+  # };
+
   };
 }
