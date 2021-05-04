@@ -55,33 +55,6 @@ in
         '';
       };
       ".config/wallpapers/klontalersee-glarus-switzerland.jpg".source = ./config-files/.config/wallpapers/klontalersee-glarus-switzerland.jpg;
-      ".gpvpn/fix" = {
-        executable = true;
-        text = ''
-          #!/run/current-system/sw/bin/sh
-
-          echo -n "Removing default route over tun0... "
-          ip route del default dev tun0
-          echo "done"
- 
-          echo -n "Setting routes for internal networks... "
-          # TODO: Exclude from flannel / docker / k8s
-          ip route add 192.168.87.0/24 scope link dev tun0
-          ip route add 192.168.116.0/24 scope link dev tun0
-          ip route add 172.18.128.0/24 scope link dev tun0
-          ip route add 172.18.148.0/24 scope link dev tun0
-          ip route add 10.102.0.0/16 scope link dev tun0
-
-          ip route add 172.18.131.132 scope link dev tun0
-          ip route add 172.18.128.234 scope link dev tun0
-          ip route add 192.168.116.3 scope link dev tun0
-
-          ip route add 34.198.80.33 scope link dev tun0
-          ip route add 52.20.83.100 scope link dev tun0
-          ip route add 54.164.6.77 scope link dev tun0
-          echo "done"
-        '';
-      };
       ".libvirtd/createStoragePool" = {
         executable = true;
         text = ''
@@ -216,19 +189,7 @@ in
       enable = true;
       enableAutosuggestions = true;
 
-      shellAliases = {
-        vpn-on = ''sudo openconnect \
-          --protocol=gp \
-          --usergroup=portal \
-          --authgroup=Gdansk \
-          --user=${secrets.users.agondek.git.email} \
-          --pid-file=/tmp/openconnect.pid \
-          --csd-wrapper=${pkgs.openconnect}/libexec/openconnect/hipreport.sh \
-          ${secrets.work.vpnIngress}
-        '';
-        vpn-fix = "sudo /home/agondek/.gpvpn/fix";
-        vpn-off = "sudo kill $(cat /tmp/openconnect.pid)";
-      };
+      shellAliases = {};
 
       oh-my-zsh = {
         enable = true;
