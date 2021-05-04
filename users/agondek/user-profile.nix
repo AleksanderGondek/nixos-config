@@ -89,8 +89,10 @@ in
       # IDEs
       preConfiguredVscode
       # Taking notes
-      zim
+      unstable.joplin
+      unstable.joplin-desktop
       notepadqq
+      zim
       # Memes
       krita
       # Staying in touch
