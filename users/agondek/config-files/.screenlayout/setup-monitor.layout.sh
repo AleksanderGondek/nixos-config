@@ -3,18 +3,9 @@
 set -o nounset
 set -o errexit
 
-if [ $(hostname) == "tag009443491811" ]
+if [ $(hostname) == "ravenrock" ]
 then
-  # Basically DELL 5540
-  # Only this machine is naughty in terms of resolution shenaningans
-  if [ $(xrandr --query | grep " connected" | cut -d" " -f1 | wc -l) -gt 1 ]
-  then
-    # Docking station
-    /run/current-system/sw/bin/sh ~/.screenlayout/work-laptop-docked.layout.sh
-  else
-    # Single screen
-    /run/current-system/sw/bin/sh ~/.screenlayout/work-laptop.layout.sh
-  fi
+  /run/current-system/sw/bin/sh ~/.screenlayout/ravenrock-laptop.layout.sh
 fi
 
 /run/current-system/sw/bin/sh ~/.fehbg

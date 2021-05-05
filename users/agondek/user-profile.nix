@@ -30,8 +30,7 @@ in
       ".fehbg".source = ./config-files/.fehbg;
       ".gtkrc-2.0".source = ./config-files/.gtkrc-2.0;
       ".screenlayout/setup-monitor.layout.sh".source = ./config-files/.screenlayout/setup-monitor.layout.sh;
-      ".screenlayout/work-laptop-docked.layout.sh".source = ./config-files/.screenlayout/work-laptop-docked.layout.sh;
-      ".screenlayout/work-laptop.layout.sh".source = ./config-files/.screenlayout/work-laptop.layout.sh; 
+      ".screenlayout/ravenrock-laptop.layout.sh".source = ./config-files/.screenlayout/ravenrock-laptop.layout.sh;
       ".config/gtk-3.0/settings.ini".source = ./config-files/.config/gtk-3.0/settings.ini;
       ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
       ".config/htop/htoprc".source = ./config-files/.config/htop/htoprc;
