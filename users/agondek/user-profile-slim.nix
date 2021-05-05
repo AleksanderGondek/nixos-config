@@ -34,6 +34,7 @@ in
   home-manager.users.agondek = {
     home.packages = with pkgs; [
       git-crypt
+      git-lfs
       kubectl
       jq
       binutils
@@ -54,6 +55,12 @@ in
       extraConfig = {
         core = {
           editor = "vim";
+        };
+        "filter \"lfs\"" = {
+          process = "git-lfs filter-process";
+          required = true;
+          clean = "git-lfs clean -- %f";
+          smudge = "git-lfs smudge -- %f";
         };
       };
       signing = {
