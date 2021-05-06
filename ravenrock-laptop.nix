@@ -47,6 +47,19 @@
   # Ensure thermald runs
   services.thermald.enable = true;
 
+  # Tweag remote builder
+  nix.buildMachines = [{
+    hostName = "build01.tweag.io";
+    maxJobs = 24;
+    sshUser = "nix";
+    sshKey = "/root/.ssh/agondek-id-tweag-builder";
+    system = "x86_64-linux";
+    supportedFeatures = [ "benchmark" "big-parallel" "kvm" ];
+  }];
+  nix.extraOptions = ''
+    builders-use-substitutes = true
+  '';
+
   # Auto upgrade stable channel
   system.autoUpgrade = {
     enable = true;
