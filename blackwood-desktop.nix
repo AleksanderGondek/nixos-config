@@ -20,6 +20,12 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.copyKernels = true;
 
+  # TP-Link Archer T9UH v1
+  # This is broken :/
+  # boot.extraModulePackages = [
+  #  config.boot.kernelPackages.rtl8814au
+  # ];
+
   # ZFS requirements
   networking.hostId = "4746a27b";
   # Network (Wireless and cord)
