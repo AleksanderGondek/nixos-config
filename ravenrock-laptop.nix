@@ -60,6 +60,12 @@
     builders-use-substitutes = true
   '';
 
+  # Never ever go to sleep, hibernate of something like that
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
+
   # Auto upgrade stable channel
   system.autoUpgrade = {
     enable = true;
