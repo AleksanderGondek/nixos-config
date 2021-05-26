@@ -72,6 +72,7 @@ in
     };
     home.packages = with pkgs; [
       nixops
+      cachix
       evince #  Pdf reader
       (vivaldi.override {proprietaryCodecs = true; enableWidevine = true;})
       spotify # Music
