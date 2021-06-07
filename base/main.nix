@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  homeManager = fetchTarball https://github.com/rycee/home-manager/archive/release-20.09.tar.gz;
+  homeManager = fetchTarball https://github.com/rycee/home-manager/archive/release-21.05.tar.gz;
   secrets = import ../secrets.nix {};
   unstableTarball = fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
   unstable = import unstableTarball { config = { allowUnfree = true; }; };
@@ -116,5 +116,5 @@ in
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "20.09"; # Did you read the comment?
+  system.stateVersion = "21.05"; # Did you read the comment?
 }

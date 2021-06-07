@@ -84,7 +84,7 @@ in
     };
   };
 
-  systemd.services.docker.after = pkgs.lib.mkForce [ "flannel.service" ];
+  systemd.services.containerd.after = pkgs.lib.mkForce [ "flannel.service" ];
   networking.firewall.trustedInterfaces = [" flannel.1" ];
 
   # TODO: Find more elegant solution
