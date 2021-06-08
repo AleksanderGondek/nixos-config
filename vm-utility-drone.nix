@@ -7,10 +7,9 @@ in {
     ./hardware/vm-utility-drone.nix
     ./base/zfs.nix
     ./network/work-ntp.nix
-    ./virtualisation/docker.nix
     ./users/drone/user-profile.nix
     ./users/agondek/user-profile-slim.nix
-    ./cluster/k8s-dev-single-node.nix
+    #./cluster/k8s-dev-single-node.nix
   ];
 
   boot.supportedFilesystems = [ "ext4" "zfs" ];

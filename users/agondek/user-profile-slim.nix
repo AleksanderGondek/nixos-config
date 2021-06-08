@@ -18,7 +18,6 @@ in
     group = "nogroup";
     extraGroups = [
       "wheel"
-      "docker"
       "sound"
       "pulse"
       "audio"

@@ -7,7 +7,6 @@
     ./audio/pulseaudio.nix
     ./audio/bluetooth.nix
     ./desktops/default-desktop.nix
-    #./virtualisation/docker.nix
     ./virtualisation/vbox.nix
     #./cluster/k8s-dev-single-node.nix
     ./users/agondek/user-profile.nix

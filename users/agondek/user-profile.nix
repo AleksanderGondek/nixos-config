@@ -194,7 +194,6 @@ in
       oh-my-zsh = {
         enable = true;
         plugins = [
-          "docker"
           "fd"
           "git"
           "kubectl"

@@ -11,7 +11,6 @@ in
     group = "nogroup";
     extraGroups = [
       "wheel"
-      "docker"
     ];
     home = "/home/drone";
     shell = pkgs.bash;
