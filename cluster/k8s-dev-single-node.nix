@@ -3,9 +3,7 @@
 #
 # Notes about installation
 # ---
-# 1. Remove dockerd before using this config 
-#   (Otherwise you are in for some connectivity issues)
-# 2. chmod 0644 /var/lib/kubernetes/secrets/admin-key.pem
+# 1. chmod 0644 /var/lib/kubernetes/secrets/admin-key.pem
 # 
 
 let
