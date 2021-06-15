@@ -33,8 +33,8 @@
       fsType = "zfs";
     };
 
-  fileSystems."/var/lib/docker" =
-    { device = "/dev/disk/by-uuid/ec69f889-22d6-4a10-a789-b0d69bdee2d2";
+  fileSystems."/var/lib/containerd" =
+    { device = "/dev/disk/by-uuid/43b01dce-30af-4416-a83f-c534e43432dc";
       fsType = "ext4";
     };
 
