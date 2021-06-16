@@ -65,6 +65,9 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
 
+  # TODO: Move to separate nix file
+  virtualisation.containerd.enable = true;
+
   # Auto upgrade stable channel
   system.autoUpgrade = {
     enable = true;
