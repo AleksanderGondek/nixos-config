@@ -71,7 +71,8 @@ in
       };
     };
     home.packages = with pkgs; [
-      nixops
+      # Broken as of 2021-06-18
+      # nixops
       cachix
       evince #  Pdf reader
       (vivaldi.override {proprietaryCodecs = true; enableWidevine = true;})

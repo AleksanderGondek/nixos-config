@@ -8,6 +8,7 @@
     ./audio/bluetooth.nix
     ./desktops/default-desktop.nix
     ./virtualisation/vbox.nix
+    ./virtualisation/containerd.nix
     #./cluster/k8s-dev-single-node.nix
     ./users/agondek/user-profile.nix
   ];
@@ -64,9 +65,6 @@
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
-
-  # TODO: Move to separate nix file
-  virtualisation.containerd.enable = true;
 
   # Auto upgrade stable channel
   system.autoUpgrade = {
