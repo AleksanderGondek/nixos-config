@@ -9,7 +9,7 @@
     ./desktops/default-desktop.nix
     ./virtualisation/vbox.nix
     ./virtualisation/containerd.nix
-    #./cluster/k8s-dev-single-node.nix
+    ./cluster/k8s-dev-single-node.nix
     ./users/agondek/user-profile.nix
   ];
 

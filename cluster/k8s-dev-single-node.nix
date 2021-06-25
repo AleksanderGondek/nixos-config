@@ -45,42 +45,44 @@ in
     };
   };
   
+  # TODO: Make it work again
+
   # We need to apply this permissions, to use
   # addon-manager in a bit 'haxy' way - 
   # thanks to it, we can spin Ingress, Hostpath etc.
   # on cluster start.
-  services.kubernetes.addonManager.bootstrapAddons = {
-    # TODO: Investigate and drop privileges not neeeded
-    kube-addon-manager-allow-all = {
-      kind = "ClusterRoleBinding";
-      apiVersion = "rbac.authorization.k8s.io/v1";
-      metadata = {
-        name = "kube-addon-manager-allow-all";
-      };
-      roleRef = {
-        apiGroup = "rbac.authorization.k8s.io";
-        kind = "ClusterRole";
-        name = "cluster-admin";
-      };
-      subjects = [
-        {
-          kind  = "User";
-          name = "system:kube-addon-manager";
-        }
-      ];
-    };
-    ingress-nginx-namespace = {
-      kind = "Namespace";
-      apiVersion = "v1";
-      metadata = {
-        name = "ingress-nginx";
-        labels = {
-          "app.kubernetes.io/name" = "ingress-nginx";
-          "app.kubernetes.io/part-of" = "ingress-nginx";
-        };
-      };
-    };
-  };
+  # services.kubernetes.addonManager.bootstrapAddons = {
+  #   # TODO: Investigate and drop privileges not neeeded
+  #   kube-addon-manager-allow-all = {
+  #     kind = "ClusterRoleBinding";
+  #     apiVersion = "rbac.authorization.k8s.io/v1";
+  #     metadata = {
+  #       name = "kube-addon-manager-allow-all";
+  #     };
+  #     roleRef = {
+  #       apiGroup = "rbac.authorization.k8s.io";
+  #       kind = "ClusterRole";
+  #       name = "cluster-admin";
+  #     };
+  #     subjects = [
+  #       {
+  #         kind  = "User";
+  #         name = "system:kube-addon-manager";
+  #       }
+  #     ];
+  #   };
+  #   ingress-nginx-namespace = {
+  #     kind = "Namespace";
+  #     apiVersion = "v1";
+  #     metadata = {
+  #       name = "ingress-nginx";
+  #       labels = {
+  #         "app.kubernetes.io/name" = "ingress-nginx";
+  #         "app.kubernetes.io/part-of" = "ingress-nginx";
+  #       };
+  #     };
+  #   };
+  # };
 
   systemd.services.containerd.after = pkgs.lib.mkForce [ "flannel.service" ];
   networking.firewall.trustedInterfaces = [" flannel.1" ];
@@ -94,8 +96,8 @@ in
   };
 
   imports = [
-    ./addons/admin.nix
-    ./addons/hostpath-provisioner.nix
-    ./addons/ingress-nginx.nix
+    #./addons/admin.nix
+    #./addons/hostpath-provisioner.nix
+    #./addons/ingress-nginx.nix
   ];
 }
