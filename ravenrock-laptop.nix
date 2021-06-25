@@ -34,6 +34,9 @@
   networking.hostName = "ravenrock";
   networking.hostId = "8611bc40";
 
+  # Enable quemu aarch64 emulation
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
