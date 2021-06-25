@@ -85,7 +85,7 @@ in
   # };
 
   systemd.services.containerd.after = pkgs.lib.mkForce [ "flannel.service" ];
-  networking.firewall.trustedInterfaces = [" flannel.1" ];
+  networking.firewall.trustedInterfaces = [ "flannel.1" ];
 
   # TODO: Find more elegant solution
   environment.variables = {
