@@ -73,6 +73,7 @@ in
     home.packages = with pkgs; [
       # Broken as of 2021-06-18
       # nixops
+      asciinema
       cachix
       evince #  Pdf reader
       (vivaldi.override {proprietaryCodecs = true; enableWidevine = true;})
