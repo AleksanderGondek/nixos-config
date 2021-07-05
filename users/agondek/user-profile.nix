@@ -54,6 +54,7 @@ in
         '';
       };
       ".config/wallpapers/klontalersee-glarus-switzerland.jpg".source = ./config-files/.config/wallpapers/klontalersee-glarus-switzerland.jpg;
+      ".config/wallpapers/nix-glow.png".source = ./config-files/.config/wallpapers/nix-glow.png;
       ".libvirtd/createStoragePool" = {
         executable = true;
         text = ''

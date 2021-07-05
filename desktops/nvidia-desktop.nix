@@ -23,7 +23,7 @@
       extraPackages = with pkgs; [
         dmenu
         feh
-        i3lock
+        betterlockscreen
         polybarFull
         rofi
       ];

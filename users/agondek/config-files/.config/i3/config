@@ -36,7 +36,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -combi-modi window,drun,ssh -show combi -modi combi" 
 
 # Lock screen
-bindsym Mod4+l exec "i3lock -c '#272822'"
+bindsym Mod4+l exec "betterlockscreen -l"
 
 # Screenshot
 bindsym Mod4+s exec "gnome-screenshot -i"
