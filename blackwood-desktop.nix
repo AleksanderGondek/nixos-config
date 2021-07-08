@@ -7,7 +7,7 @@
     ./audio/pulseaudio.nix
     ./desktops/nvidia-desktop.nix
     ./programs/steam.nix
-    ./virtualisation/libvirtd.nix
+    ./virtualisation/containerd.nix
     #./cluster/k8s-dev-single-node.nix
     #./ci/hydra.nix
     ./users/agondek/user-profile.nix
@@ -19,11 +19,12 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.copyKernels = true;
 
-  # TP-Link Archer T9UH v1
-  # This is broken :/
-  # boot.extraModulePackages = [
-  #  config.boot.kernelPackages.rtl8814au
-  # ];
+  # TP-Link Archer T9UH v1: rtl8814au
+  # "v4l2loopback" -> virtualcam for OBS
+  boot.kernelModules = [ "rtl8814au" "v4l2loopback" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    rtl8814au v4l2loopback
+  ];
 
   # ZFS requirements
   networking.hostId = "4746a27b";
