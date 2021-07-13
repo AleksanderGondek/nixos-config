@@ -19,6 +19,13 @@ let
       };
     };
   };
+  ra_wrapper = pkgs.writeScript "ra-wrapper.sh" ''
+    #!/usr/bin/env bash
+    RA="${pkgs.rust-analyzer}/bin/rust-analyzer" 
+    export CARGO="${pkgs.cargo}/bin/cargo"
+    export RUSTC="${pkgs.rustc}/bin/rustc"
+    $RA "$@"
+  '';
 in my_configurable_vim.customize {
   name = "vim";
 
@@ -48,7 +55,7 @@ in my_configurable_vim.customize {
 \ [
 \   {
 \     'name': 'rust',
-\     'cmdline': ['rust-analyzer'],
+\     'cmdline': ['${ra_wrapper}'],
 \     'filetypes': ['rust'],
 \     'project_root_files': ['Cargo.toml']
 \   }
