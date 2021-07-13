@@ -4,6 +4,7 @@ let
   preConfiguredVscode = pkgs.vscode-with-extensions.override {
     vscodeExtensions = with pkgs.vscode-extensions; [
       bbenoist.Nix
+      matklad.rust-analyzer
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "python";
@@ -52,12 +53,6 @@ let
         publisher = "BazelBuild";
         version = "0.4.0";
         sha256 = "0p018878pxr7vxr6375fywchzq1xwvxnjrb4zvp444s6p3sknxxg";
-      }
-      {
-        name = "rust";
-        publisher = "rust-lang";
-        version = "0.7.8";
-        sha256 = "039ns854v1k4jb9xqknrjkj8lf62nfcpfn0716ancmjc4f0xlzb3";
       }
       {
         name = "cuelang";

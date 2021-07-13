@@ -31,6 +31,8 @@ in
       ".gtkrc-2.0".source = ./config-files/.gtkrc-2.0;
       ".screenlayout/setup-monitor.layout.sh".source = ./config-files/.screenlayout/setup-monitor.layout.sh;
       ".screenlayout/ravenrock-laptop.layout.sh".source = ./config-files/.screenlayout/ravenrock-laptop.layout.sh;
+      ".config/wallpapers/klontalersee-glarus-switzerland.jpg".source = ./config-files/.config/wallpapers/klontalersee-glarus-switzerland.jpg;
+      ".config/wallpapers/nix-glow.png".source = ./config-files/.config/wallpapers/nix-glow.png;
       ".config/gtk-3.0/settings.ini".source = ./config-files/.config/gtk-3.0/settings.ini;
       ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
       ".config/htop/htoprc".source = ./config-files/.config/htop/htoprc;
@@ -39,22 +41,28 @@ in
       ".config/polybar/run-polybar.sh".source = ./config-files/.config/polybar/run-polybar.sh;
       ".config/rofi/config".source = ./config-files/.config/rofi/config;
       ".config/rofi/Monokai.rasi".source = ./config-files/.config/rofi/Monokai.rasi;
-      ".config/Code/User/settings.json".source = ./config-files/.config/Code/User/settings.json;
-      ".config/Code/User/rlsWrapper.sh" = {
-        executable = true;
-        text = ''
-          #!/usr/bin/env bash
-          # This helps in wierd OPENSSL issues while compiling rust
-          RLS=rls
-          export LD_LIBRARY_PATH=''$(rustc --print sysroot)/lib
-          export RUST_BACKTRACE=full
-          export OPENSSL_LIB_DIR="${pkgs.openssl.out}/lib";
-          export OPENSSL_INCLUDE_DIR="${pkgs.openssl.dev}/include";
-          ''$RLS "''$@"
-        '';
-      };
-      ".config/wallpapers/klontalersee-glarus-switzerland.jpg".source = ./config-files/.config/wallpapers/klontalersee-glarus-switzerland.jpg;
-      ".config/wallpapers/nix-glow.png".source = ./config-files/.config/wallpapers/nix-glow.png;
+      ".config/Code/User/settings.json".source = pkgs.writeText "setting.json" ''
+      {
+        "editor.fontFamily": "'Hack Regular', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+        "editor.fontSize": 12,
+        "editor.tabSize": 2,
+        "terminal.integrated.fontSize": 12,
+        "terminal.integrated.detectLocale": "on",
+        "terminal.integrated.fontFamily": "Hack",
+        "terminal.explorerKind": "integrated",
+        "update.mode": "none",
+        "update.showReleaseNotes": false,
+        "workbench.colorTheme": "Monokai Pro",
+        "workbench.iconTheme": "Monokai Pro Icons",
+        // Implementation-specific workaround - rust-analyzer is really hellbent on using everything global
+        // I really do not want't to have anything globally set
+        // Impl: https://github.com/rust-analyzer/rust-analyzer/blob/d0f2bc3b878d1c1d8eaf081e6f670ebb928b7a5f/editors/code/src/toolchain.ts#L149
+        "rust-analyzer.server.extraEnv": {
+          "CARGO": "${pkgs.cargo}/bin/cargo",
+          "RUSTC": "${pkgs.rustc}/bin/rustc",
+        }
+      }
+      '';
       ".libvirtd/createStoragePool" = {
         executable = true;
         text = ''
@@ -72,39 +80,31 @@ in
       };
     };
     home.packages = with pkgs; [
+      asciinema
+      blueman  # Bluetooth
+      cachix
+      evince  #  Pdf reader
+      gnome3.gnome-screenshot
+      kazam
+      keepassxc
+      krita
+      obs-studio
       # Broken as of 2021-06-18
       # nixops
-      asciinema
-      cachix
-      evince #  Pdf reader
-      (vivaldi.override {proprietaryCodecs = true; enableWidevine = true;})
-      spotify # Music
-      gnome3.gnome-screenshot # Screenshot
-      remmina
       neofetch
-      # Video ops
-      kazam
-      vlc
-      obs-studio
-      # Passwords
-      keepassxc
-      # Emails
-      # IDEs
-      preConfiguredVscode
-      # Taking notes
-      unstable.joplin
-      unstable.joplin-desktop
       notepadqq
-      zim
-      # Memes
-      krita
-      # Staying in touch
-      unstable.discord
+      preConfiguredVscode
+      remmina
       signal-desktop
       slack-dark
+      spotify
+      (vivaldi.override {proprietaryCodecs = true; enableWidevine = true;})
+      vlc
+      zim
+      unstable.discord
+      unstable.joplin
+      unstable.joplin-desktop
       unstable.zoom-us
-      # Bluetooth
-      blueman
       # Developing in Scala
       jdk
       sbt
@@ -118,20 +118,6 @@ in
           virtualenv
         ]
       ))
-      # Developiong in Rust
-      binutils
-      gcc
-      gnumake
-      openssl
-      pkgconfig
-      # Factory of factory of factory..
-      # Only for IDE integration (sigh)
-      rustup
-      rust-analyzer
-      # Bazel 
-      bazel-buildtools
-      # Work?
-      vagrant
     ];
     services.dunst = {
       enable = true;
