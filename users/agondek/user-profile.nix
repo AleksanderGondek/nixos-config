@@ -89,8 +89,7 @@ in
       keepassxc
       krita
       obs-studio
-      # Broken as of 2021-06-18
-      # nixops
+      nixops
       neofetch
       notepadqq
       preConfiguredVscode
@@ -100,7 +99,6 @@ in
       spotify
       (vivaldi.override {proprietaryCodecs = true; enableWidevine = true;})
       vlc
-      zim
       unstable.discord
       unstable.joplin
       unstable.joplin-desktop
