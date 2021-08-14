@@ -88,6 +88,7 @@ in
 
   imports = [
     ./addons/admin.nix
+    ./addons/dashboard.nix
     ./addons/hostpath-provisioner.nix
     #./addons/ingress-nginx.nix
   ];

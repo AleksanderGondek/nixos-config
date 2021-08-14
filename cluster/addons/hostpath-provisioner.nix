@@ -4,7 +4,7 @@
   # https://github.com/MaZderMind/hostpath-provisioner/blob/master/manifests/rbac.yaml
   services.kubernetes.addonManager.addons.provisioner-clusterRole = {
     kind = "ClusterRole";
-    apiVersion = "rbac.authorization.k8s.io/v1beta1";
+    apiVersion = "rbac.authorization.k8s.io/v1";
     metadata = {
       name = "hostpath-provisioner";
       labels = {
@@ -38,7 +38,7 @@
 
   services.kubernetes.addonManager.addons.provisioner-clusterRoleBinding = {
     kind = "ClusterRoleBinding";
-    apiVersion = "rbac.authorization.k8s.io/v1beta1";
+    apiVersion = "rbac.authorization.k8s.io/v1";
     metadata = {
       name="hostpath-provisioner";
       labels = {
