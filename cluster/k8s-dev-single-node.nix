@@ -65,17 +65,6 @@ in
         }
       ];
     };
-    # ingress-nginx-namespace = {
-    #   kind = "Namespace";
-    #   apiVersion = "v1";
-    #   metadata = {
-    #     name = "ingress-nginx";
-    #     labels = {
-    #       "app.kubernetes.io/name" = "ingress-nginx";
-    #       "app.kubernetes.io/part-of" = "ingress-nginx";
-    #     };
-    #   };
-    # };
   };
  
   # TODO: Find more elegant solution
@@ -88,8 +77,8 @@ in
 
   imports = [
     ./addons/admin.nix
+    ./addons/cluster-ingress.nix
     ./addons/dashboard.nix
     ./addons/hostpath-provisioner.nix
-    #./addons/ingress-nginx.nix
   ];
 }
