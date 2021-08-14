@@ -21,6 +21,11 @@ let
   };
 in
 {
+  # As this is dev setup, value expediency over stability
+  systemd.services.containerd.serviceConfig.KillMode = pkgs.lib.mkForce "mixed";
+  systemd.services.flannel.serviceConfig.TimeoutSec = 10;
+  systemd.services.kube-apiserver .serviceConfig.TimeoutSec = 10;
+
   systemd.services.containerd.after = pkgs.lib.mkForce [ "flannel.service" ];
   networking.firewall.trustedInterfaces = [ "flannel.1" "mynet" ]; 
 
