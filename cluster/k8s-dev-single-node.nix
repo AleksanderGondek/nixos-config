@@ -7,19 +7,18 @@
 # 
 
 let
-  x = 1;
-  # devClusterAdminCert = config.services.kubernetes.lib.mkCert {
-  #   name = "admin";
-  #   CN = "kubernetes-cluster-ca";
-  #   fields = {
-  #     O = "system:masters";
-  #   };
-  # };
-  # devClusterAdminKubeConfig = config.services.kubernetes.lib.mkKubeConfig "admin" {
-  #   server = config.services.kubernetes.apiserverAddress;
-  #   certFile = devClusterAdminCert.cert;
-  #   keyFile = devClusterAdminCert.key;
-  # };
+  clusterAdminCert = config.services.kubernetes.lib.mkCert {
+    name = "cluster-admin";
+    CN = "kubernetes-cluster-ca";
+    fields = {
+      O = "system:masters";
+    };
+  };
+  clusterAdminKubeConfig = config.services.kubernetes.lib.mkKubeConfig "cluster-admin" {
+    server = config.services.kubernetes.apiserverAddress;
+    certFile = clusterAdminCert.cert;
+    keyFile = clusterAdminCert.key;
+  };
 in
 {
   systemd.services.containerd.after = pkgs.lib.mkForce [ "flannel.service" ];
@@ -34,70 +33,62 @@ in
     apiserver.authorizationMode = [ "RBAC" "Node" ];
     apiserver.allowPrivileged = true;
 
-    # pki.certs = { 
-    #   devClusterAdmin = devClusterAdminCert; 
-    # };
+    pki.certs = { 
+      devClusterAdmin = clusterAdminCert; 
+    };
 
     addons.dns.replicas = 1;
-    addons.dashboard = {
-      enable = true;
-      rbac = { 
-        enable = true;
-        clusterAdmin = false;
-      };
-    };
+    addons.dashboard.enable = false;
   };
   
-  # TODO: Make it work again
-
   # We need to apply this permissions, to use
   # addon-manager in a bit 'haxy' way - 
   # thanks to it, we can spin Ingress, Hostpath etc.
   # on cluster start.
-  # services.kubernetes.addonManager.bootstrapAddons = {
-  #   # TODO: Investigate and drop privileges not neeeded
-  #   kube-addon-manager-allow-all = {
-  #     kind = "ClusterRoleBinding";
-  #     apiVersion = "rbac.authorization.k8s.io/v1";
-  #     metadata = {
-  #       name = "kube-addon-manager-allow-all";
-  #     };
-  #     roleRef = {
-  #       apiGroup = "rbac.authorization.k8s.io";
-  #       kind = "ClusterRole";
-  #       name = "cluster-admin";
-  #     };
-  #     subjects = [
-  #       {
-  #         kind  = "User";
-  #         name = "system:kube-addon-manager";
-  #       }
-  #     ];
-  #   };
-  #   ingress-nginx-namespace = {
-  #     kind = "Namespace";
-  #     apiVersion = "v1";
-  #     metadata = {
-  #       name = "ingress-nginx";
-  #       labels = {
-  #         "app.kubernetes.io/name" = "ingress-nginx";
-  #         "app.kubernetes.io/part-of" = "ingress-nginx";
-  #       };
-  #     };
-  #   };
-  # };
+  services.kubernetes.addonManager.bootstrapAddons = {
+    # TODO: Investigate and drop privileges not neeeded
+    kube-addon-manager-allow-all = {
+      kind = "ClusterRoleBinding";
+      apiVersion = "rbac.authorization.k8s.io/v1";
+      metadata = {
+        name = "kube-addon-manager-allow-all";
+      };
+      roleRef = {
+        apiGroup = "rbac.authorization.k8s.io";
+        kind = "ClusterRole";
+        name = "cluster-admin";
+      };
+      subjects = [
+        {
+          kind  = "User";
+          name = "system:kube-addon-manager";
+        }
+      ];
+    };
+    # ingress-nginx-namespace = {
+    #   kind = "Namespace";
+    #   apiVersion = "v1";
+    #   metadata = {
+    #     name = "ingress-nginx";
+    #     labels = {
+    #       "app.kubernetes.io/name" = "ingress-nginx";
+    #       "app.kubernetes.io/part-of" = "ingress-nginx";
+    #     };
+    #   };
+    # };
+  };
  
-  # # TODO: Find more elegant solution
-  # environment.variables = {
-  #   KUBECONFIG="${devClusterAdminKubeConfig}:$HOME/.kube/config";
-  # };
-  # home-manager.users.agondek.home.sessionVariables = {
-  #   KUBECONFIG="${devClusterAdminKubeConfig}:$HOME/.kube/config";
-  # };
+  # TODO: Find more elegant solution
+  environment.variables = {
+    KUBECONFIG="${clusterAdminKubeConfig}:$HOME/.kube/config";
+  };
+  home-manager.users.agondek.home.sessionVariables = {
+    KUBECONFIG="${clusterAdminKubeConfig}:$HOME/.kube/config";
+  };
 
-  # imports = [
-  #   ./addons/admin.nix
-  #   ./addons/hostpath-provisioner.nix
-  #   ./addons/ingress-nginx.nix
-  # ];
+  imports = [
+    ./addons/admin.nix
+    ./addons/hostpath-provisioner.nix
+    #./addons/ingress-nginx.nix
+  ];
 }
