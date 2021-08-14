@@ -7,23 +7,26 @@
 # 
 
 let
-  devClusterAdminCert = config.services.kubernetes.lib.mkCert {
-    name = "admin";
-    CN = "kubernetes-cluster-ca";
-    fields = {
-      O = "system:masters";
-    };
-  };
-  devClusterAdminKubeConfig = config.services.kubernetes.lib.mkKubeConfig "admin" {
-    server = config.services.kubernetes.apiserverAddress;
-    certFile = devClusterAdminCert.cert;
-    keyFile = devClusterAdminCert.key;
-  };
+  x = 1;
+  # devClusterAdminCert = config.services.kubernetes.lib.mkCert {
+  #   name = "admin";
+  #   CN = "kubernetes-cluster-ca";
+  #   fields = {
+  #     O = "system:masters";
+  #   };
+  # };
+  # devClusterAdminKubeConfig = config.services.kubernetes.lib.mkKubeConfig "admin" {
+  #   server = config.services.kubernetes.apiserverAddress;
+  #   certFile = devClusterAdminCert.cert;
+  #   keyFile = devClusterAdminCert.key;
+  # };
 in
 {
+  systemd.services.containerd.after = pkgs.lib.mkForce [ "flannel.service" ];
+  networking.firewall.trustedInterfaces = [ "flannel.1" "mynet" ]; 
+
   services.kubernetes = {
     roles = ["master" "node"];
-    easyCerts = true;
 
     masterAddress = config.networking.hostName;
     kubelet.extraOpts = "--fail-swap-on=false";
@@ -31,9 +34,9 @@ in
     apiserver.authorizationMode = [ "RBAC" "Node" ];
     apiserver.allowPrivileged = true;
 
-    pki.certs = { 
-      devClusterAdmin = devClusterAdminCert; 
-    };
+    # pki.certs = { 
+    #   devClusterAdmin = devClusterAdminCert; 
+    # };
 
     addons.dns.replicas = 1;
     addons.dashboard = {
@@ -83,21 +86,18 @@ in
   #     };
   #   };
   # };
+ 
+  # # TODO: Find more elegant solution
+  # environment.variables = {
+  #   KUBECONFIG="${devClusterAdminKubeConfig}:$HOME/.kube/config";
+  # };
+  # home-manager.users.agondek.home.sessionVariables = {
+  #   KUBECONFIG="${devClusterAdminKubeConfig}:$HOME/.kube/config";
+  # };
 
-  systemd.services.containerd.after = pkgs.lib.mkForce [ "flannel.service" ];
-  networking.firewall.trustedInterfaces = [ "flannel.1" ];
-
-  # TODO: Find more elegant solution
-  environment.variables = {
-    KUBECONFIG="${devClusterAdminKubeConfig}:$HOME/.kube/config";
-  };
-  home-manager.users.agondek.home.sessionVariables = {
-    KUBECONFIG="${devClusterAdminKubeConfig}:$HOME/.kube/config";
-  };
-
-  imports = [
-    #./addons/admin.nix
-    #./addons/hostpath-provisioner.nix
-    #./addons/ingress-nginx.nix
-  ];
+  # imports = [
+  #   ./addons/admin.nix
+  #   ./addons/hostpath-provisioner.nix
+  #   ./addons/ingress-nginx.nix
+  # ];
 }

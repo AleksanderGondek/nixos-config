@@ -8,7 +8,7 @@
     ./desktops/nvidia-desktop.nix
     ./programs/steam.nix
     ./virtualisation/containerd.nix
-    #./cluster/k8s-dev-single-node.nix
+    ./cluster/k8s-dev-single-node.nix
     #./ci/hydra.nix
     ./users/agondek/user-profile.nix
   ];
