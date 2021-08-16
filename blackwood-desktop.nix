@@ -9,7 +9,6 @@
     ./programs/steam.nix
     ./virtualisation/containerd.nix
     ./cluster/k8s-dev-single-node.nix
-    #./ci/hydra.nix
     ./users/agondek/user-profile.nix
   ];
   # Use the systemd-boot EFI boot loader.
