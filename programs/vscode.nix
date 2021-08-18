@@ -5,6 +5,7 @@ let
     vscodeExtensions = with pkgs.vscode-extensions; [
       bbenoist.Nix
       matklad.rust-analyzer
+      pkgs.unstable.vscode-extensions.vadimcn.vscode-lldb
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "python";
