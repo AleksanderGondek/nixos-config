@@ -5,7 +5,7 @@
     kind = "ServiceAccount";
     apiVersion = "v1";
     metadata = {
-      name = "sa-cluster-admin";
+      name = "cluster-admin-sa";
       namespace = "kube-system";
       labels = {
         # Custom modification, needed to make it work
@@ -18,7 +18,7 @@
     apiVersion="rbac.authorization.k8s.io/v1";
     kind = "ClusterRoleBinding";
     metadata = {
-      name = "sa-cluster-admin-role-binding";
+      name = "cluster-admin-sa-role-binding";
       labels = {
         "addonmanager.kubernetes.io/mode" = "Reconcile";
       };
@@ -31,7 +31,7 @@
     subjects = [
         {
           kind = "ServiceAccount";
-          name = "sa-cluster-admin";
+          name = "cluster-admin-sa";
           namespace = "kube-system";
         }
       ];
