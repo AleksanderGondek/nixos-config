@@ -133,5 +133,6 @@
     };
     provisioner = "kubevirt.io/hostpath-provisioner";
     reclaimPolicy = "Delete";
+    volumeBindingMode = "WaitForFirstConsumer";
   };
 }
