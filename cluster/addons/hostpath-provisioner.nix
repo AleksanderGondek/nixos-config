@@ -1,148 +1,137 @@
 { config, lib, pkgs, ... }:
 
 {
-  # https://github.com/MaZderMind/hostpath-provisioner/blob/master/manifests/rbac.yaml
-  services.kubernetes.addonManager.addons.provisioner-clusterRole = {
+  services.kubernetes.addonManager.addons.hostpath-provisioner-cr = {
+    apiVersion = "rbac.authorization.k8s.io/v1beta1";
     kind = "ClusterRole";
-    apiVersion = "rbac.authorization.k8s.io/v1";
     metadata = {
-      name = "hostpath-provisioner";
-      labels = {
-        # Custom modification, needed to make it work
-        "addonmanager.kubernetes.io/mode" = "Reconcile";
-      };
+      labels = { "addonmanager.kubernetes.io/mode" = "Reconcile"; };
+      name = "kubevirt-hostpath-provisioner";
     };
     rules = [
       {
-        apiGroups = [""];
-        resources = ["persistentvolumes"];
-        verbs = ["get" "list" "watch" "create" "delete"];
+        apiGroups = [ "" ];
+        resources = [ "nodes" ];
+        verbs = [ "get" ];
       }
       {
-        apiGroups = [""];
-        resources = ["persistentvolumeclaims"];
-        verbs = ["get" "list" "watch" "update"];
+        apiGroups = [ "" ];
+        resources = [ "persistentvolumes" ];
+        verbs = [ "get" "list" "watch" "create" "delete" ];
       }
       {
-        apiGroups = ["storage.k8s.io"];
-        resources = ["storageclasses"];
-        verbs = ["get" "list" "watch"];
+        apiGroups = [ "" ];
+        resources = [ "persistentvolumeclaims" ];
+        verbs = [ "get" "list" "watch" "update" ];
       }
       {
-        apiGroups = [""];
-        resources = ["events"];
-        verbs = ["list" "watch" "create" "update" "patch"];
+        apiGroups = [ "storage.k8s.io" ];
+        resources = [ "storageclasses" ];
+        verbs = [ "get" "list" "watch" ];
+      }
+      {
+        apiGroups = [ "" ];
+        resources = [ "events" ];
+        verbs = [ "list" "watch" "create" "update" "patch" ];
       }
     ];
   };
-
-  services.kubernetes.addonManager.addons.provisioner-clusterRoleBinding = {
-    kind = "ClusterRoleBinding";
+  services.kubernetes.addonManager.addons.hostpath-provisioner-crb = {
     apiVersion = "rbac.authorization.k8s.io/v1";
+    kind = "ClusterRoleBinding";
     metadata = {
-      name="hostpath-provisioner";
-      labels = {
-        # Custom modification, needed to make it work
-        "addonmanager.kubernetes.io/mode" = "Reconcile";
-      };
+      labels = { "addonmanager.kubernetes.io/mode" = "Reconcile"; };
+      name = "kubevirt-hostpath-provisioner";
     };
     roleRef = {
       apiGroup = "rbac.authorization.k8s.io";
       kind = "ClusterRole";
-      name = "hostpath-provisioner";
+      name = "kubevirt-hostpath-provisioner";
     };
-    subjects = [
-      {
-        kind = "ServiceAccount";
-        name = "default";
-        namespace = "kube-system";
-      }
-    ];
+    subjects = [{
+      kind = "ServiceAccount";
+      name = "kubevirt-hostpath-provisioner-admin";
+      namespace = "kubevirt-hostpath-provisioner";
+    }];
   };
-
-  #https://github.com/MaZderMind/hostpath-provisioner/blob/master/manifests/deployment.yaml
-  services.kubernetes.addonManager.addons.provisioner-deployment = {
-    apiVersion="apps/v1";
-    kind="Deployment";
+  services.kubernetes.addonManager.addons.hostpath-provisioner-ds = {
+    apiVersion = "apps/v1";
+    kind = "DaemonSet";
     metadata = {
-      name="hostpath-provisioner";
-      namespace = "kube-system";
       labels = {
-        "k8s-app" = "hostpath-provisioner";
         "addonmanager.kubernetes.io/mode" = "Reconcile";
+        k8s-app = "kubevirt-hostpath-provisioner";
       };
+      name = "kubevirt-hostpath-provisioner";
+      namespace = "kubevirt-hostpath-provisioner";
     };
     spec = {
-      replicas = 1;
-      revisionHistoryLimit = 0;
-
       selector = {
-        matchLabels = {
-          "k8s-app" = "hostpath-provisioner";
-        };
+        matchLabels = { k8s-app = "kubevirt-hostpath-provisioner"; };
       };
-
       template = {
-        metadata = {
-          labels = {
-            "k8s-app" = "hostpath-provisioner";
-          };
-        };
-
+        metadata = { labels = { k8s-app = "kubevirt-hostpath-provisioner"; }; };
         spec = {
-          containers = [
-            {
-              name = "hostpath-provisioner";
-              image = "mazdermind/hostpath-provisioner:latest";
-              env = [
-                {
-                  name = "NODE_NAME";
-                  valueFrom = {
-                    fieldRef = {
-                        fieldPath="spec.nodeName";
-                      };
-                    };
-                }
-                {
-                  name="PV_DIR";
-                  value="/var/kubernetes";
-                }
-              ];
-              volumeMounts = [
-                {
-                  name="pv-volume";
-                  mountPath="/var/kubernetes";
-                }
-              ];
-            }
-          ];
-
-          volumes = [
-            {
-              name="pv-volume";
-              hostPath = {
-                path="/var/kubernetes";
-              };
-            }
-          ];
+          containers = [{
+            env = [
+              {
+                name = "USE_NAMING_PREFIX";
+                value = "false";
+              }
+              {
+                name = "NODE_NAME";
+                valueFrom = { fieldRef = { fieldPath = "spec.nodeName"; }; };
+              }
+              {
+                name = "PV_DIR";
+                value = "/var/kubernetes-volumes";
+              }
+            ];
+            image = "quay.io/kubevirt/hostpath-provisioner";
+            imagePullPolicy = "Always";
+            name = "kubevirt-hostpath-provisioner";
+            volumeMounts = [{
+              mountPath = "/var/kubernetes-volumes";
+              name = "pv-volume";
+            }];
+          }];
+          serviceAccountName = "kubevirt-hostpath-provisioner-admin";
+          volumes = [{
+            hostPath = { path = "/var/kubernetes-volumes"; };
+            name = "pv-volume";
+          }];
         };
       };
     };
   };
-
-  # https://github.com/MaZderMind/hostpath-provisioner/blob/master/manifests/storageclass.yaml
-  services.kubernetes.addonManager.addons.provisioner-sc = {
-    kind = "StorageClass";
-    provisioner = "hostpath";
-    apiVersion = "storage.k8s.io/v1";
+  services.kubernetes.addonManager.addons.hostpath-provisioner-ns = {
+    apiVersion = "v1";
+    kind = "Namespace";
     metadata = {
-      name = "hostpath";
+      labels = { "addonmanager.kubernetes.io/mode" = "Reconcile"; };
+      name = "kubevirt-hostpath-provisioner";
+    };
+  };
+  services.kubernetes.addonManager.addons.hostpath-provisioner-sa = {
+    apiVersion = "v1";
+    kind = "ServiceAccount";
+    metadata = {
+      labels = { "addonmanager.kubernetes.io/mode" = "Reconcile"; };
+      name = "kubevirt-hostpath-provisioner-admin";
+      namespace = "kubevirt-hostpath-provisioner";
+    };
+  };
+  services.kubernetes.addonManager.addons.hostpath-provisioner-sc = {
+    apiVersion = "storage.k8s.io/v1";
+    kind = "StorageClass";
+    metadata = {
       annotations = {
         "storageclass.kubernetes.io/is-default-class" = "true";
       };
-      labels = {
-        "addonmanager.kubernetes.io/mode" = "Reconcile";
-      };
+      labels = { "addonmanager.kubernetes.io/mode" = "Reconcile"; };
+      name = "kubevirt-hostpath-provisioner";
     };
+    provisioner = "kubevirt.io/hostpath-provisioner";
+    reclaimPolicy = "Delete";
   };
 }
