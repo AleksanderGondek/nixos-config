@@ -5,6 +5,7 @@ let
     vscodeExtensions = with pkgs.vscode-extensions; [
       bbenoist.Nix
       matklad.rust-analyzer
+      golang.Go
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "python";
