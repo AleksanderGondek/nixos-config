@@ -62,7 +62,7 @@ in {
   # Auto upgrade stable channel
   system.autoUpgrade = {
     enable = true;
-    channel = "https://nixos.org/channels/nixos-20.09";
+    channel = "https://nixos.org/channels/nixos-21.05";
     dates = "weekly";
     # Without explicit nixos config location, you are in for a bad times
     flags = [
