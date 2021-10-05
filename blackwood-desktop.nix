@@ -24,6 +24,8 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [
     rtl8814au v4l2loopback
   ];
+  # Emulate aarch64
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # ZFS requirements
   networking.hostId = "4746a27b";
