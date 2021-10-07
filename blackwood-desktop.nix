@@ -7,6 +7,7 @@
     ./audio/pulseaudio.nix
     ./desktops/nvidia-desktop.nix
     ./programs/steam.nix
+    ./virtualisation/vbox.nix
     ./virtualisation/containerd.nix
     ./cluster/k8s-dev-single-node.nix
     ./users/agondek/user-profile.nix
