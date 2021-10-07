@@ -52,6 +52,9 @@ in
       userEmail = secrets.users.agondek.git.email;
       userName = "Aleksander Gondek";
       extraConfig = {
+        init = {
+          defaultBranch = "master";
+        };
         core = {
           editor = "vim";
         };
