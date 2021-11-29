@@ -80,11 +80,13 @@ in
       };
     };
     home.packages = with pkgs; [
+      cntr
       asciinema
       blueman  # Bluetooth
       cachix
       evince  #  Pdf reader
       gnome3.gnome-screenshot
+      gnome.gnome-sound-recorder
       kazam
       keepassxc
       krita

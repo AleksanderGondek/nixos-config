@@ -84,6 +84,7 @@ in
   environment.systemPackages = with pkgs; [
     bind
     busybox
+    cntr
     curl
     gitAndTools.gitFull
     gnupg
