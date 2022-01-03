@@ -44,6 +44,24 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
 
+  nix.binaryCaches = [ s3://helm-bazel?endpoint=storage.googleapis.com&profile=default ];
+  nix.binaryCachePublicKeys = [ helm-bazel:hGQ4NQFI85O7cVlsW+agmJSg5mXhi+LUe137dUQeYQM= ];
+  nix.requireSignedBinaryCaches = false;
+  nix.buildMachines = [
+    # tweag remote builder
+    {
+      hostName = "build01.tweag.io";
+      maxJobs = 24;
+      sshUser = "nix";
+      sshKey = "/root/.ssh/agondek-id-tweag-builder";
+      system = "x86_64-linux";
+      supportedFeatures = [ "benchmark" "big-parallel" "kvm" ];
+    }
+  ];
+  nix.extraOptions = ''
+    builders-use-substitutes = true
+  '';
+
   # Auto upgrade stable channel
   system.autoUpgrade = {
     enable = true;
