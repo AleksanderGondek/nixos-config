@@ -39,8 +39,8 @@ in
       ".config/i3/config".source = ./config-files/.config/i3/config;
       ".config/polybar/config".source = ./config-files/.config/polybar/config;
       ".config/polybar/run-polybar.sh".source = ./config-files/.config/polybar/run-polybar.sh;
-      ".config/rofi/config".source = ./config-files/.config/rofi/config;
-      ".config/rofi/Monokai.rasi".source = ./config-files/.config/rofi/Monokai.rasi;
+      ".config/rofi/config.rasi".source = ./config-files/.config/rofi/config.rasi;
+      ".config/rofi/monokai.rasi".source = ./config-files/.config/rofi/monokai.rasi;
       ".config/Code/User/settings.json".source = pkgs.writeText "setting.json" ''
       {
         "editor.fontFamily": "'Hack Regular', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
