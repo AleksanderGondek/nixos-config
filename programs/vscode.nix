@@ -3,9 +3,9 @@
 let
   preConfiguredVscode = pkgs.vscode-with-extensions.override {
     vscodeExtensions = with pkgs.vscode-extensions; [
-      bbenoist.Nix
+      bbenoist.nix
       matklad.rust-analyzer
-      golang.Go
+      golang.go
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "python";
