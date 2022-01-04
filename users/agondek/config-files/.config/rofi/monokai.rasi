@@ -65,6 +65,9 @@
     border:  0;
     padding: 1px ;
 }
+element-text {
+    text-color: @normal-foreground;
+}
 #element.normal.normal {
     background-color: @normal-background;
     text-color:       @normal-foreground;
