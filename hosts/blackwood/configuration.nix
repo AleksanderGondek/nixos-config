@@ -1,17 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ 
-    ./hardware/blackwood-desktop.nix
-    ./base/zfs.nix
-    ./audio/pulseaudio.nix
-    ./desktops/nvidia-desktop.nix
-    ./programs/steam.nix
-    ./virtualisation/vbox.nix
-    ./virtualisation/containerd.nix
-    ./cluster/k8s-dev-single-node.nix
-    ./users/agondek/user-profile.nix
-  ];
+  # User related secrets
+  # TOOD: There has to be a better way!
+  sops.secrets.agondek_password = {
+    sopsFile = ./secrets/agondek.yaml;
+    neededForUsers = true;
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -64,12 +60,6 @@
 
   # Auto upgrade stable channel
   system.autoUpgrade = {
-    enable = true;
-    channel = "https://nixos.org/channels/nixos-21.11";
-    dates = "weekly";
-    # Without explicit nixos config location, you are in for a bad times
-    flags = [
-      "-I nixos-config=/home/agondek/projects/nixos-config/blackwood-desktop.nix"
-    ];
+    enable = false;
   };
 }

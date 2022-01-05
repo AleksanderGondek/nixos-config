@@ -1,0 +1,11 @@
+keys:
+  - &user_agondek_blackwood age1xcdc26y6nqhqrtgqj9lkx2ew58pjsgehxt3g44gtzy2q8g93upaq22ryjm
+  - &server_blackwood age1fszuf08p7xmm47t37dtuyj0s0gfydmnk5sdkx3jvg2vm4ph89shs3ekjul
+  - &server_nixos_flake_test age15vmnelwhcz777qnatt0ku6v62wj3jassrydqh68ywpe8rl8gysds76gs0s
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+        - *user_agondek_blackwood
+        - *server_blackwood
+        - *server_nixos_flake_test

@@ -1,17 +1,12 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./hardware/ravenrock-laptop.nix
-    ./base/zfs.nix
-    ./audio/pulseaudio.nix
-    ./audio/bluetooth.nix
-    ./desktops/default-desktop.nix
-    ./virtualisation/vbox.nix
-    ./virtualisation/containerd.nix
-    ./cluster/k8s-dev-single-node.nix
-    ./users/agondek/user-profile.nix
-  ];
+  # User related secrets
+  # TOOD: There has to be a better way!
+  sops.secrets.agondek_password = {
+    sopsFile = ./secrets/agondek.yaml;
+    neededForUsers = true;
+  };
 
   # nixos-hardware for X1 Carbon
   boot.initrd.kernelModules = [ "i915" ];
@@ -70,13 +65,7 @@
 
   # Auto upgrade stable channel
   system.autoUpgrade = {
-    enable = true;
-    channel = "https://nixos.org/channels/nixos-21.11";
-    dates = "weekly";
-    # Without explicit nixos config location, you are in for a bad times
-    flags = [
-      "-I nixos-config=/home/agondek/projects/nixos-config/ravenrock-laptop.nix"
-    ];
+    enable = false;
   };
 }
 
