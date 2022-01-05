@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  secrets = import ../../secrets.nix {};
-in
 {
   environment.systemPackages = with pkgs; [
     exa
@@ -27,7 +24,7 @@ in
     shell = pkgs.bash;
     createHome = true;
     useDefaultShell = false;
-    hashedPassword = secrets.users.agondek.hashedPassword;
+    passwordFile = config.sops.secrets.agondek_password.path;
   };
 
   home-manager.users.agondek = {
@@ -49,7 +46,7 @@ in
     };
     programs.git = {
       enable = true;
-      userEmail = secrets.users.agondek.git.email;
+      userEmail = "gondekaleksander@protonmail.com";
       userName = "Aleksander Gondek";
       extraConfig = {
         init = {
@@ -66,7 +63,7 @@ in
         };
       };
       signing = {
-        key = secrets.users.agondek.git.gpgSigningKey;
+        key = "65CCE6BBC241FF3F30CC531D816D9CCE02C7F649";
         signByDefault = true;
       };
     };

@@ -1,6 +1,6 @@
 # This version of desktop environment assumes 
 # having 'powerful' workstation with nvidia card
-{ config, pkgs, ... }:
+{ config, pkgs, latest-nixpkgs, ... }:
 
 {
   services.xserver = {
@@ -34,7 +34,7 @@
     font-awesome_4
     terminus_font
     powerline-fonts
-    (unstable.nerdfonts.override { 
+    (latest-nixpkgs.nerdfonts.override { 
       fonts = ["Hack"]; 
     })
   ];

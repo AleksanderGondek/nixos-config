@@ -50,3 +50,14 @@ Collection of configuration files / scripts to setup my NixOS instances
   }
 
   ```
+
+### Secrets setup
+
+For a host (run for root)
+1. Create ssh ed25519 key via `ssh-keygen -t ed25519` or copy it from backup
+2. Create sops-age directory via `mkdir -p ~/.config/sops/age`
+3. Convert ssh to age key `nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt"`
+4. Ensure public age key derived from ssh pub key is present in the `.sops.yaml` (check public key via `nix-shell -p ssh-to-age --run 'cat ~/.ssh/id_ed25519.pub | ssh-to-age'`)
+
+#### Users passwords
+mkpasswd -m sha-512 -> secrets/file.yaml # passwordFile has to contained hashed value!

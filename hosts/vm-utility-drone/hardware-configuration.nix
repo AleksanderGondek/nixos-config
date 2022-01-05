@@ -4,8 +4,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ ];
-
   boot.initrd.availableKernelModules = [ "ata_piix" "mptspi" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];

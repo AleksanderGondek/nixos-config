@@ -1,16 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, latest-nixpkgs, ... }:
 
 let
-  secrets = import ../../secrets.nix {};
   preConfiguredVscode = import ../../programs/vscode.nix { 
-    inherit config pkgs secrets;
+    inherit config pkgs;
   };
 in
 {
-  imports = [
-    ./user-profile-slim.nix
-  ];
-
   environment.systemPackages = with pkgs; [
     openconnect
     openvpn                # For home VPN setup
@@ -102,10 +97,10 @@ in
       spotify
       (vivaldi.override {proprietaryCodecs = true; enableWidevine = true;})
       vlc
-      unstable.discord
-      unstable.joplin
-      unstable.joplin-desktop
-      unstable.zoom-us
+      latest-nixpkgs.discord
+      latest-nixpkgs.joplin
+      latest-nixpkgs.joplin-desktop
+      latest-nixpkgs.zoom-us
       # Developing in Scala
       jdk
       sbt

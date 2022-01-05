@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  secrets = import ../../secrets.nix {};
-in
 {
   users.users.drone = {
     description = "Drone Utility Account";
@@ -15,7 +12,7 @@ in
     home = "/home/drone";
     shell = pkgs.bash;
     createHome = true;
-    hashedPassword = secrets.users.drone.hashedPassword;
+    passwordFile = config.sops.secrets.drone_password.path;
   };
 
   home-manager.users.drone = {

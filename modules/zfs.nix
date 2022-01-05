@@ -1,16 +1,18 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./main.nix
-  ];
-
-  # Use ZFS filesytem
+  # Remember to define
+  # networking.hostId
+  # networking.hostName
   boot.supportedFilesystems = [ "zfs" ];
-  boot.zfs.requestEncryptionCredentials = true;
-  
-  # ZFS requirement: networking.hostId = "f0f00fca";
+  boot.zfs.devNodes = "/dev/";
+
   services.zfs.trim.enable = true;
+  services.zfs.autoScrub = {
+    enable = true;
+    pools = [ "rpool" ];
+  };
+
   services.zfs.autoSnapshot = {
     enable = true;
     flags = "-k -p --utc";

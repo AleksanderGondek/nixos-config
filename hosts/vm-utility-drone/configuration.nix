@@ -1,26 +1,26 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
-let 
-  secrets = import ./secrets.nix {};
-in {
-  imports = [
-    ./hardware/vm-utility-drone.nix
-    ./base/zfs.nix
-    ./network/work-ntp.nix
-    ./users/drone/user-profile.nix
-    ./users/agondek/user-profile-slim.nix
-    #./cluster/k8s-dev-single-node.nix
-  ];
+{
+  # User related secrets
+  # TOOD: There has to be a better way!
+  sops.secrets.agondek_password = {
+    sopsFile = ./secrets/agondek.yaml;
+    neededForUsers = true;
+  };
+  sops.secrets.drone_password = {
+    sopsFile = ./secrets/drone.yaml;
+    neededForUsers = true;
+  };
 
   boot.supportedFilesystems = [ "ext4" "zfs" ];
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.copyKernels = true;
-  boot.zfs.devNodes = "/dev/disk/by-path";
+  boot.zfs.devNodes = lib.mkForce "/dev/disk/by-path";
 
   networking.hostId = "c90a5ed9";
-  networking.hostName = "agondek-utility-drone";
+  networking.hostName = "vm-utility-drone";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -56,17 +56,11 @@ in {
   };
 
   users.users.root = {
-    hashedPassword = pkgs.lib.mkForce secrets.users.drone.hashedPassword;
+    passwordFile = config.sops.secrets.drone_password.path;
   };
 
   # Auto upgrade stable channel
   system.autoUpgrade = {
-    enable = true;
-    channel = "https://nixos.org/channels/nixos-21.11";
-    dates = "weekly";
-    # Without explicit nixos config location, you are in for a bad times
-    flags = [
-      "-I nixos-config=/root/nixos-config/vm-utility-drone.nix"
-    ];
+    enable = false;
   };
 }
