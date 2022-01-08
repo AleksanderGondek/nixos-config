@@ -1,5 +1,8 @@
 # nixos-config
-Collection of configuration files / scripts to setup my NixOS instance
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+
+Collection of configuration files / scripts to setup my NixOS instances
+
 
 ### Disk setup
 
