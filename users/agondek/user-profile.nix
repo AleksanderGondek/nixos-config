@@ -85,6 +85,7 @@ in
       blueman  # Bluetooth
       cachix
       evince  #  Pdf reader
+      firefox
       gnome3.gnome-screenshot
       gnome.gnome-sound-recorder
       kazam
