@@ -80,7 +80,6 @@ in
       blueman  # Bluetooth
       cachix
       evince  #  Pdf reader
-      firefox
       gnome3.gnome-screenshot
       gnome.gnome-sound-recorder
       kazam
@@ -98,6 +97,7 @@ in
       (vivaldi.override {proprietaryCodecs = true; enableWidevine = true;})
       vlc
       latest-nixpkgs.discord
+      latest-nixpkgs.firefox
       latest-nixpkgs.joplin
       latest-nixpkgs.joplin-desktop
       latest-nixpkgs.zoom-us
