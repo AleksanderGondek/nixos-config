@@ -3,6 +3,15 @@
 
 Collection of configuration files / scripts to setup my NixOS instances
 
+### Hosts configurations health
+
+| Name         | CI Status |
+|--------------|-----------|
+| blackwood | ![](https://github.com/AleksanderGondek/nixos-config/workflows/blackwood/badge.svg) |
+| nixos-flake-test | ![](https://github.com/AleksanderGondek/nixos-config/workflows/nixos-flake-test/badge.svg) |
+| ravenrock | ![](https://github.com/AleksanderGondek/nixos-config/workflows/ravenrock/badge.svg) |
+| vm-utility-drone | ![](https://github.com/AleksanderGondek/nixos-config/workflows/vm-utility-drone/badge.svg) |
+
 
 ### Disk setup
 
