@@ -94,7 +94,12 @@ in
       signal-desktop
       slack-dark
       spotify
-      (vivaldi.override {proprietaryCodecs = true; enableWidevine = true;})
+      (latest-nixpkgs.vivaldi.override {
+        proprietaryCodecs = true; 
+        enableWidevine = true;
+        vivaldi-ffmpeg-codecs = latest-nixpkgs.vivaldi-ffmpeg-codecs;
+        vivaldi-widevine = latest-nixpkgs.vivaldi-widevine;
+      })
       vlc
       latest-nixpkgs.discord
       latest-nixpkgs.firefox
