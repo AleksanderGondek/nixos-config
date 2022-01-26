@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # User related secrets
@@ -62,6 +62,11 @@
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
+
+  # Root config
+  users.users.root = {
+    passwordFile = lib.mkDefault config.sops.secrets.agondek_password.path;
+  };
 
   # Auto upgrade stable channel
   system.autoUpgrade = {

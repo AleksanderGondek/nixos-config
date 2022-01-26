@@ -52,12 +52,14 @@
     { device = "rpool/userdata/home";
       fsType = "zfs";
       options = [ "zfsutil" ];
+      neededForBoot = true;
     };
 
   fileSystems."/root" =
     { device = "rpool/userdata/home/root";
       fsType = "zfs";
       options = [ "zfsutil" ];
+      neededForBoot = true;
     };
 
   fileSystems."/boot" =

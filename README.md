@@ -30,6 +30,12 @@ Collection of configuration files / scripts to setup my NixOS instances
 
     ...
 
+    # For /home and /root
+    # (otherwise secrets do not work)
+    neededForBoot = true;
+
+    ...
+
     # For swap entries
     swapDevices = [
       { device = "/dev/disk/by-id/...";
