@@ -89,10 +89,6 @@
   users.defaultUserShell = pkgs.bash;
   # Disallow user management sheneningans
   users.mutableUsers = false;
-  # Root config
-  users.users.root = {
-    passwordFile = lib.mkDefault config.sops.secrets.agondek_password.path;
-  };
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

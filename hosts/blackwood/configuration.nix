@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # User related secrets
@@ -57,6 +57,11 @@
   nix.extraOptions = ''
     builders-use-substitutes = true
   '';
+
+  # Root config
+  users.users.root = {
+    passwordFile = lib.mkDefault config.sops.secrets.agondek_password.path;
+  };
 
   # Auto upgrade stable channel
   system.autoUpgrade = {

@@ -92,6 +92,7 @@
         ./hosts/nixos-flake-test/configuration.nix
         ./modules/zfs.nix
         ./modules/audio/pulseaudio.nix
+        ./users/drone/user-profile.nix
       ];
     };
 
