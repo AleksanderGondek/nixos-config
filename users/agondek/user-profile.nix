@@ -102,7 +102,9 @@ in
       })
       vlc
       # Sad panda
-      citrix_workspace_21_08_0
+      # Have to manually enable on each host,
+      # after manual action, welcom to eula world
+      # citrix_workspace_21_08_0
       # Not sad
       latest-nixpkgs.discord
       latest-nixpkgs.firefox
