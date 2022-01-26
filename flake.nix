@@ -104,7 +104,8 @@
         ./modules/desktops/nvidia-desktop.nix
         ./modules/virtualisation/vbox.nix
         ./modules/virtualisation/containerd.nix
-        ./modules/cluster/k8s-dev-single-node.nix
+        # TODO: Restore
+        #./modules/cluster/k8s-dev-single-node.nix
         ./users/agondek/user-profile-slim.nix
         ./users/agondek/user-profile.nix
         # TODO: Move to modules
