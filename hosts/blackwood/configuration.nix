@@ -58,12 +58,6 @@
     builders-use-substitutes = true
   '';
 
-  # Citrix :C
-  environment.systemPackages = with pkgs; [
-    glib-networking
-  ];
-
-
   # Auto upgrade stable channel
   system.autoUpgrade = {
     enable = false;
