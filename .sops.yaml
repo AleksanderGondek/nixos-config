@@ -3,9 +3,21 @@ keys:
   - &server_blackwood age1fszuf08p7xmm47t37dtuyj0s0gfydmnk5sdkx3jvg2vm4ph89shs3ekjul
   - &server_nixos_flake_test age15vmnelwhcz777qnatt0ku6v62wj3jassrydqh68ywpe8rl8gysds76gs0s
 creation_rules:
-  - path_regex: secrets/[^/]+\.yaml$
+  - path_regex: blackwood/secrets/[^/]+\.yaml$
     key_groups:
       - age:
         - *user_agondek_blackwood
         - *server_blackwood
+  - path_regex: nixos_flake_test/secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
         - *server_nixos_flake_test
+  - path_regex: ravenrock/secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+        - *server_ravenrock
+  - path_regex: vm-utility-drone/secrets/[^/]+\.yaml$
+    key_groups:
+      - age:
+        - *user_agondek_blackwood
+        - *server_vm-utility-drone
