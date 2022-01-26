@@ -101,6 +101,9 @@ in
         vivaldi-widevine = latest-nixpkgs.vivaldi-widevine;
       })
       vlc
+      # Sad panda
+      citrix_workspace_21_08_0
+      # Not sad
       latest-nixpkgs.discord
       latest-nixpkgs.firefox
       latest-nixpkgs.joplin
