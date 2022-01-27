@@ -63,6 +63,10 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
 
+  nix.binaryCaches = [ s3://helm-bazel?endpoint=storage.googleapis.com&profile=default ];
+  nix.binaryCachePublicKeys = [ helm-bazel:hGQ4NQFI85O7cVlsW+agmJSg5mXhi+LUe137dUQeYQM= ];
+  nix.requireSignedBinaryCaches = false;
+
   # Root config
   users.users.root = {
     passwordFile = lib.mkDefault config.sops.secrets.agondek_password.path;
