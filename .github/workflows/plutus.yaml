@@ -1,10 +1,10 @@
-name: "ravenrock"
+name: "plutus"
 on:
   pull_request:
   push:
 jobs:
   tests:
-    name: ravenrock build configuration check
+    name: plutus build configuration check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.4.0
@@ -13,4 +13,4 @@ jobs:
         fetch-depth: 0
     - uses: cachix/install-nix-action@v15
     - run: nix flake check
-    - run: nix build .#nixosConfigurations.ravenrock.config.system.build.toplevel -L
+    - run: nix build .#nixosConfigurations.plutus.config.system.build.toplevel -L

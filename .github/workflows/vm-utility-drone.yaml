@@ -1,4 +1,4 @@
-name: "build-configs"
+name: "vm-utility-drone"
 on:
   pull_request:
   push:

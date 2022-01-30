@@ -1,4 +1,4 @@
-name: "build-configs"
+name: "blackwood"
 on:
   pull_request:
   push:

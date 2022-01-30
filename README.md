@@ -7,10 +7,11 @@ Collection of configuration files / scripts to setup my NixOS instances
 
 | Name         | CI Status |
 |--------------|-----------|
-| blackwood | ![](https://github.com/AleksanderGondek/nixos-config/workflows/blackwood/badge.svg) |
-| nixos-flake-test | ![](https://github.com/AleksanderGondek/nixos-config/workflows/nixos-flake-test/badge.svg) |
-| ravenrock | ![](https://github.com/AleksanderGondek/nixos-config/workflows/ravenrock/badge.svg) |
-| vm-utility-drone | ![](https://github.com/AleksanderGondek/nixos-config/workflows/vm-utility-drone/badge.svg) |
+| blackwood | [![build-configs](https://github.com/AleksanderGondek/nixos-config/actions/workflows/blackwood.yaml/badge.svg?branch=master)](https://github.com/AleksanderGondek/nixos-config/actions/workflows/blackwood.yaml) |
+| nixos-flake-test | [![build-configs](https://github.com/AleksanderGondek/nixos-config/actions/workflows/nixos-flake-test.yaml/badge.svg?branch=master)](https://github.com/AleksanderGondek/nixos-config/actions/workflows/nixos-flake-test.yaml) |
+| plutus | [![build-configs](https://github.com/AleksanderGondek/nixos-config/actions/workflows/plutus.yaml/badge.svg?branch=master)](https://github.com/AleksanderGondek/nixos-config/actions/workflows/plutus.yaml) |
+| ravenrock | [![build-configs](https://github.com/AleksanderGondek/nixos-config/actions/workflows/ravenrock.yaml/badge.svg?branch=master)](https://github.com/AleksanderGondek/nixos-config/actions/workflows/ravenrock.yaml) |
+| vm-utility-drone | [![build-configs](https://github.com/AleksanderGondek/nixos-config/actions/workflows/vm-utility-drone.yaml/badge.svg?branch=master)](https://github.com/AleksanderGondek/nixos-config/actions/workflows/vm-utility-drone.yaml) |
 
 
 ### Disk setup

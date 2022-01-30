@@ -1,4 +1,4 @@
-name: "build-configs"
+name: "nixos-flake-test"
 on:
   pull_request:
   push:
