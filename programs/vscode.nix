@@ -8,12 +8,6 @@ let
       golang.go
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
-        name = "python";
-        publisher = "ms-python";
-        version = "2020.12.424452561";
-        sha256 = "0zd0wdaip4nd9awr0h0m5afarzwhkfd8n9hzdahwf43sh15lqblf";
-      }
-      {
         name = "metals";
         publisher = "scalameta";
         version = "1.9.10";
