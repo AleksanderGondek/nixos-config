@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs channels
-    nixpkgs.url = "github:nixos/nixpkgs/release-21.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
     latest-nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -13,6 +13,7 @@
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.agenix.inputs.nixpkgs.follows = "nixpkgs";
     };
 

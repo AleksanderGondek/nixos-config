@@ -101,10 +101,11 @@ in
         vivaldi-widevine = latest-nixpkgs.vivaldi-widevine;
       })
       vlc
+      tailscale
       # Sad panda
       # Have to manually enable on each host,
       # after manual action, welcom to eula world
-      # citrix_workspace_21_08_0
+      #citrix_workspace_21_08_0
       # Not sad
       latest-nixpkgs.discord
       latest-nixpkgs.firefox
