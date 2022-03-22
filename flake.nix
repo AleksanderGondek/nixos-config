@@ -128,22 +128,6 @@
       ];
     };
 
-    hosts.ravenrock = {
-      modules = [
-        ./hosts/ravenrock/hardware-configuration.nix
-        ./hosts/ravenrock/configuration.nix
-        ./modules/zfs.nix
-        ./modules/audio/pulseaudio.nix
-        ./modules/audio/bluetooth.nix
-        ./modules/desktops/default-desktop.nix
-        ./modules/virtualisation/vbox.nix
-        ./modules/virtualisation/containerd.nix
-        #./modules/cluster/k8s-dev-single-node.nix
-        ./users/agondek/user-profile-slim.nix
-        ./users/agondek/user-profile.nix
-      ];
-    };
-
     hosts.vm-utility-drone = {
       modules = [
         ./hosts/vm-utility-drone/hardware-configuration.nix

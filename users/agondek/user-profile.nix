@@ -25,7 +25,6 @@ in
       ".fehbg".source = ./config-files/.fehbg;
       ".gtkrc-2.0".source = ./config-files/.gtkrc-2.0;
       ".screenlayout/setup-monitor.layout.sh".source = ./config-files/.screenlayout/setup-monitor.layout.sh;
-      ".screenlayout/ravenrock-laptop.layout.sh".source = ./config-files/.screenlayout/ravenrock-laptop.layout.sh;
       ".config/wallpapers/klontalersee-glarus-switzerland.jpg".source = ./config-files/.config/wallpapers/klontalersee-glarus-switzerland.jpg;
       ".config/wallpapers/nix-glow.png".source = ./config-files/.config/wallpapers/nix-glow.png;
       ".config/gtk-3.0/settings.ini".source = ./config-files/.config/gtk-3.0/settings.ini;

@@ -10,7 +10,6 @@ Collection of configuration files / scripts to setup my NixOS instances
 | blackwood | [![build-configs](https://github.com/AleksanderGondek/nixos-config/actions/workflows/blackwood.yaml/badge.svg?branch=master)](https://github.com/AleksanderGondek/nixos-config/actions/workflows/blackwood.yaml) |
 | nixos-flake-test | [![build-configs](https://github.com/AleksanderGondek/nixos-config/actions/workflows/nixos-flake-test.yaml/badge.svg?branch=master)](https://github.com/AleksanderGondek/nixos-config/actions/workflows/nixos-flake-test.yaml) |
 | plutus | [![build-configs](https://github.com/AleksanderGondek/nixos-config/actions/workflows/plutus.yaml/badge.svg?branch=master)](https://github.com/AleksanderGondek/nixos-config/actions/workflows/plutus.yaml) |
-| ravenrock | [![build-configs](https://github.com/AleksanderGondek/nixos-config/actions/workflows/ravenrock.yaml/badge.svg?branch=master)](https://github.com/AleksanderGondek/nixos-config/actions/workflows/ravenrock.yaml) |
 | vm-utility-drone | [![build-configs](https://github.com/AleksanderGondek/nixos-config/actions/workflows/vm-utility-drone.yaml/badge.svg?branch=master)](https://github.com/AleksanderGondek/nixos-config/actions/workflows/vm-utility-drone.yaml) |
 
 

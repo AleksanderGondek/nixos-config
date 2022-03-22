@@ -3,11 +3,6 @@
 set -o nounset
 set -o errexit
 
-if [ $(hostname) == "ravenrock" ]
-then
-  /run/current-system/sw/bin/sh ~/.screenlayout/ravenrock-laptop.layout.sh
-fi
-
 /run/current-system/sw/bin/sh -c 'betterlockscreen -u /home/agondek/.config/wallpapers/nix-glow.png -- -r 2560x1440' &
 /run/current-system/sw/bin/sh ~/.fehbg
 /run/current-system/sw/bin/sh ~/.config/polybar/run-polybar.sh
