@@ -1,0 +1,16 @@
+name: "pasithea"
+on:
+  pull_request:
+  push:
+jobs:
+  tests:
+    name: pasithea build configuration check
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.4.0
+       # Flakes do not like shallow clones
+      with:
+        fetch-depth: 0
+    - uses: cachix/install-nix-action@v15
+    - run: nix flake check
+    - run: nix build .#nixosConfigurations.pasithea.config.system.build.toplevel -L

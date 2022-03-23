@@ -113,6 +113,11 @@
       ];
     };
 
+    hosts.pasithea = {
+      modules = [
+      ];
+    };
+
     hosts.plutus = {
       modules = [
         ./hosts/plutus/hardware-configuration.nix
