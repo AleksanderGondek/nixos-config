@@ -115,6 +115,12 @@
 
     hosts.pasithea = {
       modules = [
+        ./hosts/pasithea/hardware-configuration.nix
+        ./hosts/pasithea/configuration.nix
+        ./modules/zfs.nix
+        ./modules/audio/pulseaudio.nix
+        ./users/agondek/user-profile-slim.nix
+        ./users/viewer/user-profile.nix
       ];
     };
 
