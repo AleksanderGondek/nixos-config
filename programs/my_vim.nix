@@ -34,7 +34,6 @@ in my_configurable_vim.customize {
   set fileencoding=utf-8  " The encoding written to file.
   
   let g:molokai_original = 1
-  let g:airline_theme='molokai'
   colorscheme molokai
 
   " Map tabs to double space
@@ -86,7 +85,6 @@ in my_configurable_vim.customize {
     names = [
       "molokai"
       "vim-airline"
-      "vim-airline-themes"
       "vim-devicons"
       "nerdtree"
       "fzf-vim"
