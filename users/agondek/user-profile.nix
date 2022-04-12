@@ -93,11 +93,11 @@ in
       signal-desktop
       slack-dark
       spotify
-      (latest-nixpkgs.vivaldi.override {
+      (pkgs.vivaldi.override {
         proprietaryCodecs = true; 
         enableWidevine = true;
-        vivaldi-ffmpeg-codecs = latest-nixpkgs.vivaldi-ffmpeg-codecs;
-        vivaldi-widevine = latest-nixpkgs.vivaldi-widevine;
+        vivaldi-ffmpeg-codecs = pkgs.vivaldi-ffmpeg-codecs;
+        vivaldi-widevine = pkgs.vivaldi-widevine;
       })
       vlc
       tailscale
