@@ -96,8 +96,8 @@ in
       (pkgs.vivaldi.override {
         proprietaryCodecs = true; 
         enableWidevine = true;
-        vivaldi-ffmpeg-codecs = pkgs.vivaldi-ffmpeg-codecs;
-        vivaldi-widevine = pkgs.vivaldi-widevine;
+        vivaldi-ffmpeg-codecs = latest-nixpkgs.vivaldi-ffmpeg-codecs;
+        vivaldi-widevine = latest-nixpkgs.vivaldi-widevine;
       })
       vlc
       tailscale
