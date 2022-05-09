@@ -97,7 +97,8 @@ in
         proprietaryCodecs = true; 
         enableWidevine = true;
         vivaldi-ffmpeg-codecs = latest-nixpkgs.vivaldi-ffmpeg-codecs;
-        vivaldi-widevine = latest-nixpkgs.vivaldi-widevine;
+        # latest broken (mismatch hash, pkgs does not work)
+        vivaldi-widevine = pkgs.vivaldi-widevine;
       })
       vlc
       tailscale
