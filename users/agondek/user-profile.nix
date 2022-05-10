@@ -109,6 +109,7 @@ in
       })
       vlc
       tailscale
+      taskwarrior
       # Sad panda
       # Have to manually enable on each host,
       # after manual action, welcom to eula world
