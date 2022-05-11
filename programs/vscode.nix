@@ -5,7 +5,8 @@ let
     vscodeExtensions = with pkgs.vscode-extensions; [
       bbenoist.nix
       matklad.rust-analyzer
-      golang.go
+      # TODO Update in upstream
+      # golang.go
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "metals";
@@ -66,6 +67,12 @@ let
         publisher = "dhall";
         version = "0.0.4";
         sha256 = "WopWzMCtiiLrx3pHNiDMZYFdjS359vu3T+6uI5A+Nv4=";
+      }
+      {
+        name = "Go";
+        publisher = "golang";
+        version = "0.33.0";
+        sha256 = "HPTRQYvSmlj88V3DZJx7JcSEHqk9QyxvOf5YK8n7qfE=";
       }
     ];
   };
