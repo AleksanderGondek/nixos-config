@@ -5,6 +5,7 @@ let
     vscodeExtensions = with pkgs.vscode-extensions; [
       bbenoist.nix
       matklad.rust-analyzer
+      ms-vsliveshare.vsliveshare
       # TODO Update in upstream
       # golang.go
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
