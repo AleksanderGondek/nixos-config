@@ -2,7 +2,7 @@
 
 let
   preConfiguredVscode = import ../../programs/vscode.nix { 
-    inherit config pkgs;
+    inherit config pkgs latest-nixpkgs;
   };
 in
 {
@@ -48,13 +48,6 @@ in
         "update.showReleaseNotes": false,
         "workbench.colorTheme": "Monokai Pro",
         "workbench.iconTheme": "Monokai Pro Icons",
-        // Implementation-specific workaround - rust-analyzer is really hellbent on using everything global
-        // I really do not want't to have anything globally set
-        // Impl: https://github.com/rust-analyzer/rust-analyzer/blob/d0f2bc3b878d1c1d8eaf081e6f670ebb928b7a5f/editors/code/src/toolchain.ts#L149
-        "rust-analyzer.server.extraEnv": {
-          "CARGO": "${pkgs.cargo}/bin/cargo",
-          "RUSTC": "${pkgs.rustc}/bin/rustc",
-        }
       }
       '';
       ".libvirtd/createStoragePool" = {

@@ -1,11 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, latest-nixpkgs, ... }:
 
 let
   preConfiguredVscode = pkgs.vscode-with-extensions.override {
-    vscodeExtensions = with pkgs.vscode-extensions; [
-      bbenoist.nix
-      matklad.rust-analyzer
-      ms-vsliveshare.vsliveshare
+    vscodeExtensions = [
+      latest-nixpkgs.vscode-extensions.arrterian.nix-env-selector
+      latest-nixpkgs.vscode-extensions.matklad.rust-analyzer
+      pkgs.vscode-extensions.bbenoist.nix
+      pkgs.vscode-extensions.ms-vsliveshare.vsliveshare
       # TODO Update in upstream
       # golang.go
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
