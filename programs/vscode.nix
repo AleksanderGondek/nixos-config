@@ -47,10 +47,10 @@ let
         sha256 = "1ll046rf5dyc7294nbxqk5ya56g2bzqnmxyciqpz2w5x7j75rjib";
       }
       {
-        name = "vscode-bazel";
-        publisher = "BazelBuild";
-        version = "0.4.0";
-        sha256 = "0p018878pxr7vxr6375fywchzq1xwvxnjrb4zvp444s6p3sknxxg";
+        name = "bazel-stack-vscode";
+        publisher = "StackBuild";
+        version = "1.9.0";
+        sha256 = "sha256-+D0OITf8icX6EbyTIOd/p+Xo1FbKWL1Kb6h+HCQkYsI=";
       }
       {
         name = "cuelang";
