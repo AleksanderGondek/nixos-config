@@ -104,7 +104,6 @@ in
     };
 
     addons.dns.replicas = 1;
-    addons.dashboard.enable = false;
   };
   
   # Ensure addon-manager can literally do anything

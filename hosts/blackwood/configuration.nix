@@ -55,8 +55,8 @@
     builders-use-substitutes = true
   '';
 
-  # Sigh
-  services.tailscale.enable = true;
+  # TODO: This is gonna be needed
+  # services.tailscale.enable = true;
 
   # Root config
   users.users.root = {

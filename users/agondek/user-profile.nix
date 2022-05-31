@@ -90,18 +90,9 @@ in
         proprietaryCodecs = true; 
         enableWidevine = true;
         vivaldi-ffmpeg-codecs = latest-nixpkgs.vivaldi-ffmpeg-codecs;
-        # Still does not seem to be working
-        vivaldi-widevine = (
-          latest-nixpkgs.vivaldi-widevine.overrideAttrs (oldAttrs: rec {
-            src = latest-nixpkgs.fetchurl {
-              url = "https://dl.google.com/widevine-cdm/4.10.2449.0-linux-x64.zip";
-              sha256 = "sha256-vsr6eymKqU2Y6HM4DPHnUfVkB2BQ1HSSWvk1tNhUA5Y=";
-            };
-          })
-        );
+        vivaldi-widevine = latest-nixpkgs.vivaldi-widevine;
       })
       vlc
-      tailscale
       taskwarrior
       # Sad panda
       # Have to manually enable on each host,
@@ -121,7 +112,8 @@ in
           ipython
           flake8
           pycodestyle
-          pylint
+          # broken in 22.05
+          #pylint
           setuptools
           virtualenv
         ]
