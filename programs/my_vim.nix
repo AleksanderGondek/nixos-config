@@ -2,10 +2,6 @@
 # Config inspired by https://github.com/wagnerf42/nixos-config/blob/master/config/my_vim.nix
 
 let
-  # my_configurable_vim = pkgs.vim_configurable.override {
-  #   python = pkgs.python39Full;
-  # }
-  # TODO: Verify it does the right thing
   my_configurable_vim = pkgs.vim_configurable;
   customPlugins = {
     cue = pkgs.vimUtils.buildVimPlugin {
