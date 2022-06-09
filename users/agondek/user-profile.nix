@@ -78,7 +78,8 @@ in
       keepassxc
       krita
       obs-studio
-      nixops
+      # nixops
+      # Depends on old pyjwt: CVE-2022-29217
       neofetch
       notepadqq
       preConfiguredVscode
