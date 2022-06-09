@@ -100,7 +100,14 @@ in
       # after manual action, welcom to eula world
       #citrix_workspace_21_08_0
       # Not sad
-      latest-nixpkgs.discord
+      # Discord 0.0.18 is not yet on nixpkgs
+      (latest-nixpkgs.discord.override {
+        version = "0.0.18";
+        src = latest-nixpkgs.fetchurl {
+          url = "https://dl.discordapp.net/apps/linux/0.0.18/discord-0.0.18.tar.gz";
+          sha256 = "BBc4n6Q3xuBE13JS3gz/6EcwdOWW57NLp2saOlwOgMI=";
+        };
+      })
       latest-nixpkgs.firefox
       latest-nixpkgs.joplin
       latest-nixpkgs.joplin-desktop
