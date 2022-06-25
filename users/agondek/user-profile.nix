@@ -4,6 +4,7 @@ let
   preConfiguredVscode = import ../../programs/vscode.nix { 
     inherit config pkgs latest-nixpkgs;
   };
+  komau-vim-theme = latest-nixpkgs.callPackage ../../programs/komau-vim-theme.nix {};
 in
 {
   environment.systemPackages = with pkgs; [
@@ -198,6 +199,19 @@ in
         ];
         theme = "agnoster";
       };
+    };
+    # Neovim configured for proper, writting
+    programs.neovim = {
+      enable = true;
+      plugins = [
+        komau-vim-theme
+        pkgs.vimPlugins.goyo-vim
+        pkgs.vimPlugins.limelight-vim
+      ];
+      extraConfig = ''
+      :colorscheme komau
+      :set background=light
+      '';
     };
     xdg.mimeApps = {
       enable = true;
