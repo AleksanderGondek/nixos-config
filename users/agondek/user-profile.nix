@@ -32,7 +32,7 @@ in
       ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
       ".config/htop/htoprc".source = ./config-files/.config/htop/htoprc;
       ".config/i3/config".source = ./config-files/.config/i3/config;
-      ".config/polybar/config".source = ./config-files/.config/polybar/config;
+      ".config/polybar/config.ini".source = ./config-files/.config/polybar/config.ini;
       ".config/polybar/run-polybar.sh".source = ./config-files/.config/polybar/run-polybar.sh;
       ".config/rofi/config.rasi".source = ./config-files/.config/rofi/config.rasi;
       ".config/rofi/monokai.rasi".source = ./config-files/.config/rofi/monokai.rasi;
