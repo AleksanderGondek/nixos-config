@@ -102,7 +102,7 @@
         ./hosts/blackwood/hardware-configuration.nix
         ./hosts/blackwood/configuration.nix
         ./modules/zfs.nix
-        ./modules/audio/pulseaudio.nix
+        ./modules/audio/pipewire.nix
         ./modules/desktops/nvidia-desktop.nix
         ./modules/virtualisation/vbox.nix
         ./modules/cluster/k8s-dev-single-node.nix
