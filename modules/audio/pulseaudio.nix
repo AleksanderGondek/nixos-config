@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, latest-nixpkgs, ... }:
 
 {
   hardware.pulseaudio = {
     enable = true;
-    package = pkgs.pulseaudioFull;
+    package = latest-nixpkgs.pulseaudioFull;
     zeroconf.discovery.enable = true;
   };
   sound.enable = true;
