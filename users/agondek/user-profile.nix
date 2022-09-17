@@ -95,7 +95,6 @@ in
         vivaldi-widevine = latest-nixpkgs.vivaldi-widevine;
       })
       vlc
-      zerotierone
       # Sad panda
       # Have to manually enable on each host,
       # after manual action, welcom to eula world
