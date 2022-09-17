@@ -103,10 +103,10 @@ in
       # Not sad
       # Discord 0.0.18 is not yet on nixpkgs
       (latest-nixpkgs.discord.overrideAttrs (oldAttrs: {
-        version = "0.0.19";
+        version = "0.0.20";
         src = latest-nixpkgs.fetchurl {
-          url = "https://dl.discordapp.net/apps/linux/0.0.19/discord-0.0.19.tar.gz";
-          sha256 = "GfSyddbGF8WA6JmHo4tUM27cyHV5kRAyrEiZe1jbA5A=";
+          url = "https://dl.discordapp.net/apps/linux/0.0.20/discord-0.0.20.tar.gz";
+          sha256 = "3f7yuxigEF3e8qhCetCHKBtV4XUHsx/iYiaCCXjspYw=";
         };
       }))
       latest-nixpkgs.firefox
