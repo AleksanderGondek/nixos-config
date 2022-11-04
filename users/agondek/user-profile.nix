@@ -81,6 +81,7 @@ in
       obs-studio
       # nixops
       # Depends on old pyjwt: CVE-2022-29217
+      niv
       neofetch
       notepadqq
       preConfiguredVscode
