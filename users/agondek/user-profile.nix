@@ -121,8 +121,6 @@ in
           ipython
           flake8
           pycodestyle
-          # broken in 22.05
-          #pylint
           setuptools
           virtualenv
         ]

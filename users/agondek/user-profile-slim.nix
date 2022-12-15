@@ -28,6 +28,7 @@
   };
 
   home-manager.users.agondek = {
+    home.stateVersion = "22.11";
     home.packages = with pkgs; [
       git-crypt
       git-lfs
@@ -69,5 +70,5 @@
     };
   };
 
-  nix.trustedUsers = [ "root" "agondek" ];
+  nix.settings.trusted-users = [ "root" "agondek" ];
 }
