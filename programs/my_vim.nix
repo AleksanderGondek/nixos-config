@@ -78,19 +78,20 @@ in my_configurable_vim.customize {
   set backspace=indent,eol,start
  '';
 
-  vimrcConfig.vam.knownPlugins = pkgs.vimPlugins // customPlugins;
-  vimrcConfig.vam.pluginDictionaries = [{
-    names = [
-      "molokai"
-      "vim-airline"
-      "vim-devicons"
-      "nerdtree"
-      "fzf-vim"
-      "vim-grepper"
-      "vim-surround"
-      "vim-nix"
-      "cue"
-      "YouCompleteMe"
+  vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
+    start = [
+      molokai
+      vim-airline
+      vim-devicons
+      nerdtree
+      fzf-vim
+      vim-grepper
+      vim-surround
+      vim-nix
+      customPlugins.cue
+      YouCompleteMe
     ];
-  }];
+    opt = [];
+  };
 }
+
