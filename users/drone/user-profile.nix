@@ -16,6 +16,7 @@
   };
 
   home-manager.users.drone = {
+    home.stateVersion = "22.11";
     home.packages = with pkgs; [
       kubectl
       jq
