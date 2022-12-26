@@ -15,12 +15,13 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.copyKernels = true;
 
-  # TP-Link Archer T9UH v1: rtl8814au
   # "v4l2loopback" -> virtualcam for OBS
-  boot.kernelModules = [ "rtl8814au" "v4l2loopback" ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    rtl8814au v4l2loopback
-  ];
+  # boot.kernelModules = [ "v4l2loopback" ];
+  # boot.extraModulePackages = with config.boot.kernelPackages; [
+  #   v4l2loopback
+  # ];
+  # Counter-act intel sheneningans
+  boot.kernelParams = [ "module_blacklist=i915" ];
   # Emulate aarch64
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
@@ -62,6 +63,10 @@
   users.users.root = {
     passwordFile = lib.mkDefault config.sops.secrets.agondek_password.path;
   };
+
+  # https://github.com/NixOS/nixpkgs/blob/nixos-22.11/pkgs/os-specific/linux/nvidia-x11/default.nix
+  # NVIDIA driver > 515 have broken daisy-chained DP
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
 
   # Auto upgrade stable channel
   system.autoUpgrade = {

@@ -103,7 +103,7 @@
         ./modules/zfs.nix
         ./modules/audio/pipewire.nix
         ./modules/desktops/nvidia-desktop.nix
-        ./modules/virtualisation/vbox.nix
+        #./modules/virtualisation/vbox.nix
         ./modules/cluster/k8s-dev-single-node.nix
         ./users/agondek/user-profile-slim.nix
         ./users/agondek/user-profile.nix
