@@ -93,7 +93,7 @@ in
         proprietaryCodecs = true; 
         enableWidevine = true;
         vivaldi-ffmpeg-codecs = latest-nixpkgs.vivaldi-ffmpeg-codecs;
-        vivaldi-widevine = latest-nixpkgs.vivaldi-widevine;
+        vivaldi-widevine = latest-nixpkgs.widevine-cdm;
       })
       vlc
       # Sad panda
