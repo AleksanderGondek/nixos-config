@@ -14,7 +14,6 @@
 
   boot.supportedFilesystems = [ "ext4" "zfs" ];
   boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.copyKernels = true;
   boot.zfs.devNodes = lib.mkForce "/dev/disk/by-path";
@@ -51,8 +50,10 @@
   # Enable sshd
   services.openssh = {
     enable = true;
-    passwordAuthentication = false;
-    permitRootLogin = "no";
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+    };
   };
 
   users.users.root = {

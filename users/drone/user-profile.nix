@@ -31,5 +31,5 @@
     };
   };
 
-  nix.trustedUsers = [ "drone" ];
+  nix.settings.trusted-users = [ "drone" ];
 }
