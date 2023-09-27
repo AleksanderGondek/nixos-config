@@ -89,9 +89,10 @@ in
       signal-desktop
       slack-dark
       spotify
-      (pkgs.vivaldi.override {
+      (latest-nixpkgs.vivaldi.override {
         proprietaryCodecs = true; 
         enableWidevine = true;
+        widevine-cdm = latest-nixpkgs.widevine-cdm;
         vivaldi-ffmpeg-codecs = latest-nixpkgs.vivaldi-ffmpeg-codecs;
       })
       vlc
@@ -100,14 +101,15 @@ in
       # after manual action, welcom to eula world
       #citrix_workspace_21_08_0
       # Not sad
-      # Discord 0.0.18 is not yet on nixpkgs
-      (latest-nixpkgs.discord.overrideAttrs (oldAttrs: {
-        version = "0.0.21";
-        src = latest-nixpkgs.fetchurl {
-          url = "https://dl.discordapp.net/apps/linux/0.0.21/discord-0.0.21.tar.gz";
-          sha256 = "sha256-KDKUssPRrs/D10s5GhJ23hctatQmyqd27xS9nU7iNaM=";
-        };
-      }))
+      # Override example, for future use
+      #(latest-nixpkgs.discord.overrideAttrs (oldAttrs: {
+      #  version = "0.0.21";
+      #  src = latest-nixpkgs.fetchurl {
+      #    url = "https://dl.discordapp.net/apps/linux/0.0.21/discord-0.0.21.tar.gz";
+      #    sha256 = "sha256-KDKUssPRrs/D10s5GhJ23hctatQmyqd27xS9nU7iNaM=";
+      #  };
+      #}))
+      latest-nixpkgs.discord
       latest-nixpkgs.firefox
       latest-nixpkgs.joplin
       latest-nixpkgs.joplin-desktop
