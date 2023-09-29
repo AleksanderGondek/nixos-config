@@ -7,6 +7,17 @@ jobs:
     name: plutus build configuration check
     runs-on: ubuntu-latest
     steps:
+
+    - uses: jlumbroso/free-disk-space@main
+      with:
+        tool-cache: true
+        android: true
+        dotnet: true
+        haskell: true
+        large-packages: true
+        docker-images: true
+        swap-storage: true
+
     - uses: actions/checkout@v4
        # Flakes do not like shallow clones
       with:
