@@ -8,22 +8,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    #- name: Free Disk Space (Ubuntu)
-    #  uses: jlumbroso/free-disk-space@main
-    #  with:
-    #    tool-cache: true
-    #    android: true
-    #    dotnet: true
-    #    haskell: true
-    #    large-packages: true
-    #    docker-images: true
-    #    swap-storage: true
+    - uses: jlumbroso/free-disk-space@main
+      with:
+        tool-cache: true
+        android: true
+        dotnet: true
+        haskell: true
+        large-packages: true
+        docker-images: true
+        swap-storage: true
 
     - uses: actions/checkout@v4
        # Flakes do not like shallow clones
       with:
         fetch-depth: 0
- 
+
     - uses: cachix/install-nix-action@v22
       with:
         install_url: "https://releases.nixos.org/nix/nix-2.13.5/install"
