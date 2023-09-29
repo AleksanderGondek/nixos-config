@@ -27,6 +27,8 @@ jobs:
     - uses: cachix/install-nix-action@v22
       with:
         install_url: "https://releases.nixos.org/nix/nix-2.3.7/install"
+        extra_nix_config: |2
+          experimental-features = nix-command flakes
 
     - run: nix flake check
 
