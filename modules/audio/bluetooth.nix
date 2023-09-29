@@ -4,7 +4,7 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-    package = latest-nixpkgs.bluezFull;
+    package = latest-nixpkgs.bluez;
   };
   services.blueman.enable = true;
 }
