@@ -15,6 +15,8 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.copyKernels = true;
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
   # "v4l2loopback" -> virtualcam for OBS
   # boot.kernelModules = [ "v4l2loopback" ];
   # boot.extraModulePackages = with config.boot.kernelPackages; [

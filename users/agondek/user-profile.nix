@@ -72,6 +72,7 @@ in
       asciinema
       blueman  # Bluetooth
       cachix
+      discord
       evince  #  Pdf reader
       gnome3.gnome-screenshot
       gnome.gnome-sound-recorder
@@ -89,11 +90,11 @@ in
       signal-desktop
       slack-dark
       spotify
-      (latest-nixpkgs.vivaldi.override {
+      (vivaldi.override {
         proprietaryCodecs = true; 
         enableWidevine = true;
-        widevine-cdm = latest-nixpkgs.widevine-cdm;
-        vivaldi-ffmpeg-codecs = latest-nixpkgs.vivaldi-ffmpeg-codecs;
+        widevine-cdm = widevine-cdm;
+        vivaldi-ffmpeg-codecs = vivaldi-ffmpeg-codecs;
       })
       vlc
       # Sad panda
@@ -109,23 +110,11 @@ in
       #    sha256 = "sha256-KDKUssPRrs/D10s5GhJ23hctatQmyqd27xS9nU7iNaM=";
       #  };
       #}))
-      latest-nixpkgs.discord
       latest-nixpkgs.firefox
+      latest-nixpkgs.jetbrains.idea-ultimate
       latest-nixpkgs.joplin
       latest-nixpkgs.joplin-desktop
       latest-nixpkgs.zoom-us
-      # Developing in Scala
-      jdk
-      sbt
-      # Developing in Python
-      (python38.withPackages(ps : with ps; [ 
-          ipython
-          flake8
-          pycodestyle
-          setuptools
-          virtualenv
-        ]
-      ))
     ];
     services.dunst = {
       enable = true;
