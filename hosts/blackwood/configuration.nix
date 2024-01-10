@@ -63,7 +63,7 @@
 
   # Root config
   users.users.root = {
-    passwordFile = lib.mkDefault config.sops.secrets.agondek_password.path;
+    hashedPasswordFile = lib.mkDefault config.sops.secrets.agondek_password.path;
   };
 
   # https://github.com/NixOS/nixpkgs/blob/nixos-22.11/pkgs/os-specific/linux/nvidia-x11/default.nix

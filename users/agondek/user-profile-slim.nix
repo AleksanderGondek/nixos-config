@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    exa
+    eza
     fd
     fzf
     ripgrep
@@ -24,11 +24,11 @@
     shell = pkgs.bash;
     createHome = true;
     useDefaultShell = false;
-    passwordFile = config.sops.secrets.agondek_password.path;
+    hashedPasswordFile = config.sops.secrets.agondek_password.path;
   };
 
   home-manager.users.agondek = {
-    home.stateVersion = "23.05";
+    home.stateVersion = "23.11";
     home.packages = with pkgs; [
       git-crypt
       git-lfs

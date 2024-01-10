@@ -14,18 +14,18 @@
     home = "/home/viewer";
     shell = pkgs.bash;
     createHome = true;
-    passwordFile = config.sops.secrets.viewer_password.path;
+    hashedPasswordFile = config.sops.secrets.viewer_password.path;
   };
 
   home-manager.users.viewer = {
-    home.stateVersion = "23.05";
+    home.stateVersion = "23.11";
     programs.firefox = {
       enable = true;
       enableGnomeExtensions = false;
     };
     home.packages = with pkgs; [
       coreutils
-      exa
+      eza
       fd
       fzf
       openssl

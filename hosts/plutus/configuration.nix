@@ -45,7 +45,7 @@
 
   # Root config
   users.users.root = {
-    passwordFile = lib.mkDefault config.sops.secrets.agondek_password.path;
+    hashedPasswordFile = lib.mkDefault config.sops.secrets.agondek_password.path;
   };
 
   # Auto upgrade stable channel

@@ -12,11 +12,11 @@
     home = "/home/drone";
     shell = pkgs.bash;
     createHome = true;
-    passwordFile = config.sops.secrets.drone_password.path;
+    hashedPasswordFile = config.sops.secrets.drone_password.path;
   };
 
   home-manager.users.drone = {
-    home.stateVersion = "23.05";
+    home.stateVersion = "23.11";
     home.packages = with pkgs; [
       kubectl
       jq

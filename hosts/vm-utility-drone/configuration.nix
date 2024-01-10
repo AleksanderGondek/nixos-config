@@ -57,7 +57,7 @@
   };
 
   users.users.root = {
-    passwordFile = config.sops.secrets.drone_password.path;
+    hashedPasswordFile = config.sops.secrets.drone_password.path;
   };
 
   # Auto upgrade stable channel
