@@ -1,10 +1,10 @@
 { pkgs, lib, ... }:
 
 let 
-  buildVimPluginFrom2Nix = pkgs.vimUtils.buildVimPluginFrom2Nix;
+  buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
 in
 with pkgs;
-buildVimPluginFrom2Nix {
+buildVimPlugin {
   pname = "komau.vim";
   version = "f0372e7";
   src = fetchFromGitHub {
