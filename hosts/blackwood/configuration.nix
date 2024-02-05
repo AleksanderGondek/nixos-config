@@ -31,13 +31,15 @@
   networking.hostId = "4746a27b";
   # Network (Wireless and cord)
   networking.hostName = "blackwood";
+
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.eno1.useDHCP = true;
+  networking.resolvconf.enable = false;
 
-   # Never ever go to sleep, hibernate of something like that
+  # Never ever go to sleep, hibernate of something like that
   systemd.targets.sleep.enable = false;
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
