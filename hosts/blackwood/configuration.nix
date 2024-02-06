@@ -70,7 +70,7 @@
 
   # https://github.com/NixOS/nixpkgs/blob/nixos-22.11/pkgs/os-specific/linux/nvidia-x11/default.nix
   # NVIDIA driver > 515 have broken daisy-chained DP
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   # Auto upgrade stable channel
   system.autoUpgrade = {
