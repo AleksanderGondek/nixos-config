@@ -7,6 +7,10 @@
     sopsFile = ./secrets/agondek.yaml;
     neededForUsers = true;
   };
+  sops.secrets.morrigna_wg_private = {
+    sopsFile = ./secrets/agondek.yaml;
+    neededForUsers = true;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -66,6 +70,37 @@
   # Root config
   users.users.root = {
     hashedPasswordFile = lib.mkDefault config.sops.secrets.agondek_password.path;
+  };
+
+  # Morrigna cluster wg
+  networking.wireguard = {
+    enable = true;
+    interfaces = {
+      wg0 = {
+        listenPort = 50666;
+        ips = [
+          "192.168.66.4/32"
+        ];
+        peers = [
+          {
+            allowedIPs = ["192.168.66.1/32"];
+            endpoint = "135.181.3.156:50666";
+            publicKey = "tcszG32OvcAonkgDCMNlai9rxCIiKCdFlKtfy0Zj50A=";
+          }
+          {
+            allowedIPs = ["192.168.66.2/32"];
+            endpoint = "65.21.132.30:50666";
+            publicKey = "5xYDKu3euQchK0E/LBaUcus65tWioxnvhWCkkyfI9QU=";
+          }
+          {
+            allowedIPs = ["192.168.66.3/32"];
+            endpoint = "65.108.13.183:50666";
+            publicKey = "c/8phQmj5DDd3O0xPFY/VStv1KnsX8yS5n+eQZ3s+xQ=";
+          }
+        ];
+        privateKeyFile = config.sops.secrets.morrigna_wg_private.path;
+      };
+    };
   };
 
   # https://github.com/NixOS/nixpkgs/blob/nixos-22.11/pkgs/os-specific/linux/nvidia-x11/default.nix
