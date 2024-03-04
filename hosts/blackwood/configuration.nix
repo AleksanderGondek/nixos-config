@@ -97,6 +97,11 @@
             endpoint = "65.108.13.183:50666";
             publicKey = "c/8phQmj5DDd3O0xPFY/VStv1KnsX8yS5n+eQZ3s+xQ=";
           }
+          {
+            allowedIPs = ["192.168.66.6/32"];
+            endpoint = "83.23.70.248:51820";
+            publicKey = "nomrjGfbVySZ1Q2zdIEXxQ519oPR1nyrlCh7mhC0yCE=";
+          }
         ];
         privateKeyFile = config.sops.secrets.morrigna_wg_private.path;
       };
