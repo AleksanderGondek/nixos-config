@@ -41,7 +41,7 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.eno1.useDHCP = true;
-  networking.resolvconf.enable = false;
+  networking.resolvconf.enable = true;
 
   # Never ever go to sleep, hibernate of something like that
   systemd.targets.sleep.enable = false;
