@@ -76,6 +76,7 @@ in
       evince  #  Pdf reader
       gnome3.gnome-screenshot
       gnome.gnome-sound-recorder
+      helix
       kazam
       keepassxc
       krita
@@ -114,6 +115,7 @@ in
       latest-nixpkgs.jetbrains.idea-ultimate
       latest-nixpkgs.joplin
       latest-nixpkgs.joplin-desktop
+      latest-nixpkgs.protonvpn-cli_2
       latest-nixpkgs.zoom-us
     ];
     services.dunst = {
