@@ -83,24 +83,34 @@
         ];
         peers = [
           {
+            # morrigna cluster: anand
             allowedIPs = ["192.168.66.1/32"];
             endpoint = "135.181.3.156:50666";
             publicKey = "tcszG32OvcAonkgDCMNlai9rxCIiKCdFlKtfy0Zj50A=";
           }
           {
+            # morrigna cluster: badb 
             allowedIPs = ["192.168.66.2/32"];
             endpoint = "65.21.132.30:50666";
             publicKey = "5xYDKu3euQchK0E/LBaUcus65tWioxnvhWCkkyfI9QU=";
           }
           {
+            # morrigna cluster: macha
             allowedIPs = ["192.168.66.3/32"];
             endpoint = "65.108.13.183:50666";
             publicKey = "c/8phQmj5DDd3O0xPFY/VStv1KnsX8yS5n+eQZ3s+xQ=";
           }
           {
+            # r2r-dev
             allowedIPs = ["192.168.66.6/32"];
             endpoint = "83.23.70.248:51820";
             publicKey = "nomrjGfbVySZ1Q2zdIEXxQ519oPR1nyrlCh7mhC0yCE=";
+          }
+          {
+            # hetzner: bastion
+            allowedIPs = ["192.168.66.7/32"];
+            endpoint = "65.21.243.230:50666";
+            publicKey = "5PqZsjsiXg9b/RThRxkzWL0EbuhWsoT4CmIlm7fS/TU=";
           }
         ];
         privateKeyFile = config.sops.secrets.morrigna_wg_private.path;
