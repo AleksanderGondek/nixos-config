@@ -79,7 +79,7 @@
       wg0 = {
         listenPort = 50666;
         ips = [
-          "192.168.66.4/32"
+          "192.168.66.4/24"
         ];
         peers = [
           {
@@ -99,6 +99,11 @@
             allowedIPs = ["192.168.66.3/32"];
             endpoint = "65.108.13.183:50666";
             publicKey = "c/8phQmj5DDd3O0xPFY/VStv1KnsX8yS5n+eQZ3s+xQ=";
+          }
+          {
+            # github-actions
+            allowedIPs = ["192.168.66.5/32"];
+            publicKey = "2gcoMsOvpcTTX/UQym8nH4I9KY4f+Q8gvP8+FFlrVAs=";
           }
           {
             # r2r-dev
