@@ -122,6 +122,12 @@
       };
     };
   };
+  # api.morrigna.rules-nix.build should move through wg 
+  networking.hosts = {
+    # "192.168.66.1" = ["api.morrigna.rules-nix.build"];
+    "192.168.66.2" = ["api.morrigna.rules-nix.build"];
+    #"192.168.66.3" = ["api.morrigna.rules-nix.build"];
+  };
 
   # https://github.com/NixOS/nixpkgs/blob/nixos-22.11/pkgs/os-specific/linux/nvidia-x11/default.nix
   # NVIDIA driver > 515 have broken daisy-chained DP
