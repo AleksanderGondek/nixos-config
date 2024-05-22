@@ -129,6 +129,26 @@
     #"192.168.66.3" = ["api.morrigna.rules-nix.build"];
   };
 
+  services.openssh = {
+    enable = true;
+
+    banner = "Welcome to blackwood.home.other-songs.eu!\n";
+    openFirewall = true;
+
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+      StrictModes = true;
+      UsePAM = false;
+    };
+  };
+
+  services.xrdp = {
+    enable = true;
+    openFirewall = true;
+    #defaultWindowManager = "i3";
+  };
+
   # https://github.com/NixOS/nixpkgs/blob/nixos-22.11/pkgs/os-specific/linux/nvidia-x11/default.nix
   # NVIDIA driver > 515 have broken daisy-chained DP
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;

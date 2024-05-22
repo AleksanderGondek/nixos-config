@@ -98,6 +98,7 @@ in
         vivaldi-ffmpeg-codecs = vivaldi-ffmpeg-codecs;
       })
       vlc
+      zellij
       # Sad panda
       # Have to manually enable on each host,
       # after manual action, welcom to eula world
