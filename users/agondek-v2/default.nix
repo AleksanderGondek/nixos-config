@@ -34,7 +34,7 @@
     nix.settings.trusted-users = ["agondek"];
 
     home-manager.users.agondek = {
-      home.stateVersion = "23.11";
+      home.stateVersion = "24.05";
 
       home.packages = with pkgs; [
         coreutils-full

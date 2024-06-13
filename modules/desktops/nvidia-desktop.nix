@@ -10,7 +10,7 @@
     ];
 
     enable = true;
-    layout = "pl";
+    xkb.layout = "pl";
 
     displayManager.gdm = {
       wayland = false;

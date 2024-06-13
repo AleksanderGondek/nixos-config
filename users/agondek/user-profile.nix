@@ -176,8 +176,7 @@ in
     };
     programs.zsh = {
       enable = true;
-      enableAutosuggestions = true;
-
+      autosuggestion.enable = true;
       shellAliases = {};
 
       oh-my-zsh = {

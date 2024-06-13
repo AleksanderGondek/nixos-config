@@ -28,7 +28,7 @@
   };
 
   home-manager.users.agondek = {
-    home.stateVersion = "23.11";
+    home.stateVersion = "24.05";
     home.packages = with pkgs; [
       git-crypt
       git-lfs

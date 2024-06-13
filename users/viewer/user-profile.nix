@@ -18,7 +18,7 @@
   };
 
   home-manager.users.viewer = {
-    home.stateVersion = "23.11";
+    home.stateVersion = "24.05";
     programs.firefox = {
       enable = true;
       enableGnomeExtensions = false;
