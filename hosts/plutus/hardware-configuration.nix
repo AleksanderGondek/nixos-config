@@ -12,7 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.kernelParams = [ "nohibernate" ];
-  boot.supportedFilesystems = [ "zfs" ];
+  boot.supportedFilesystems = [ "zfs" "ntfs" ];
   boot.zfs.devNodes = "/dev/";
   boot.extraModulePackages = [ ];
 

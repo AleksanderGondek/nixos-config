@@ -33,7 +33,7 @@
   networking.interfaces.wlp3s0.useDHCP = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
   # Ensure thermald runs
   services.thermald.enable = true;
 
@@ -47,6 +47,12 @@
   users.users.root = {
     hashedPasswordFile = lib.mkDefault config.sops.secrets.agondek_password.path;
   };
+
+  hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+  environment.systemPackages = with pkgs; [
+    steam
+  ];
 
   # Auto upgrade stable channel
   system.autoUpgrade = {

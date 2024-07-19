@@ -29,7 +29,7 @@ in
       ".config/wallpapers/klontalersee-glarus-switzerland.jpg".source = ./config-files/.config/wallpapers/klontalersee-glarus-switzerland.jpg;
       ".config/wallpapers/nix-glow.png".source = ./config-files/.config/wallpapers/nix-glow.png;
       ".config/gtk-3.0/settings.ini".source = ./config-files/.config/gtk-3.0/settings.ini;
-      ".config/alacritty/alacritty.yml".source = ./config-files/.config/alacritty/alacritty.yml;
+      ".config/alacritty/alacritty.toml".source = ./config-files/.config/alacritty/alacritty.toml;
       ".config/htop/htoprc".source = ./config-files/.config/htop/htoprc;
       ".config/i3/config".source = ./config-files/.config/i3/config;
       ".config/polybar/config.ini".source = ./config-files/.config/polybar/config.ini;
@@ -114,8 +114,8 @@ in
       #}))
       latest-nixpkgs.firefox
       latest-nixpkgs.jetbrains.idea-ultimate
-      latest-nixpkgs.joplin
-      latest-nixpkgs.joplin-desktop
+      joplin
+      joplin-desktop
       latest-nixpkgs.protonvpn-cli_2
       latest-nixpkgs.zoom-us
     ];

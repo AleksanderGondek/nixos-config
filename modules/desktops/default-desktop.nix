@@ -3,7 +3,7 @@
 {
   services.xserver = {
     enable = true;
-    layout = "pl";
+    xkb.layout = "pl";
 
     displayManager.gdm = {
       enable = true;
@@ -22,7 +22,7 @@
     };  
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     font-awesome_4
     terminus_font
     powerline-fonts
