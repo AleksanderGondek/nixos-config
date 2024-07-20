@@ -1,6 +1,21 @@
 { config, pkgs, latest-nixpkgs, ... }:
 
-{
+let
+  berkeley-mono = pkgs.stdenvNoCC.mkDerivation {
+    name = "berkeley-mono-font";
+    dontConfigue = true;
+    src = builtins.fetchGit {
+      url = "ssh://git@github.com/AleksanderGondek/font-berkeley-mono.git";
+      rev = "2e884a6c47d29bd246e78f06830718f86cd18c26";
+      ref = "master";
+    };
+    installPhase = ''
+      mkdir -p $out/share/fonts/opentype
+      cp -R $src/berkeley-mono/OTF/* $out/share/fonts/opentype/
+    '';
+    meta = { description = "ABCD"; };
+  };
+in {
   services.xserver = {
     enable = true;
     xkb.layout = "pl";
@@ -29,6 +44,7 @@
     (latest-nixpkgs.nerdfonts.override { 
       fonts = ["Hack"]; 
     })
+    berkeley-mono
   ];
   
   # For checking power status

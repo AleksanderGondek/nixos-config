@@ -50,7 +50,7 @@ TERM = "xterm-256color"
 size = 10.0
 
 [font.bold]
-family = "Hack Nerd Font Mono"
+family = "Berkeley Mono"
 style = "Bold"
 
 [font.glyph_offset]
@@ -58,11 +58,11 @@ x = 0
 y = 0
 
 [font.italic]
-family = "Hack Nerd Font Mono"
+family = "Berkeley Mono"
 style = "Italic"
 
 [font.normal]
-family = "Hack Nerd Font Mono"
+family = "Berkeley Mono"
 style = "Regular"
 
 [font.offset]

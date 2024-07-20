@@ -38,12 +38,12 @@ in
       ".config/rofi/monokai.rasi".source = ./config-files/.config/rofi/monokai.rasi;
       ".config/Code/User/settings.json".source = pkgs.writeText "setting.json" ''
       {
-        "editor.fontFamily": "'Hack Regular', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+        "editor.fontFamily": "'Berkeley Mono', 'Droid Sans Mono', 'monospace', 'Droid Sans Fallback'",
         "editor.fontSize": 12,
         "editor.tabSize": 2,
         "terminal.integrated.fontSize": 12,
         "terminal.integrated.detectLocale": "on",
-        "terminal.integrated.fontFamily": "Hack",
+        "terminal.integrated.fontFamily": "Berkeley Mono",
         "terminal.explorerKind": "integrated",
         "update.mode": "none",
         "update.showReleaseNotes": false,
@@ -141,7 +141,7 @@ in
           sort = "yes";
           idle_threshold = 360;
           # Text
-          font = "Hack Regular 8";
+          font = "Berkeley Mono 8";
           markup = "full";
           format = "<b>%s</b>\\n%b";
           alignment = "left";
