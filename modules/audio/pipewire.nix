@@ -1,6 +1,9 @@
-{ config, pkgs, latest-nixpkgs, ... }:
-
 {
+  config,
+  pkgs,
+  latest-nixpkgs,
+  ...
+}: {
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

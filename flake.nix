@@ -38,7 +38,6 @@
     #   url = "github:berberman/nvfetcher";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-
   };
 
   outputs = {
@@ -49,8 +48,7 @@
     sops-nix,
     flake-utils-plus,
     ...
-  }@inputs:
-  let
+  } @ inputs: let
     gen-extra-args = system: {
       latest-nixpkgs = import latest-nixpkgs {
         inherit system;
@@ -60,94 +58,118 @@
       };
     };
   in
-  flake-utils-plus.lib.mkFlake {
-    inherit self inputs;
+    flake-utils-plus.lib.mkFlake {
+      inherit self inputs;
 
-    supportedSystems = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
-
-    channelsConfig = {
-      allowUnfree = true;
-    };
-
-    # Host defaults
-    hostDefaults = {
-      system = "x86_64-linux";
-      channelName = "nixpkgs";
-      extraArgs = gen-extra-args "x86_64-linux";
-      modules = [
-        home-manager.nixosModules.home-manager
-        sops-nix.nixosModules.sops
-        # Common stuff
-        ./modules/common-base.nix
-        ./modules/secrets.nix
+      supportedSystems = [
+        "aarch64-linux"
+        "x86_64-linux"
       ];
-    };
 
-    hosts.nixos-flake-test = {
-      modules = [
-        ./hosts/nixos-flake-test/hardware-configuration.nix
-        ./hosts/nixos-flake-test/configuration.nix
-        ./modules/zfs.nix
-        ./modules/audio/pulseaudio.nix
-        ./users/drone/user-profile.nix
-      ];
-    };
+      channelsConfig = {
+        allowUnfree = true;
+      };
 
-    hosts.blackwood = {
-      modules = [
-        ./hosts/blackwood/hardware-configuration.nix
-        ./hosts/blackwood/configuration.nix
-        ./modules/zfs.nix
-        ./modules/audio/pipewire.nix
-        ./modules/desktops/nvidia-desktop.nix
-        #./modules/virtualisation/vbox.nix
-        ./modules/cluster/k8s-dev-single-node.nix
-        ./users/agondek/user-profile-slim.nix
-        ./users/agondek/user-profile.nix
-        # TODO: Move to modules
-        ./programs/steam.nix
-      ];
-    };
+      # Host defaults
+      hostDefaults = {
+        system = "x86_64-linux";
+        channelName = "nixpkgs";
+        extraArgs = gen-extra-args "x86_64-linux";
+        modules = [
+          home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
+          # Common stuff
+          ./modules/common-base.nix
+          ./modules/secrets.nix
+        ];
+      };
 
-    hosts.pasithea = {
-      modules = [
-        ./hosts/pasithea/hardware-configuration.nix
-        ./hosts/pasithea/configuration.nix
-        ./modules/zfs.nix
-        ./modules/audio/pulseaudio.nix
-        ./users/agondek/user-profile-slim.nix
-        ./users/viewer/user-profile.nix
-      ];
-    };
+      hosts.nixos-flake-test = {
+        modules = [
+          ./hosts/nixos-flake-test/hardware-configuration.nix
+          ./hosts/nixos-flake-test/configuration.nix
+          ./modules/zfs.nix
+          ./modules/audio/pulseaudio.nix
+          ./users/drone/default.nix
+          {
+            agondek-nixos-config.users.drone = {
+              enable = true;
+            };
+          }
+        ];
+      };
 
-    hosts.plutus = {
-      modules = [
-        ./hosts/plutus/hardware-configuration.nix
-        ./hosts/plutus/configuration.nix
-        ./modules/zfs.nix
-        ./modules/audio/pulseaudio.nix
-        ./modules/audio/bluetooth.nix
-        ./modules/desktops/default-desktop.nix
-        ./modules/virtualisation/vbox.nix
-        #./modules/cluster/k8s-dev-single-node.nix
-        ./users/agondek/user-profile-slim.nix
-        ./users/agondek/user-profile.nix
-      ];
-    };
+      hosts.blackwood = {
+        modules = [
+          ./hosts/blackwood/hardware-configuration.nix
+          ./hosts/blackwood/configuration.nix
+          ./modules/zfs.nix
+          ./modules/audio/pipewire.nix
+          ./modules/desktops/nvidia-desktop.nix
+          #./modules/virtualisation/vbox.nix
+          ./modules/cluster/k8s-dev-single-node.nix
+          ./users
+          {
+            agondek-nixos-config.users.agondek = {
+              enable = true;
+              desktopMode = true;
+            };
+          }
+          # TODO: Move to modules
+          ./programs/steam.nix
+        ];
+      };
 
-    hosts.vm-utility-drone = {
-      modules = [
-        ./hosts/vm-utility-drone/hardware-configuration.nix
-        ./hosts/vm-utility-drone/configuration.nix
-        ./modules/zfs.nix
-        #./modules/cluster/k8s-dev-single-node.nix
-        ./users/drone/user-profile.nix
-        ./users/agondek/user-profile-slim.nix
-      ];
-    };
+      hosts.pasithea = {
+        modules = [
+          ./hosts/pasithea/hardware-configuration.nix
+          ./hosts/pasithea/configuration.nix
+          ./modules/zfs.nix
+          ./modules/audio/pulseaudio.nix
+          ./users
+          {
+            agondek-nixos-config.users = {
+              agondek = {enable = true;};
+              viewer = {enable = true;};
+            };
+          }
+        ];
+      };
 
-  };
+      hosts.plutus = {
+        modules = [
+          ./hosts/plutus/hardware-configuration.nix
+          ./hosts/plutus/configuration.nix
+          ./modules/zfs.nix
+          ./modules/audio/pulseaudio.nix
+          ./modules/audio/bluetooth.nix
+          ./modules/desktops/default-desktop.nix
+          ./modules/virtualisation/vbox.nix
+          #./modules/cluster/k8s-dev-single-node.nix
+          ./users
+          {
+            agondek-nixos-config.users.agondek = {
+              enable = true;
+              desktopMode = true;
+            };
+          }
+        ];
+      };
+
+      hosts.vm-utility-drone = {
+        modules = [
+          ./hosts/vm-utility-drone/hardware-configuration.nix
+          ./hosts/vm-utility-drone/configuration.nix
+          ./modules/zfs.nix
+          #./modules/cluster/k8s-dev-single-node.nix
+          ./users
+          {
+            agondek-nixos-config.users = {
+              drone = {enable = true;};
+              agondek = {enable = true;};
+            };
+          }
+        ];
+      };
+    };
 }

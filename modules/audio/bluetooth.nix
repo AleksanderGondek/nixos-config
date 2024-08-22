@@ -1,6 +1,9 @@
-{ config, pkgs, latest-nixpkgs, ... }:
-
 {
+  config,
+  pkgs,
+  latest-nixpkgs,
+  ...
+}: {
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -8,4 +11,3 @@
   };
   services.blueman.enable = true;
 }
-

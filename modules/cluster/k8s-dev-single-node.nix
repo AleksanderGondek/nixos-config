@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   clusterAdminCert = config.services.kubernetes.lib.mkCert {
     name = "cluster-admin";
     CN = "kubernetes-cluster-ca";
@@ -44,8 +47,7 @@ let
       };
     };
   };
-in
-{
+in {
   virtualisation.containerd = {
     enable = true;
     settings = lib.mapAttrsRecursive (name: lib.mkDefault) defaultContainerdSettings;
@@ -56,29 +58,29 @@ in
   systemd.services.flannel.serviceConfig.TimeoutSec = 10;
   systemd.services.kube-apiserver .serviceConfig.TimeoutSec = 10;
 
-  systemd.services.containerd.after = pkgs.lib.mkForce [ "flannel.service" ];
-  networking.firewall.trustedInterfaces = [ "flannel.1" "mynet" ];
+  systemd.services.containerd.after = pkgs.lib.mkForce ["flannel.service"];
+  networking.firewall.trustedInterfaces = ["flannel.1" "mynet"];
 
   environment.variables = {
-    KUBECONFIG="${clusterAdminKubeConfig}:$HOME/.kube/config";
+    KUBECONFIG = "${clusterAdminKubeConfig}:$HOME/.kube/config";
   };
   home-manager.users.agondek.home.sessionVariables = {
-    KUBECONFIG="${clusterAdminKubeConfig}:$HOME/.kube/config";
+    KUBECONFIG = "${clusterAdminKubeConfig}:$HOME/.kube/config";
   };
 
   users.groups = {
     kubernet = {
       members = [
-      "agondek"
-      "root"
-      "kubernet"
+        "agondek"
+        "root"
+        "kubernet"
       ];
     };
   };
   systemd.services.kubernetes-admin-key-permissions = {
     description = "Ensure k8s dev cluster admin key may easily accessed";
-    wantedBy = [ "multi-user.target" ];
-    requires = [ "kubernetes.slice" ];
+    wantedBy = ["multi-user.target"];
+    requires = ["kubernetes.slice"];
     serviceConfig = {
       Type = "oneshot";
     };
@@ -96,16 +98,16 @@ in
     masterAddress = config.networking.hostName;
     kubelet.extraOpts = "--fail-swap-on=false";
 
-    apiserver.authorizationMode = [ "RBAC" "Node" ];
+    apiserver.authorizationMode = ["RBAC" "Node"];
     apiserver.allowPrivileged = true;
 
-    pki.certs = { 
-      devClusterAdmin = clusterAdminCert; 
+    pki.certs = {
+      devClusterAdmin = clusterAdminCert;
     };
 
     addons.dns.replicas = 1;
   };
-  
+
   # Ensure addon-manager can literally do anything
   services.kubernetes.addonManager.bootstrapAddons = {
     kube-addon-manager-allow-all = {
@@ -121,7 +123,7 @@ in
       };
       subjects = [
         {
-          kind  = "User";
+          kind = "User";
           name = "system:kube-addon-manager";
         }
       ];

@@ -1,8 +1,11 @@
-# This version of desktop environment assumes 
+# This version of desktop environment assumes
 # having 'powerful' workstation with nvidia card
-{ config, pkgs, latest-nixpkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  latest-nixpkgs,
+  ...
+}: let
   berkeley-mono = pkgs.stdenvNoCC.mkDerivation {
     name = "berkeley-mono-font";
     dontConfigue = true;
@@ -15,13 +18,14 @@ let
       mkdir -p $out/share/fonts/opentype
       cp -R $src/berkeley-mono/OTF/* $out/share/fonts/opentype/
     '';
-    meta = { description = "ABCD"; };
+    meta = {description = "ABCD";};
   };
 in {
   services.xserver = {
     # Enable propriatary drivers
     videoDrivers = [
-      "intel" "nvidia"
+      "intel"
+      "nvidia"
     ];
 
     enable = true;
@@ -31,7 +35,7 @@ in {
       wayland = false;
       enable = true;
     };
-    
+
     windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;
@@ -42,19 +46,19 @@ in {
         polybarFull
         rofi
       ];
-    };  
+    };
   };
 
   fonts.packages = with pkgs; [
     font-awesome_4
     terminus_font
     powerline-fonts
-    (latest-nixpkgs.nerdfonts.override { 
-      fonts = ["Hack"]; 
+    (latest-nixpkgs.nerdfonts.override {
+      fonts = ["Hack"];
     })
     berkeley-mono
   ];
-  
+
   environment.systemPackages = with pkgs; [
     networkmanagerapplet # NetworkManager in Gnome
     alacritty # Cool rust terminal

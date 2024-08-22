@@ -1,16 +1,20 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   # Ensure default inotify watches for files is high
   boot.kernel.sysctl = {
-    "fs.file-max" = 9223372036854775807;  
-    "fs.inotify.max_user_watches" = 524288; 
+    "fs.file-max" = 9223372036854775807;
+    "fs.inotify.max_user_watches" = 524288;
   };
 
   # Enable flakes
   nix = {
     package = pkgs.nixFlakes;
-    extraOptions = pkgs.lib.optionalString (config.nix.package == pkgs.nixFlakes)
+    extraOptions =
+      pkgs.lib.optionalString (config.nix.package == pkgs.nixFlakes)
       "experimental-features = nix-command flakes";
   };
 
@@ -28,7 +32,7 @@
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
-  # Enable firewall explicitly  
+  # Enable firewall explicitly
   networking.firewall.enable = true;
   # Network (Wireless and cord)
   networking.networkmanager.enable = true;
@@ -50,12 +54,14 @@
 
   # Set limits for esync.
   systemd.extraConfig = "DefaultLimitNOFILE=1048576";
-  security.pam.loginLimits = [{
-    domain = "*";
-    type = "hard";
-    item = "nofile";
-    value = "1048576";
-  }];
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      type = "hard";
+      item = "nofile";
+      value = "1048576";
+    }
+  ];
 
   # Enable thermald by default
   services.thermald.enable = true;

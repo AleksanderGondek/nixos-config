@@ -1,10 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   # User related secrets
   # TOOD: There has to be a better way!
   sops.secrets.agondek_password = {
@@ -77,4 +79,3 @@
     enable = false;
   };
 }
-

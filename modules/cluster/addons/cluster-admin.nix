@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   services.kubernetes.addonManager.addons.cluster-admin-service-account = {
     kind = "ServiceAccount";
     apiVersion = "v1";
@@ -15,7 +18,7 @@
   };
 
   services.kubernetes.addonManager.addons.cluster-admin-cluster-role-binding = {
-    apiVersion="rbac.authorization.k8s.io/v1";
+    apiVersion = "rbac.authorization.k8s.io/v1";
     kind = "ClusterRoleBinding";
     metadata = {
       name = "cluster-admin-sa-role-binding";
@@ -29,11 +32,11 @@
       name = "cluster-admin";
     };
     subjects = [
-        {
-          kind = "ServiceAccount";
-          name = "cluster-admin-sa";
-          namespace = "kube-system";
-        }
-      ];
+      {
+        kind = "ServiceAccount";
+        name = "cluster-admin-sa";
+        namespace = "kube-system";
+      }
+    ];
   };
 }

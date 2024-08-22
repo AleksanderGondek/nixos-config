@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   virtualisation.virtualbox.host = {
     enable = true;
     enableExtensionPack = false;
@@ -8,5 +10,5 @@
     enableHardening = true;
     headless = false;
   };
-  users.extraGroups.vboxusers.members = [ "agondek" ];
+  users.extraGroups.vboxusers.members = ["agondek"];
 }

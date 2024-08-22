@@ -1,10 +1,13 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, secrets, latest-nixpkgs, ... }:
-
 {
+  config,
+  pkgs,
+  secrets,
+  latest-nixpkgs,
+  ...
+}: {
   # User related secrets
   # TOOD: There has to be a better way!
   sops.secrets.drone_password = {
@@ -15,7 +18,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   # ZFS
   networking.hostId = "c53a68f2";
   networking.hostName = "nixos-flake-test"; # Define your hostname.

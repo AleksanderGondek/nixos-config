@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   # User related secrets
   # TOOD: There has to be a better way!
   sops.secrets.agondek_password = {
@@ -19,7 +22,7 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.copyKernels = true;
 
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = ["ntfs"];
 
   # "v4l2loopback" -> virtualcam for OBS
   # boot.kernelModules = [ "v4l2loopback" ];
@@ -27,9 +30,9 @@
   #   v4l2loopback
   # ];
   # Counter-act intel sheneningans
-  boot.kernelParams = [ "module_blacklist=i915" ];
+  boot.kernelParams = ["module_blacklist=i915"];
   # Emulate aarch64
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   # ZFS requirements
   networking.hostId = "4746a27b";
@@ -57,7 +60,7 @@
       sshUser = "nix";
       sshKey = "/root/.ssh/agondek-id-tweag-builder";
       system = "x86_64-linux";
-      supportedFeatures = [ "benchmark" "big-parallel" "kvm" ];
+      supportedFeatures = ["benchmark" "big-parallel" "kvm"];
     }
   ];
   nix.extraOptions = ''
@@ -89,7 +92,7 @@
             publicKey = "tcszG32OvcAonkgDCMNlai9rxCIiKCdFlKtfy0Zj50A=";
           }
           {
-            # morrigna cluster: badb 
+            # morrigna cluster: badb
             allowedIPs = ["192.168.66.2/32"];
             endpoint = "65.21.132.30:50666";
             publicKey = "5xYDKu3euQchK0E/LBaUcus65tWioxnvhWCkkyfI9QU=";
@@ -122,7 +125,7 @@
       };
     };
   };
-  # api.morrigna.rules-nix.build should move through wg 
+  # api.morrigna.rules-nix.build should move through wg
   networking.hosts = {
     # "192.168.66.1" = ["api.morrigna.rules-nix.build"];
     "192.168.66.2" = ["api.morrigna.rules-nix.build"];

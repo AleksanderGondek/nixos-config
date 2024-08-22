@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   # User related secrets
   # TOOD: There has to be a better way!
   sops.secrets.agondek_password = {
@@ -12,7 +15,7 @@
     neededForUsers = true;
   };
 
-  boot.supportedFilesystems = [ "ext4" "zfs" ];
+  boot.supportedFilesystems = ["ext4" "zfs"];
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.copyKernels = true;
@@ -45,7 +48,7 @@
   virtualisation.vmware.guest.headless = true;
 
   # Expose Nginx ingress & k8s api to world
-  networking.firewall.allowedTCPPorts = [ 80 443 6443 ];
+  networking.firewall.allowedTCPPorts = [80 443 6443];
 
   # Enable sshd
   services.openssh = {

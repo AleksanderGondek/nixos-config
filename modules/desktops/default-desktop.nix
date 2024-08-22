@@ -1,6 +1,9 @@
-{ config, pkgs, latest-nixpkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  latest-nixpkgs,
+  ...
+}: let
   berkeley-mono = pkgs.stdenvNoCC.mkDerivation {
     name = "berkeley-mono-font";
     dontConfigue = true;
@@ -13,7 +16,7 @@ let
       mkdir -p $out/share/fonts/opentype
       cp -R $src/berkeley-mono/OTF/* $out/share/fonts/opentype/
     '';
-    meta = { description = "ABCD"; };
+    meta = {description = "ABCD";};
   };
 in {
   services.xserver = {
@@ -23,7 +26,7 @@ in {
     displayManager.gdm = {
       enable = true;
     };
-    
+
     windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;
@@ -34,19 +37,19 @@ in {
         polybarFull
         rofi
       ];
-    };  
+    };
   };
 
   fonts.packages = with pkgs; [
     font-awesome_4
     terminus_font
     powerline-fonts
-    (latest-nixpkgs.nerdfonts.override { 
-      fonts = ["Hack"]; 
+    (latest-nixpkgs.nerdfonts.override {
+      fonts = ["Hack"];
     })
     berkeley-mono
   ];
-  
+
   # For checking power status
   services.upower.enable = true;
 

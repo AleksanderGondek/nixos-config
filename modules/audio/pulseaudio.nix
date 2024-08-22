@@ -1,6 +1,9 @@
-{ config, pkgs, latest-nixpkgs, ... }:
-
 {
+  config,
+  pkgs,
+  latest-nixpkgs,
+  ...
+}: {
   hardware.pulseaudio = {
     enable = true;
     package = latest-nixpkgs.pulseaudioFull;

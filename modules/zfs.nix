@@ -1,16 +1,18 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Remember to define
   # networking.hostId
   # networking.hostName
-  boot.supportedFilesystems = [ "zfs" ];
+  boot.supportedFilesystems = ["zfs"];
   boot.zfs.devNodes = "/dev/";
 
   services.zfs.trim.enable = true;
   services.zfs.autoScrub = {
     enable = true;
-    pools = [ "rpool" ];
+    pools = ["rpool"];
   };
 
   services.zfs.autoSnapshot = {
@@ -21,5 +23,5 @@
     daily = 3;
     weekly = 1;
     monthly = 1;
-  }; 
+  };
 }

@@ -1,5 +1,9 @@
-{ lib, pkgs, config, ... }:
-
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 # https://github.com/nix-community/infra/blob/master/services/hydra/declarative-projects.nix
 {
   services.hydra.declarativeProjects = {

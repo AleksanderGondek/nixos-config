@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   virtualisation.libvirtd = {
     enable = true;
     onBoot = "ignore";
@@ -12,7 +14,7 @@
     virt-manager
   ];
 
-  users.extraGroups.libvirtd.members = [ "agondek" ];
+  users.extraGroups.libvirtd.members = ["agondek"];
   # NixOps requriement - allow dhcp packages
   networking.firewall.checkReversePath = false;
 }
