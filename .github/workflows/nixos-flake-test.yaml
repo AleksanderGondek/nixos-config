@@ -12,9 +12,15 @@ jobs:
       with:
         fetch-depth: 0
 
+    # TODO: agondek
+    # This is just embarassing, please improve
+    - name: ""
+      run: >
+        sed -i 's/default = true;/default = false;/g' cfg/fonts/default.nix && git add -A
+
     - uses: cachix/install-nix-action@v22
       with:
-        install_url: "https://releases.nixos.org/nix/nix-2.13.5/install"
+        install_url: "https://releases.nixos.org/nix/nix-2.18.5/install"
         extra_nix_config: |2
           experimental-features = nix-command flakes
 
