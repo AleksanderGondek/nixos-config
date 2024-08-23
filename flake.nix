@@ -78,22 +78,19 @@
         modules = [
           home-manager.nixosModules.home-manager
           sops-nix.nixosModules.sops
-          # Common stuff
-          ./modules/common-base.nix
-          ./modules/secrets.nix
         ];
       };
 
       hosts.nixos-flake-test = {
         modules = [
-          ./hosts/nixos-flake-test/hardware-configuration.nix
-          ./hosts/nixos-flake-test/configuration.nix
-          ./modules/zfs.nix
-          ./modules/audio/pulseaudio.nix
-          ./users/drone/default.nix
+          ./hosts/nixos-flake-test
+          ./cfg
           {
-            agondek-nixos-config.users.drone = {
-              enable = true;
+            agondek-cfg = {
+              audio.pulseaudio.enable = true;
+              users.drone = {
+                enable = true;
+              };
             };
           }
         ];
@@ -101,36 +98,37 @@
 
       hosts.blackwood = {
         modules = [
-          ./hosts/blackwood/hardware-configuration.nix
-          ./hosts/blackwood/configuration.nix
-          ./modules/zfs.nix
-          ./modules/audio/pipewire.nix
-          ./modules/desktops/nvidia-desktop.nix
-          #./modules/virtualisation/vbox.nix
-          ./modules/cluster/k8s-dev-single-node.nix
-          ./users
+          ./hosts/blackwood
+          ./cfg
           {
-            agondek-nixos-config.users.agondek = {
-              enable = true;
-              desktopMode = true;
+            agondek-cfg = {
+              audio.pipewire.enable = true;
+              desktop = {
+                enable = true;
+                flavor = "nvidia";
+              };
+              k8s-single-node = {
+                enable = true;
+              };
+              users.agondek = {
+                enable = true;
+              };
             };
           }
-          # TODO: Move to modules
-          ./programs/steam.nix
         ];
       };
 
       hosts.pasithea = {
         modules = [
-          ./hosts/pasithea/hardware-configuration.nix
-          ./hosts/pasithea/configuration.nix
-          ./modules/zfs.nix
-          ./modules/audio/pulseaudio.nix
-          ./users
+          ./hosts/pasithea
+          ./cfg
           {
-            agondek-nixos-config.users = {
-              agondek = {enable = true;};
-              viewer = {enable = true;};
+            agondek-cfg = {
+              audio.pulseaudio.enable = true;
+              users = {
+                agondek = {enable = true;};
+                viewer = {enable = true;};
+              };
             };
           }
         ];
@@ -138,19 +136,20 @@
 
       hosts.plutus = {
         modules = [
-          ./hosts/plutus/hardware-configuration.nix
-          ./hosts/plutus/configuration.nix
-          ./modules/zfs.nix
-          ./modules/audio/pulseaudio.nix
-          ./modules/audio/bluetooth.nix
-          ./modules/desktops/default-desktop.nix
-          ./modules/virtualisation/vbox.nix
-          #./modules/cluster/k8s-dev-single-node.nix
-          ./users
+          ./hosts/plutus
+          ./cfg
           {
-            agondek-nixos-config.users.agondek = {
-              enable = true;
-              desktopMode = true;
+            agondek-cfg = {
+              audio = {
+                bluetooth.enable = true;
+                pulseaudio.enable = true;
+              };
+              desktop = {
+                enable = true;
+              };
+              users.agondek = {
+                enable = true;
+              };
             };
           }
         ];
@@ -158,13 +157,10 @@
 
       hosts.vm-utility-drone = {
         modules = [
-          ./hosts/vm-utility-drone/hardware-configuration.nix
-          ./hosts/vm-utility-drone/configuration.nix
-          ./modules/zfs.nix
-          #./modules/cluster/k8s-dev-single-node.nix
-          ./users
+          ./hosts/vm-utility-drone
+          ./cfg
           {
-            agondek-nixos-config.users = {
+            agondek-cfg.users = {
               drone = {enable = true;};
               agondek = {enable = true;};
             };
