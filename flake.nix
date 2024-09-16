@@ -146,6 +146,7 @@
               };
               desktop = {
                 enable = true;
+                windowsManager = "hyprland";
               };
               users.agondek = {
                 enable = true;
