@@ -127,6 +127,10 @@ in {
         '';
       };
 
+      programs.direnv = {
+        enable = true;
+      };
+
       programs.git = {
         enable = true;
         userEmail = "gondekaleksander@protonmail.com";
@@ -171,6 +175,11 @@ in {
             ".config/polybar/run-polybar.sh".source = ./config-files/.config/polybar/run-polybar.sh;
             ".config/rofi/config.rasi".source = ./config-files/.config/rofi/config.rasi;
             ".config/rofi/monokai.rasi".source = ./config-files/.config/rofi/monokai.rasi;
+            ".config/hypr/hyprland.conf".source = ./config-files/.config/hypr/hyprland.conf;
+            ".config/hypr/hyprlock.conf".source = ./config-files/.config/hypr/hyprlock.conf;
+            ".config/hypr/me-welcome.png".source = ./config-files/.config/hypr/me-welcome.png;
+            ".config/waybar/config.jsonc".source = ./config-files/.config/waybar/config.jsonc;
+            ".config/waybar/style.css".source = ./config-files/.config/waybar/style.css;
           }
           else {}
         );

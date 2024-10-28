@@ -73,16 +73,21 @@ in {
         networkmanagerapplet # NetworkManager in Gnome
         alacritty # Cool rust terminal
         pavucontrol # PulseAudio Volume Control
-        arandr # Front End for xrandr
         brightnessctl # Control screen brightness
       ]
       ++ (
         if cfg.desktop.windowsManager == "hyprland"
         then [
+          hyprlock
+          hyprshot
+          nwg-displays
           rofi-wayland
           swaybg
+          wlogout
         ]
-        else []
+        else [
+          arandr # Front End for xrandr
+        ]
       );
 
     programs.hyprland.enable = cfg.desktop.windowsManager == "hyprland";
