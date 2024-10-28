@@ -43,9 +43,8 @@ in {
           else []
         );
       home = "/home/agondek";
-      shell = pkgs.bash;
+      shell = pkgs.bashInteractive;
       createHome = true;
-      useDefaultShell = false;
       hashedPasswordFile = secrets.agondek_password.path;
     };
 
@@ -124,6 +123,14 @@ in {
         enableCompletion = true;
         bashrcExtra = ''
           # My generated bashrc!
+
+          # https://github.com/nix-community/home-manager/issues/1011
+          # https://github.com/NixOS/nixpkgs/pull/187620#issuecomment-1891078183
+          if [[ $XDG_SESSION_TYPE == "wayland" ]]; then
+            if [ -f /etc/profiles/per-user/agondek/etc/profile.d/hm-session-vars.sh ]; then
+              . "/etc/profiles/per-user/agondek/etc/profile.d/hm-session-vars.sh"
+            fi;
+          fi
         '';
       };
 
