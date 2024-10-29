@@ -112,12 +112,6 @@
         };
       };
     };
-    # api.morrigna.rules-nix.build should move through wg
-    networking.hosts = {
-      # "192.168.66.1" = ["api.morrigna.rules-nix.build"];
-      "192.168.66.2" = ["api.morrigna.rules-nix.build"];
-      #"192.168.66.3" = ["api.morrigna.rules-nix.build"];
-    };
 
     services.openssh = {
       enable = true;

@@ -7,6 +7,7 @@
   imports = [
     ./base.nix
     ./bootstrap-secrets.nix
+    ./dns.nix
     ./audio
     ./desktop
     ./fonts
