@@ -98,7 +98,6 @@
             {
               # r2r-dev
               allowedIPs = ["192.168.66.6/32"];
-              endpoint = "83.23.70.248:51820";
               publicKey = "nomrjGfbVySZ1Q2zdIEXxQ519oPR1nyrlCh7mhC0yCE=";
             }
             {
@@ -106,6 +105,11 @@
               allowedIPs = ["192.168.66.7/32"];
               endpoint = "65.21.243.230:50666";
               publicKey = "5PqZsjsiXg9b/RThRxkzWL0EbuhWsoT4CmIlm7fS/TU=";
+            }
+            {
+              # plutus
+              allowedIPs = ["192.168.66.8/32"];
+              publicKey = "fknqM3YymL3kpeTKB9m5Utc7HmNetIm/hfjeffANPmc=";
             }
           ];
           privateKeyFile = config.sops.secrets.morrigna_wg_private.path;

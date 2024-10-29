@@ -16,6 +16,10 @@
       sopsFile = ./secrets/agondek.yaml;
       neededForUsers = true;
     };
+    sops.secrets.morrigna_wg_private = {
+      sopsFile = ./secrets/agondek.yaml;
+      neededForUsers = true;
+    };
 
     # Use the systemd-boot EFI boot loader.
     boot.loader.systemd-boot.enable = true;
@@ -59,6 +63,61 @@
     environment.systemPackages = with pkgs; [
       steam
     ];
+
+    # Morrigna cluster wg
+    networking.wireguard = {
+      enable = true;
+      interfaces = {
+        wg0 = {
+          listenPort = 50666;
+          ips = [
+            "192.168.66.8/24"
+          ];
+          peers = [
+            {
+              # morrigna cluster: anand
+              allowedIPs = ["192.168.66.1/32"];
+              endpoint = "135.181.3.156:50666";
+              publicKey = "tcszG32OvcAonkgDCMNlai9rxCIiKCdFlKtfy0Zj50A=";
+            }
+            {
+              # morrigna cluster: badb
+              allowedIPs = ["192.168.66.2/32"];
+              endpoint = "65.21.132.30:50666";
+              publicKey = "5xYDKu3euQchK0E/LBaUcus65tWioxnvhWCkkyfI9QU=";
+            }
+            {
+              # morrigna cluster: macha
+              allowedIPs = ["192.168.66.3/32"];
+              endpoint = "65.108.13.183:50666";
+              publicKey = "c/8phQmj5DDd3O0xPFY/VStv1KnsX8yS5n+eQZ3s+xQ=";
+            }
+            {
+              # github-actions
+              allowedIPs = ["192.168.66.5/32"];
+              publicKey = "2gcoMsOvpcTTX/UQym8nH4I9KY4f+Q8gvP8+FFlrVAs=";
+            }
+            {
+              # r2r-dev
+              allowedIPs = ["192.168.66.6/32"];
+              publicKey = "nomrjGfbVySZ1Q2zdIEXxQ519oPR1nyrlCh7mhC0yCE=";
+            }
+            {
+              # hetzner: bastion
+              allowedIPs = ["192.168.66.7/32"];
+              endpoint = "65.21.243.230:50666";
+              publicKey = "5PqZsjsiXg9b/RThRxkzWL0EbuhWsoT4CmIlm7fS/TU=";
+            }
+            {
+              # blackwood
+              allowedIPs = ["192.168.66.4/32"];
+              publicKey = "dYEcCG5IzzNxBcJPQM06rdN581RAfqU3EBV48awKvhQ=";
+            }
+          ];
+          privateKeyFile = config.sops.secrets.morrigna_wg_private.path;
+        };
+      };
+    };
 
     # Auto upgrade stable channel
     system.autoUpgrade = {
