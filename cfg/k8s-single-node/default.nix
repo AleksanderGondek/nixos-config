@@ -80,7 +80,7 @@ in {
     networking.firewall.trustedInterfaces = ["flannel.1" "mynet"];
 
     environment.variables = {
-      KUBECONFIG = "${clusterAdminKubeConfig}:$HOME/.kube/config";
+      KUBECONFIG = "$HOME/.kube/config:${clusterAdminKubeConfig}";
     };
 
     home-manager.users.agondek.home.sessionVariables =
