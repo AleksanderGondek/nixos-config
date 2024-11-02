@@ -89,6 +89,7 @@ in {
               discord
               evince
               gnome3.gnome-screenshot
+              halloy
               notepadqq
               spotify
               (vivaldi.override {
