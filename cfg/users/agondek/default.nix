@@ -77,6 +77,7 @@ in {
           ranger
           ripgrep
           unzip
+          weechat
           wget
           vim
           zellij
