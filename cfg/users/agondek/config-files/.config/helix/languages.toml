@@ -1,0 +1,6 @@
+[language-server.starpls]
+command = "starpls"
+
+[[language]]
+name = "starlark"
+language-servers = ["starpls"]

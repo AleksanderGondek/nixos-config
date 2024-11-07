@@ -168,6 +168,9 @@ in {
           ".config/alacritty/alacritty.toml".source = ./config-files/.config/alacritty/alacritty.toml;
           ".config/htop/htoprc".source = ./config-files/.config/htop/htoprc;
           ".config/starship.toml".source = ./config-files/.config/starship.toml;
+          ".config/helix/config.toml".source = ./config-files/.config/helix/config.toml;
+          ".config/helix/languages.toml".source = ./config-files/.config/helix/languages.toml;
+          ".config/helix/themes/monokai.toml".source = ./config-files/.config/helix/themes/monokai.toml;
         }
         // (
           if cfg.desktop.enable
