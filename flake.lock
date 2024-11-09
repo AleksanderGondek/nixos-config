@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "flake-starpls": {
+      "locked": {
+        "lastModified": 1731187430,
+        "narHash": "sha256-1k3cdRyL5dB5Lq18liwLQ2YwlIoYvY1sFcrpWf+mDoU=",
+        "owner": "AleksanderGondek",
+        "repo": "starpls-nixified",
+        "rev": "2f3faa0c097d7089acf8c4ad374a788494f77ac0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AleksanderGondek",
+        "repo": "starpls-nixified",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -107,6 +122,7 @@
     },
     "root": {
       "inputs": {
+        "flake-starpls": "flake-starpls",
         "flake-utils-plus": "flake-utils-plus",
         "home-manager": "home-manager",
         "latest-nixpkgs": "latest-nixpkgs",

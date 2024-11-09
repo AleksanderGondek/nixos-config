@@ -76,6 +76,7 @@ in {
           niv
           ranger
           ripgrep
+          latest-nixpkgs.starpls-bin
           unzip
           weechat
           wget

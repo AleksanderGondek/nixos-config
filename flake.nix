@@ -18,6 +18,8 @@
 
     flake-utils-plus.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
+    flake-starpls.url = "github:AleksanderGondek/starpls-nixified";
+
     # Optional stuff to add later
     #
     # Package to nix declaration
@@ -47,6 +49,7 @@
     home-manager,
     sops-nix,
     flake-utils-plus,
+    flake-starpls,
     ...
   } @ inputs: let
     gen-extra-args = system: {
@@ -55,6 +58,12 @@
         config = {
           allowUnfree = true;
         };
+
+        overlays = [
+          (final: prev: {
+            starpls-bin = (builtins.getAttr system flake-starpls.packages).starpls;
+          })
+        ];
       };
     };
   in
