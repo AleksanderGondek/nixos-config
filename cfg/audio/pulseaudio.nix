@@ -19,9 +19,7 @@ in {
   config = lib.mkIf cfg.audio.pulseaudio.enable {
     hardware.pulseaudio = {
       enable = true;
-      package = latest-nixpkgs.pulseaudioFull;
       zeroconf.discovery.enable = true;
     };
-    sound.enable = true;
   };
 }

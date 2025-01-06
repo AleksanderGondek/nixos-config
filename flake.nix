@@ -3,11 +3,11 @@
 
   inputs = {
     # Nixpkgs channels
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     latest-nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -96,7 +96,7 @@
           ./cfg
           {
             agondek-cfg = {
-              audio.pulseaudio.enable = true;
+              audio.pipewire.enable = true;
               users.drone = {
                 enable = true;
               };
@@ -141,7 +141,7 @@
           ./cfg
           {
             agondek-cfg = {
-              audio.pulseaudio.enable = true;
+              audio.pipewire.enable = true;
               users = {
                 agondek = {enable = true;};
                 viewer = {enable = true;};
@@ -159,7 +159,7 @@
             agondek-cfg = {
               audio = {
                 bluetooth.enable = true;
-                pulseaudio.enable = true;
+                pipewire.enable = true;
               };
               desktop = {
                 enable = true;

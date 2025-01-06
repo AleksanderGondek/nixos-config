@@ -19,7 +19,7 @@
   options.agondek-cfg.nix = {
     channel = lib.mkOption {
       type = lib.types.str;
-      default = "24.05";
+      default = "24.11";
       description = ''
         Nix channel / stateVersion.
       '';

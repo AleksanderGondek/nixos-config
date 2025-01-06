@@ -44,10 +44,8 @@ in {
 
     # Enable flakes
     nix = {
-      package = pkgs.nixFlakes;
-      extraOptions =
-        pkgs.lib.optionalString (config.nix.package == pkgs.nixFlakes)
-        "experimental-features = nix-command flakes";
+      package = pkgs.nixVersions.stable;
+      extraOptions = "experimental-features = nix-command flakes";
     };
 
     # Clean up nix gc
@@ -115,9 +113,7 @@ in {
     ];
 
     # Bash settings
-    programs.bash = {
-      enableCompletion = true;
-    };
+    programs.bash.completion.enable = true;
 
     users.defaultUserShell = pkgs.bash;
     # Disallow user management sheneningans

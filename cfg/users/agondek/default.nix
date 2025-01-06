@@ -90,7 +90,7 @@ in {
               blueman
               discord
               evince
-              gnome3.gnome-screenshot
+              gnome-screenshot
               halloy
               notepadqq
               spotify
@@ -200,7 +200,7 @@ in {
       services.dunst = {
         enable = cfg.desktop.enable;
         iconTheme = {
-          package = pkgs.gnome3.adwaita-icon-theme;
+          package = pkgs.adwaita-icon-theme;
           name = "Adwaita";
           size = "32x32";
         };
