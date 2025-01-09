@@ -38,7 +38,6 @@ in {
       videoDrivers = (
         if cfg.desktop.flavor == "nvidia"
         then [
-          "intel"
           "nvidia"
         ]
         else [

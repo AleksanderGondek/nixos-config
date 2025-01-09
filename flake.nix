@@ -125,7 +125,7 @@
                 ];
               };
               k8s-single-node = {
-                enable = true;
+                enable = false;
               };
               users.agondek = {
                 enable = true;

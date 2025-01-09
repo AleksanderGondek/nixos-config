@@ -137,13 +137,25 @@
       #defaultWindowManager = "i3";
     };
 
-    # https://github.com/NixOS/nixpkgs/blob/nixos-22.11/pkgs/os-specific/linux/nvidia-x11/default.nix
-    # NVIDIA driver > 515 have broken daisy-chained DP
-    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    # Enable OpenGL
+    hardware.graphics = {
+      enable = true;
+    };
+
+    hardware.nvidia = {
+      nvidiaSettings = true;
+      modesetting.enable = true;
+      open = false;
+      powerManagement.enable = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+
+    boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
 
     # Host-specific steam setup
-    hardware.opengl.driSupport32Bit = true;
-    hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [libva];
+    hardware.graphics.enable32Bit = true;
+    hardware.graphics.extraPackages32 = with pkgs.pkgsi686Linux; [libva];
     environment.systemPackages = with pkgs; [
       steam
     ];
