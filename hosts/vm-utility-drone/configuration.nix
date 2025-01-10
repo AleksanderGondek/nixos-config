@@ -37,7 +37,6 @@
     time.timeZone = pkgs.lib.mkForce "UTC";
 
     # Disable sound.
-    sound.enable = pkgs.lib.mkForce false;
     hardware.pulseaudio.enable = pkgs.lib.mkForce false;
 
     # Thermal control not needed on VM
