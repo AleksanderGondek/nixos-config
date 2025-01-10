@@ -115,6 +115,7 @@
               desktop = {
                 enable = true;
                 flavor = "nvidia";
+                windowsManager = "hyprland";
               };
               dnsmasq = {
                 enable = true;
