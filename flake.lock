@@ -2,11 +2,11 @@
   "nodes": {
     "flake-starpls": {
       "locked": {
-        "lastModified": 1731187430,
-        "narHash": "sha256-1k3cdRyL5dB5Lq18liwLQ2YwlIoYvY1sFcrpWf+mDoU=",
+        "lastModified": 1742133528,
+        "narHash": "sha256-UUyRJMackGXdd+yfUj16m2u1Qo48zdYLUcw4gEwZdqA=",
         "owner": "AleksanderGondek",
         "repo": "starpls-nixified",
-        "rev": "2f3faa0c097d7089acf8c4ad374a788494f77ac0",
+        "rev": "a58c800da1197ac1c3bc089024fbe6be04092d75",
         "type": "github"
       },
       "original": {
