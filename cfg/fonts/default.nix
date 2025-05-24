@@ -35,9 +35,7 @@ in {
   config = {
     fonts.packages = with pkgs;
       [
-        (pkgs.nerdfonts.override {
-          fonts = ["Hack"];
-        })
+        pkgs.nerd-fonts.hack
       ]
       ++ (
         if cfg.fonts.useBerkeleyMono
