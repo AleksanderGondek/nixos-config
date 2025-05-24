@@ -17,7 +17,7 @@ in {
   };
 
   config = lib.mkIf cfg.audio.pulseaudio.enable {
-    hardware.pulseaudio = {
+    services.pulseaudio = {
       enable = true;
       zeroconf.discovery.enable = true;
     };

@@ -52,7 +52,7 @@
     services.gnome.gnome-settings-daemon.enable = true;
 
     environment.systemPackages = [
-      pkgs.gnome.gnome-tweaks
+      pkgs.gnome-tweaks
     ];
 
     # Ensure thermald runs

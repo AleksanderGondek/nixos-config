@@ -37,10 +37,10 @@
     time.timeZone = pkgs.lib.mkForce "UTC";
 
     # Disable sound.
-    hardware.pulseaudio.enable = pkgs.lib.mkForce false;
+    services.pulseaudio.enable = (pkgs.lib.mkForce false);
 
     # Thermal control not needed on VM
-    services.thermald.enable = pkgs.lib.mkForce false;
+    services.thermald.enable = (pkgs.lib.mkForce false);
 
     # Ensure work-env will assign proper dns name
     virtualisation.vmware.guest.enable = true;
