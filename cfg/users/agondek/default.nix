@@ -65,7 +65,7 @@ in {
           fzf
           gnupg
           gnutar
-          helix
+          latest-nixpkgs.helix
           htop
           jq
           keepassxc
@@ -110,7 +110,9 @@ in {
               #  };
               #}))
               latest-nixpkgs.firefox
-              latest-nixpkgs.jetbrains.idea-ultimate
+              (latest-nixpkgs.jetbrains.idea-ultimate.override {
+                jdk = latest-nixpkgs.openjdk21;
+              })
             ])
           else []
         );
