@@ -1,5 +1,6 @@
 [language-server.starpls]
 command = "starpls"
+args = ["server", "--experimental_infer_ctx_attributes", "--experimental_use_code_flow_analysis", "--experimental_enable_label_completions"]
 
 [[language]]
 name = "starlark"
