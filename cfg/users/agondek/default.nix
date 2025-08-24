@@ -94,12 +94,12 @@ in {
               halloy
               notepadqq
               spotify
-              (vivaldi.override {
-                proprietaryCodecs = true;
-                enableWidevine = true;
-                widevine-cdm = widevine-cdm;
-                vivaldi-ffmpeg-codecs = vivaldi-ffmpeg-codecs;
-              })
+              # (vivaldi.override {
+              #   proprietaryCodecs = true;
+              #   enableWidevine = true;
+              #   widevine-cdm = widevine-cdm;
+              #   vivaldi-ffmpeg-codecs = vivaldi-ffmpeg-codecs;
+              # })
               vlc
               # Override example, for future use
               #(latest-nixpkgs.discord.overrideAttrs (oldAttrs: {
