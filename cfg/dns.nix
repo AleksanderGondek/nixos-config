@@ -23,6 +23,11 @@ in {
       type = lib.types.listOf lib.types.str;
       default = [];
     };
+
+    customServers = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [];
+    };
   };
 
   config = lib.mkIf cfg.dnsmasq.enable {
@@ -40,7 +45,7 @@ in {
           "1.0.0.1"
           # g-evil
           "8.8.8.8"
-        ];
+        ] ++ cfg.dnsmasq.customServers;
         address = cfg.dnsmasq.customAddresses;
       };
       alwaysKeepRunning = true;

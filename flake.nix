@@ -173,6 +173,10 @@
                   "/api.morrigna.rules-nix.build/192.168.66.2"
                   "/api.morrigna.rules-nix.build/192.168.66.3"
                 ];
+                customServers = [
+                  "/szamszur.cloud/192.168.10.5"
+                  "/puqu.io/192.168.25.5"
+                ];
               };
               users.agondek = {
                 enable = true;

@@ -64,6 +64,13 @@
       steam
     ];
 
+    services.zerotierone = {
+      enable = true;
+      joinNetworks = [
+        "363c67c55a95648e" # szamszur cloud
+      ];
+    };
+
     # Morrigna cluster wg
     networking.wireguard = {
       enable = true;
