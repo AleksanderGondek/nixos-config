@@ -92,7 +92,8 @@ in {
               evince
               gnome-screenshot
               halloy
-              notepadqq
+              # Contains security vul.
+              #notepadqq
               spotify
               # (vivaldi.override {
               #   proprietaryCodecs = true;

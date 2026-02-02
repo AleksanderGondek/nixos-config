@@ -80,7 +80,7 @@ in {
           hyprlock
           hyprshot
           nwg-displays
-          rofi-wayland
+          rofi
           swaybg
           wlogout
         ]
