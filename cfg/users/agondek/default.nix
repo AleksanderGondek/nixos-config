@@ -110,7 +110,7 @@ in {
               #  };
               #}))
               latest-nixpkgs.firefox
-              (latest-nixpkgs.jetbrains.idea-ultimate.override {
+              (latest-nixpkgs.jetbrains.idea.override {
                 jdk = latest-nixpkgs.openjdk21;
               })
             ])
