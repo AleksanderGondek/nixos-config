@@ -146,9 +146,11 @@ in {
 
       programs.git = {
         enable = true;
-        userEmail = "gondekaleksander@protonmail.com";
-        userName = "Aleksander Gondek";
-        extraConfig = {
+        settings = {
+          user = {
+            email = "gondekaleksander@protonmail.com";
+            name = "Aleksander Gondek";
+          };
           init = {
             defaultBranch = "master";
           };

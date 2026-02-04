@@ -45,8 +45,8 @@
     services.xserver.enable = true;
 
     # Enable the GNOME Desktop Environment.
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.displayManager.gdm.autoSuspend = false;
+    services.displayManager.gdm.enable = true;
+    services.displayManager.gdm.autoSuspend = false;
     services.xserver.desktopManager.gnome.enable = true;
     services.gnome.sushi.enable = true;
     services.gnome.gnome-settings-daemon.enable = true;

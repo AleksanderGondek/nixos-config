@@ -31,6 +31,11 @@ in {
   };
 
   config = lib.mkIf cfg.desktop.enable {
+    services.displayManager.gdm = {
+      enable = true;
+      wayland = cfg.desktop.windowsManager == "hyprland";
+    };
+
     services.xserver = {
       enable = true;
       xkb.layout = "pl";
@@ -45,11 +50,6 @@ in {
           "fbdev"
         ]
       );
-
-      displayManager.gdm = {
-        enable = true;
-        wayland = cfg.desktop.windowsManager == "hyprland";
-      };
 
       windowManager.i3 = {
         enable = cfg.desktop.windowsManager == "i3";
